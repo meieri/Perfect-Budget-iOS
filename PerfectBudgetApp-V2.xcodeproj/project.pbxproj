@@ -1,0 +1,752 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0BFF1D42F019455D88FCF2E0 /* Pods_PerfectBudgetApp_V2_PerfectBudgetApp_V2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 798E24831F5DE3151C6DE805 /* Pods_PerfectBudgetApp_V2_PerfectBudgetApp_V2UITests.framework */; };
+		60FEBE695BB030B31B975D8D /* Pods_PerfectBudgetApp_V2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A011B88251450F8755C8170 /* Pods_PerfectBudgetApp_V2.framework */; };
+		954C6DFB24B8211500E34086 /* TransactionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954C6DFA24B8211500E34086 /* TransactionService.swift */; };
+		959B737924B41184002D478A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959B737824B41184002D478A /* AppDelegate.swift */; };
+		959B737B24B41184002D478A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959B737A24B41184002D478A /* SceneDelegate.swift */; };
+		959B737D24B41184002D478A /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959B737C24B41184002D478A /* HomeScreenViewController.swift */; };
+		959B738224B41186002D478A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 959B738124B41186002D478A /* Assets.xcassets */; };
+		959B738524B41186002D478A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 959B738324B41186002D478A /* LaunchScreen.storyboard */; };
+		959B739024B41186002D478A /* PerfectBudgetApp_V2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959B738F24B41186002D478A /* PerfectBudgetApp_V2Tests.swift */; };
+		959B739B24B41186002D478A /* PerfectBudgetApp_V2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959B739A24B41186002D478A /* PerfectBudgetApp_V2UITests.swift */; };
+		95AFBA0124BBB83A0016255C /* PerfectBudgetDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 95AFB9FF24BBB83A0016255C /* PerfectBudgetDataModel.xcdatamodeld */; };
+		D74D125B7CE3AA57EEB023DB /* Pods_PerfectBudgetApp_V2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F488068500342C2E4153D26A /* Pods_PerfectBudgetApp_V2Tests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		959B738C24B41186002D478A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 959B736D24B41184002D478A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 959B737424B41184002D478A;
+			remoteInfo = "PerfectBudgetApp-V2";
+		};
+		959B739724B41186002D478A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 959B736D24B41184002D478A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 959B737424B41184002D478A;
+			remoteInfo = "PerfectBudgetApp-V2";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		01D8A5D6EF65576B933C2576 /* Pods-PerfectBudgetApp-V2Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PerfectBudgetApp-V2Tests.release.xcconfig"; path = "Target Support Files/Pods-PerfectBudgetApp-V2Tests/Pods-PerfectBudgetApp-V2Tests.release.xcconfig"; sourceTree = "<group>"; };
+		27E06896943A53AEC96845D9 /* Pods-PerfectBudgetApp-V2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PerfectBudgetApp-V2.debug.xcconfig"; path = "Target Support Files/Pods-PerfectBudgetApp-V2/Pods-PerfectBudgetApp-V2.debug.xcconfig"; sourceTree = "<group>"; };
+		3C0E6ABF3EA87EF83086C33F /* Pods-PerfectBudgetApp-V2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PerfectBudgetApp-V2.release.xcconfig"; path = "Target Support Files/Pods-PerfectBudgetApp-V2/Pods-PerfectBudgetApp-V2.release.xcconfig"; sourceTree = "<group>"; };
+		462AE81460830912886B0200 /* Pods-PerfectBudgetApp-V2-PerfectBudgetApp-V2UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PerfectBudgetApp-V2-PerfectBudgetApp-V2UITests.debug.xcconfig"; path = "Target Support Files/Pods-PerfectBudgetApp-V2-PerfectBudgetApp-V2UITests/Pods-PerfectBudgetApp-V2-PerfectBudgetApp-V2UITests.debug.xcconfig"; sourceTree = "<group>"; };
+		6A011B88251450F8755C8170 /* Pods_PerfectBudgetApp_V2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PerfectBudgetApp_V2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		798E24831F5DE3151C6DE805 /* Pods_PerfectBudgetApp_V2_PerfectBudgetApp_V2UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PerfectBudgetApp_V2_PerfectBudgetApp_V2UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		954C6DFA24B8211500E34086 /* TransactionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionService.swift; sourceTree = "<group>"; };
+		959B737524B41184002D478A /* PerfectBudgetApp-V2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PerfectBudgetApp-V2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		959B737824B41184002D478A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		959B737A24B41184002D478A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		959B737C24B41184002D478A /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
+		959B738124B41186002D478A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		959B738424B41186002D478A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		959B738624B41186002D478A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		959B738B24B41186002D478A /* PerfectBudgetApp-V2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PerfectBudgetApp-V2Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		959B738F24B41186002D478A /* PerfectBudgetApp_V2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfectBudgetApp_V2Tests.swift; sourceTree = "<group>"; };
+		959B739124B41186002D478A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		959B739624B41186002D478A /* PerfectBudgetApp-V2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PerfectBudgetApp-V2UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		959B739A24B41186002D478A /* PerfectBudgetApp_V2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfectBudgetApp_V2UITests.swift; sourceTree = "<group>"; };
+		959B739C24B41186002D478A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		95AFBA0024BBB83A0016255C /* PerfectBudgetDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PerfectBudgetDataModel.xcdatamodel; sourceTree = "<group>"; };
+		A4913921F2B879BA419350E9 /* Pods-PerfectBudgetApp-V2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PerfectBudgetApp-V2Tests.debug.xcconfig"; path = "Target Support Files/Pods-PerfectBudgetApp-V2Tests/Pods-PerfectBudgetApp-V2Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		C22D2F8BEA291BC32432C082 /* Pods-PerfectBudgetApp-V2-PerfectBudgetApp-V2UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PerfectBudgetApp-V2-PerfectBudgetApp-V2UITests.release.xcconfig"; path = "Target Support Files/Pods-PerfectBudgetApp-V2-PerfectBudgetApp-V2UITests/Pods-PerfectBudgetApp-V2-PerfectBudgetApp-V2UITests.release.xcconfig"; sourceTree = "<group>"; };
+		F488068500342C2E4153D26A /* Pods_PerfectBudgetApp_V2Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PerfectBudgetApp_V2Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		959B737224B41184002D478A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60FEBE695BB030B31B975D8D /* Pods_PerfectBudgetApp_V2.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		959B738824B41186002D478A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D74D125B7CE3AA57EEB023DB /* Pods_PerfectBudgetApp_V2Tests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		959B739324B41186002D478A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0BFF1D42F019455D88FCF2E0 /* Pods_PerfectBudgetApp_V2_PerfectBudgetApp_V2UITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6E86130BE9F67ED13374F0BD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				27E06896943A53AEC96845D9 /* Pods-PerfectBudgetApp-V2.debug.xcconfig */,
+				3C0E6ABF3EA87EF83086C33F /* Pods-PerfectBudgetApp-V2.release.xcconfig */,
+				462AE81460830912886B0200 /* Pods-PerfectBudgetApp-V2-PerfectBudgetApp-V2UITests.debug.xcconfig */,
+				C22D2F8BEA291BC32432C082 /* Pods-PerfectBudgetApp-V2-PerfectBudgetApp-V2UITests.release.xcconfig */,
+				A4913921F2B879BA419350E9 /* Pods-PerfectBudgetApp-V2Tests.debug.xcconfig */,
+				01D8A5D6EF65576B933C2576 /* Pods-PerfectBudgetApp-V2Tests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		959B736C24B41184002D478A = {
+			isa = PBXGroup;
+			children = (
+				959B737724B41184002D478A /* PerfectBudgetApp-V2 */,
+				959B738E24B41186002D478A /* PerfectBudgetApp-V2Tests */,
+				959B739924B41186002D478A /* PerfectBudgetApp-V2UITests */,
+				959B737624B41184002D478A /* Products */,
+				6E86130BE9F67ED13374F0BD /* Pods */,
+				E0DCD502F7FCF15066520187 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		959B737624B41184002D478A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				959B737524B41184002D478A /* PerfectBudgetApp-V2.app */,
+				959B738B24B41186002D478A /* PerfectBudgetApp-V2Tests.xctest */,
+				959B739624B41186002D478A /* PerfectBudgetApp-V2UITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		959B737724B41184002D478A /* PerfectBudgetApp-V2 */ = {
+			isa = PBXGroup;
+			children = (
+				959B737824B41184002D478A /* AppDelegate.swift */,
+				959B737A24B41184002D478A /* SceneDelegate.swift */,
+				959B737C24B41184002D478A /* HomeScreenViewController.swift */,
+				954C6DFA24B8211500E34086 /* TransactionService.swift */,
+				95AFB9FF24BBB83A0016255C /* PerfectBudgetDataModel.xcdatamodeld */,
+				959B738124B41186002D478A /* Assets.xcassets */,
+				959B738324B41186002D478A /* LaunchScreen.storyboard */,
+				959B738624B41186002D478A /* Info.plist */,
+			);
+			path = "PerfectBudgetApp-V2";
+			sourceTree = "<group>";
+		};
+		959B738E24B41186002D478A /* PerfectBudgetApp-V2Tests */ = {
+			isa = PBXGroup;
+			children = (
+				959B738F24B41186002D478A /* PerfectBudgetApp_V2Tests.swift */,
+				959B739124B41186002D478A /* Info.plist */,
+			);
+			path = "PerfectBudgetApp-V2Tests";
+			sourceTree = "<group>";
+		};
+		959B739924B41186002D478A /* PerfectBudgetApp-V2UITests */ = {
+			isa = PBXGroup;
+			children = (
+				959B739A24B41186002D478A /* PerfectBudgetApp_V2UITests.swift */,
+				959B739C24B41186002D478A /* Info.plist */,
+			);
+			path = "PerfectBudgetApp-V2UITests";
+			sourceTree = "<group>";
+		};
+		E0DCD502F7FCF15066520187 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6A011B88251450F8755C8170 /* Pods_PerfectBudgetApp_V2.framework */,
+				798E24831F5DE3151C6DE805 /* Pods_PerfectBudgetApp_V2_PerfectBudgetApp_V2UITests.framework */,
+				F488068500342C2E4153D26A /* Pods_PerfectBudgetApp_V2Tests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		959B737424B41184002D478A /* PerfectBudgetApp-V2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 959B739F24B41186002D478A /* Build configuration list for PBXNativeTarget "PerfectBudgetApp-V2" */;
+			buildPhases = (
+				E2C8939A4AA8C5473210B84E /* [CP] Check Pods Manifest.lock */,
+				959B737124B41184002D478A /* Sources */,
+				959B737224B41184002D478A /* Frameworks */,
+				959B737324B41184002D478A /* Resources */,
+				9A6661BC5A86BEF11B3D6BC9 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "PerfectBudgetApp-V2";
+			productName = "PerfectBudgetApp-V2";
+			productReference = 959B737524B41184002D478A /* PerfectBudgetApp-V2.app */;
+			productType = "com.apple.product-type.application";
+		};
+		959B738A24B41186002D478A /* PerfectBudgetApp-V2Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 959B73A224B41186002D478A /* Build configuration list for PBXNativeTarget "PerfectBudgetApp-V2Tests" */;
+			buildPhases = (
+				4429970FDA60FC4729CC361F /* [CP] Check Pods Manifest.lock */,
+				959B738724B41186002D478A /* Sources */,
+				959B738824B41186002D478A /* Frameworks */,
+				959B738924B41186002D478A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				959B738D24B41186002D478A /* PBXTargetDependency */,
+			);
+			name = "PerfectBudgetApp-V2Tests";
+			productName = "PerfectBudgetApp-V2Tests";
+			productReference = 959B738B24B41186002D478A /* PerfectBudgetApp-V2Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		959B739524B41186002D478A /* PerfectBudgetApp-V2UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 959B73A524B41186002D478A /* Build configuration list for PBXNativeTarget "PerfectBudgetApp-V2UITests" */;
+			buildPhases = (
+				17BB117ADC7AD3ADCEE5A620 /* [CP] Check Pods Manifest.lock */,
+				959B739224B41186002D478A /* Sources */,
+				959B739324B41186002D478A /* Frameworks */,
+				959B739424B41186002D478A /* Resources */,
+				3C257BDEB0CD30441F775B8C /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				959B739824B41186002D478A /* PBXTargetDependency */,
+			);
+			name = "PerfectBudgetApp-V2UITests";
+			productName = "PerfectBudgetApp-V2UITests";
+			productReference = 959B739624B41186002D478A /* PerfectBudgetApp-V2UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		959B736D24B41184002D478A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1150;
+				LastUpgradeCheck = 1150;
+				ORGANIZATIONNAME = "Isaak Meier";
+				TargetAttributes = {
+					959B737424B41184002D478A = {
+						CreatedOnToolsVersion = 11.5;
+					};
+					959B738A24B41186002D478A = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = 959B737424B41184002D478A;
+					};
+					959B739524B41186002D478A = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = 959B737424B41184002D478A;
+					};
+				};
+			};
+			buildConfigurationList = 959B737024B41184002D478A /* Build configuration list for PBXProject "PerfectBudgetApp-V2" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 959B736C24B41184002D478A;
+			productRefGroup = 959B737624B41184002D478A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				959B737424B41184002D478A /* PerfectBudgetApp-V2 */,
+				959B738A24B41186002D478A /* PerfectBudgetApp-V2Tests */,
+				959B739524B41186002D478A /* PerfectBudgetApp-V2UITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		959B737324B41184002D478A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				959B738524B41186002D478A /* LaunchScreen.storyboard in Resources */,
+				959B738224B41186002D478A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		959B738924B41186002D478A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		959B739424B41186002D478A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		17BB117ADC7AD3ADCEE5A620 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PerfectBudgetApp-V2-PerfectBudgetApp-V2UITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3C257BDEB0CD30441F775B8C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PerfectBudgetApp-V2-PerfectBudgetApp-V2UITests/Pods-PerfectBudgetApp-V2-PerfectBudgetApp-V2UITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PerfectBudgetApp-V2-PerfectBudgetApp-V2UITests/Pods-PerfectBudgetApp-V2-PerfectBudgetApp-V2UITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PerfectBudgetApp-V2-PerfectBudgetApp-V2UITests/Pods-PerfectBudgetApp-V2-PerfectBudgetApp-V2UITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4429970FDA60FC4729CC361F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PerfectBudgetApp-V2Tests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9A6661BC5A86BEF11B3D6BC9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PerfectBudgetApp-V2/Pods-PerfectBudgetApp-V2-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PerfectBudgetApp-V2/Pods-PerfectBudgetApp-V2-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PerfectBudgetApp-V2/Pods-PerfectBudgetApp-V2-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E2C8939A4AA8C5473210B84E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PerfectBudgetApp-V2-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		959B737124B41184002D478A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				959B737D24B41184002D478A /* HomeScreenViewController.swift in Sources */,
+				954C6DFB24B8211500E34086 /* TransactionService.swift in Sources */,
+				959B737924B41184002D478A /* AppDelegate.swift in Sources */,
+				959B737B24B41184002D478A /* SceneDelegate.swift in Sources */,
+				95AFBA0124BBB83A0016255C /* PerfectBudgetDataModel.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		959B738724B41186002D478A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				959B739024B41186002D478A /* PerfectBudgetApp_V2Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		959B739224B41186002D478A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				959B739B24B41186002D478A /* PerfectBudgetApp_V2UITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		959B738D24B41186002D478A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 959B737424B41184002D478A /* PerfectBudgetApp-V2 */;
+			targetProxy = 959B738C24B41186002D478A /* PBXContainerItemProxy */;
+		};
+		959B739824B41186002D478A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 959B737424B41184002D478A /* PerfectBudgetApp-V2 */;
+			targetProxy = 959B739724B41186002D478A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		959B738324B41186002D478A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				959B738424B41186002D478A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		959B739D24B41186002D478A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		959B739E24B41186002D478A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		959B73A024B41186002D478A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27E06896943A53AEC96845D9 /* Pods-PerfectBudgetApp-V2.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "PerfectBudgetApp-V2/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.meier.PerfectBudgetApp-V2";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		959B73A124B41186002D478A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3C0E6ABF3EA87EF83086C33F /* Pods-PerfectBudgetApp-V2.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "PerfectBudgetApp-V2/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.meier.PerfectBudgetApp-V2";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		959B73A324B41186002D478A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A4913921F2B879BA419350E9 /* Pods-PerfectBudgetApp-V2Tests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "PerfectBudgetApp-V2Tests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.meier.PerfectBudgetApp-V2Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PerfectBudgetApp-V2.app/PerfectBudgetApp-V2";
+			};
+			name = Debug;
+		};
+		959B73A424B41186002D478A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 01D8A5D6EF65576B933C2576 /* Pods-PerfectBudgetApp-V2Tests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "PerfectBudgetApp-V2Tests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.meier.PerfectBudgetApp-V2Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PerfectBudgetApp-V2.app/PerfectBudgetApp-V2";
+			};
+			name = Release;
+		};
+		959B73A624B41186002D478A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 462AE81460830912886B0200 /* Pods-PerfectBudgetApp-V2-PerfectBudgetApp-V2UITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "PerfectBudgetApp-V2UITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.meier.PerfectBudgetApp-V2UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "PerfectBudgetApp-V2";
+			};
+			name = Debug;
+		};
+		959B73A724B41186002D478A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C22D2F8BEA291BC32432C082 /* Pods-PerfectBudgetApp-V2-PerfectBudgetApp-V2UITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "PerfectBudgetApp-V2UITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.meier.PerfectBudgetApp-V2UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "PerfectBudgetApp-V2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		959B737024B41184002D478A /* Build configuration list for PBXProject "PerfectBudgetApp-V2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				959B739D24B41186002D478A /* Debug */,
+				959B739E24B41186002D478A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		959B739F24B41186002D478A /* Build configuration list for PBXNativeTarget "PerfectBudgetApp-V2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				959B73A024B41186002D478A /* Debug */,
+				959B73A124B41186002D478A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		959B73A224B41186002D478A /* Build configuration list for PBXNativeTarget "PerfectBudgetApp-V2Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				959B73A324B41186002D478A /* Debug */,
+				959B73A424B41186002D478A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		959B73A524B41186002D478A /* Build configuration list for PBXNativeTarget "PerfectBudgetApp-V2UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				959B73A624B41186002D478A /* Debug */,
+				959B73A724B41186002D478A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		95AFB9FF24BBB83A0016255C /* PerfectBudgetDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				95AFBA0024BBB83A0016255C /* PerfectBudgetDataModel.xcdatamodel */,
+			);
+			currentVersion = 95AFBA0024BBB83A0016255C /* PerfectBudgetDataModel.xcdatamodel */;
+			path = PerfectBudgetDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 959B736D24B41184002D478A /* Project object */;
+}

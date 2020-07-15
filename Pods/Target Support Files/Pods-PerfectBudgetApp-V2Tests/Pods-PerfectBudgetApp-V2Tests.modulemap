@@ -1,0 +1,6 @@
+framework module Pods_PerfectBudgetApp_V2Tests {
+  umbrella header "Pods-PerfectBudgetApp-V2Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}
