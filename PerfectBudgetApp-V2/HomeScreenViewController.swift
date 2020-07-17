@@ -96,6 +96,15 @@ extension HomeScreenViewController: UITableViewDataSource {
         cell.textLabel?.text = transactions[indexPath.row].reason
         return cell
     }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            service.deleteTransaction(transaction: transactions[indexPath.row])
+//            print(transactions[indexPath.row])
+            self.transactions.remove(at: indexPath.row)
+            tableView.reloadData()
+        }
+    }
 }
 
 extension HomeScreenViewController: UITableViewDelegate {
