@@ -36,6 +36,7 @@ class TransactionService {
             print("Couldn't fetch. \(error), \(error.userInfo)")
         }
         return transactions
+
     }
 
     func createTransaction(reason: String, amount: Double) -> Transaction {
