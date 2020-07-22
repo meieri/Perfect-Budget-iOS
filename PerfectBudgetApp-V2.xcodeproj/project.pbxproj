@@ -10,6 +10,9 @@
 		0BFF1D42F019455D88FCF2E0 /* Pods_PerfectBudgetApp_V2_PerfectBudgetApp_V2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 798E24831F5DE3151C6DE805 /* Pods_PerfectBudgetApp_V2_PerfectBudgetApp_V2UITests.framework */; };
 		60FEBE695BB030B31B975D8D /* Pods_PerfectBudgetApp_V2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A011B88251450F8755C8170 /* Pods_PerfectBudgetApp_V2.framework */; };
 		954C6DFB24B8211500E34086 /* TransactionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954C6DFA24B8211500E34086 /* TransactionService.swift */; };
+		958F84D324C7CB9B00FC515B /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F84D224C7CB9B00FC515B /* Coordinator.swift */; };
+		958F84D524C7CBF000FC515B /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F84D424C7CBF000FC515B /* MainCoordinator.swift */; };
+		958F84D724C7D72100FC515B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F84D624C7D72100FC515B /* DetailViewController.swift */; };
 		959B737924B41184002D478A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959B737824B41184002D478A /* AppDelegate.swift */; };
 		959B737B24B41184002D478A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959B737A24B41184002D478A /* SceneDelegate.swift */; };
 		959B737D24B41184002D478A /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959B737C24B41184002D478A /* HomeScreenViewController.swift */; };
@@ -46,6 +49,9 @@
 		6A011B88251450F8755C8170 /* Pods_PerfectBudgetApp_V2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PerfectBudgetApp_V2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		798E24831F5DE3151C6DE805 /* Pods_PerfectBudgetApp_V2_PerfectBudgetApp_V2UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PerfectBudgetApp_V2_PerfectBudgetApp_V2UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		954C6DFA24B8211500E34086 /* TransactionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionService.swift; sourceTree = "<group>"; };
+		958F84D224C7CB9B00FC515B /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		958F84D424C7CBF000FC515B /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		958F84D624C7D72100FC515B /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		959B737524B41184002D478A /* PerfectBudgetApp-V2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PerfectBudgetApp-V2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		959B737824B41184002D478A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		959B737A24B41184002D478A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -134,6 +140,9 @@
 				959B737824B41184002D478A /* AppDelegate.swift */,
 				959B737A24B41184002D478A /* SceneDelegate.swift */,
 				959B737C24B41184002D478A /* HomeScreenViewController.swift */,
+				958F84D224C7CB9B00FC515B /* Coordinator.swift */,
+				958F84D424C7CBF000FC515B /* MainCoordinator.swift */,
+				958F84D624C7D72100FC515B /* DetailViewController.swift */,
 				954C6DFA24B8211500E34086 /* TransactionService.swift */,
 				95AFB9FF24BBB83A0016255C /* PerfectBudgetDataModel.xcdatamodeld */,
 				959B738124B41186002D478A /* Assets.xcassets */,
@@ -410,10 +419,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				959B737D24B41184002D478A /* HomeScreenViewController.swift in Sources */,
+				958F84D524C7CBF000FC515B /* MainCoordinator.swift in Sources */,
 				954C6DFB24B8211500E34086 /* TransactionService.swift in Sources */,
+				958F84D324C7CB9B00FC515B /* Coordinator.swift in Sources */,
 				959B737924B41184002D478A /* AppDelegate.swift in Sources */,
 				959B737B24B41184002D478A /* SceneDelegate.swift in Sources */,
 				95AFBA0124BBB83A0016255C /* PerfectBudgetDataModel.xcdatamodeld in Sources */,
+				958F84D724C7D72100FC515B /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

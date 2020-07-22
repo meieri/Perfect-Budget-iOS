@@ -11,6 +11,7 @@ import Anchorage
 
 class HomeScreenViewController: UIViewController {
     var service: TransactionService!
+    var coordinator: Coordinator?
 
     var tableView = UITableView()
     var transactions: [Transaction] = []
@@ -49,6 +50,7 @@ class HomeScreenViewController: UIViewController {
     @objc func editTransaction(selector: UIButton) {
         tableView.isEditing = true
     }
+
 }
 
 extension HomeScreenViewController {
@@ -60,6 +62,8 @@ extension HomeScreenViewController {
         tableView.register(UITableViewCell.self,
                            forCellReuseIdentifier: "TransactionCell")
         tableView.dataSource = self
+        tableView.delegate = self
+        tableView.allowsSelection = true
         addTransactionButton.addTarget(self, action: #selector(addTransaction), for: .touchUpInside)
         editTransactionButton.addTarget(self, action: #selector(editTransaction), for: .touchUpInside)
         // Style
@@ -94,21 +98,23 @@ extension HomeScreenViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionCell", for: indexPath)
         cell.textLabel?.text = transactions[indexPath.row].reason
+        cell.isUserInteractionEnabled = true
         return cell
     }
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             service.deleteTransaction(transaction: transactions[indexPath.row])
-//            print(transactions[indexPath.row])
             self.transactions.remove(at: indexPath.row)
             tableView.reloadData()
         }
     }
+
 }
 
 extension HomeScreenViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let currCell: UITableViewCell
+        let tappedTransaction = transactions[indexPath.row]
+        coordinator?.transactionTapped(tappedTransaction)
     }
 }
