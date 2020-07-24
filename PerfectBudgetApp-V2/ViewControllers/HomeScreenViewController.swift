@@ -14,6 +14,7 @@ class HomeScreenViewController: UIViewController {
     var coordinator: Coordinator?
 
     var tableView = UITableView()
+    var titleProgressView = TitleProgressContainerView()
     var transactions: [Transaction] = []
     let addTransactionButton = UIButton(type: .system)
     let editTransactionButton = UIButton(type: .system)
@@ -25,27 +26,36 @@ class HomeScreenViewController: UIViewController {
         configureView()
     }
 
-    @objc func addTransaction(sender: UIButton) {
-        let alert = UIAlertController(title: "New Name",
-                                      message: "Add a new reason",
-                                      preferredStyle: .alert)
-        let saveAction = UIAlertAction(title: "Save",
-                                       style: .default) {
-          [unowned self] action in
-          guard let textField = alert.textFields?.first,
-            let nameToSave = textField.text else {
-              return
-          }
-          self.transactions.append(self.service.createTransaction(reason: nameToSave, amount: 10))
-          self.tableView.reloadData()
+    @objc func showInputDialog() {
+        let alertController = UIAlertController(title: "Enter details of transaction?", message: "Enter your reason and amount", preferredStyle: .alert)
+        let confirmAction = UIAlertAction(title: "Enter", style: .default) { [weak self] (_) in
+            let reason = alertController.textFields?[0].text
+            let amount = alertController.textFields?[1].text
+            // so god damn safe jesus
+            if let amount = amount, let reason = reason {
+                // called 'nil coalescing'
+                let numAmount = Double(amount) ?? 0.0
+                if let newTransaction = self?.service.createTransaction(reason: reason, amount: numAmount) {
+                    self?.transactions.append(newTransaction)
+                    self?.tableView.reloadData()
+                }
+            } else {
+                return
+            }
+            // self.presenter.addExpense(amount: numAmount!, reason: reason!)
+            // self.presenter.setProgress()
+            // self.expenseTable.reloadData()
         }
-        let cancelAction = UIAlertAction(title: "Cancel",
-                                         style: .cancel)
-        alert.addTextField()
-        alert.addAction(saveAction)
-        alert.addAction(cancelAction)
-        present(alert, animated: true)
+        alertController.addTextField { (textField) in
+            textField.placeholder = "Enter Reason"
+        }
+        alertController.addTextField { (textField) in
+            textField.placeholder = "Enter Amount"
+        }
+        alertController.addAction(confirmAction)
+        self.present(alertController, animated: true, completion: nil)
     }
+
 
     @objc func editTransaction(selector: UIButton) {
         tableView.isEditing = true
@@ -57,6 +67,7 @@ extension HomeScreenViewController {
     func configureView() {
         // Heirarchy
         self.view.addSubview(tableView)
+        self.view.addSubview(titleProgressView)
         self.view.addSubview(addTransactionButton)
         self.view.addSubview(editTransactionButton)
         tableView.register(UITableViewCell.self,
@@ -64,11 +75,12 @@ extension HomeScreenViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.allowsSelection = true
-        addTransactionButton.addTarget(self, action: #selector(addTransaction), for: .touchUpInside)
+        addTransactionButton.addTarget(self, action: #selector(showInputDialog), for: .touchUpInside)
         editTransactionButton.addTarget(self, action: #selector(editTransaction), for: .touchUpInside)
         // Style
         addTransactionButton.backgroundColor = .blue
         addTransactionButton.setTitle("New Transaction", for: .normal)
+        self.view.backgroundColor = .white
 
         editTransactionButton.backgroundColor = .white
         editTransactionButton.setTitle("Edit Transactions", for: .normal)
@@ -82,11 +94,17 @@ extension HomeScreenViewController {
         editTransactionButton.leadingAnchor == view.leadingAnchor
         editTransactionButton.bottomAnchor == view.bottomAnchor
         editTransactionButton.widthAnchor == view.widthAnchor / 2
-        
-        tableView.leadingAnchor == self.view.leadingAnchor
-        tableView.trailingAnchor == self.view.trailingAnchor
-        tableView.topAnchor == self.view.topAnchor
-        tableView.heightAnchor == 3 * self.view.heightAnchor / 4
+
+        self.titleProgressView.topAnchor == self.view.topAnchor + 50
+        self.titleProgressView.leadingAnchor == self.view.leadingAnchor + 10
+        self.titleProgressView.trailingAnchor == self.view.trailingAnchor - 10
+        self.titleProgressView.heightAnchor == 200
+//        self.titleProgressView.edgeAnchors == self.view.edgeAnchors + 20
+
+        tableView.leadingAnchor == self.view.leadingAnchor + 20
+        tableView.trailingAnchor == self.view.trailingAnchor - 20
+        tableView.topAnchor == titleProgressView.bottomAnchor + 40
+        tableView.heightAnchor == view.heightAnchor / 2
     }
 }
 
