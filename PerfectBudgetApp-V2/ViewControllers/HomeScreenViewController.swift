@@ -38,6 +38,7 @@ class HomeScreenViewController: UIViewController {
                 if let newTransaction = self?.service.createTransaction(reason: reason, amount: numAmount) {
                     self?.transactions.append(newTransaction)
                     self?.tableView.reloadData()
+                    self?.titleProgressView.showProgress(progress: 0.5)
                 }
             } else {
                 return
@@ -81,16 +82,19 @@ extension HomeScreenViewController {
         addTransactionButton.backgroundColor = .blue
         addTransactionButton.setTitle("New Transaction", for: .normal)
         self.view.backgroundColor = .white
+        tableView.layer.cornerRadius = 0.4
+        tableView.backgroundView?.backgroundColor = UIColor.black
+        // probably shouldn't go here but for now
 
         editTransactionButton.backgroundColor = .white
         editTransactionButton.setTitle("Edit Transactions", for: .normal)
         // Layout
-        addTransactionButton.topAnchor == tableView.bottomAnchor
+        addTransactionButton.topAnchor == tableView.bottomAnchor + 10
         addTransactionButton.trailingAnchor == view.trailingAnchor
         addTransactionButton.bottomAnchor == view.bottomAnchor
         addTransactionButton.widthAnchor == view.widthAnchor / 2
         
-        editTransactionButton.topAnchor == tableView.bottomAnchor
+        editTransactionButton.topAnchor == tableView.bottomAnchor + 10
         editTransactionButton.leadingAnchor == view.leadingAnchor
         editTransactionButton.bottomAnchor == view.bottomAnchor
         editTransactionButton.widthAnchor == view.widthAnchor / 2
@@ -99,7 +103,6 @@ extension HomeScreenViewController {
         self.titleProgressView.leadingAnchor == self.view.leadingAnchor + 10
         self.titleProgressView.trailingAnchor == self.view.trailingAnchor - 10
         self.titleProgressView.heightAnchor == 200
-//        self.titleProgressView.edgeAnchors == self.view.edgeAnchors + 20
 
         tableView.leadingAnchor == self.view.leadingAnchor + 20
         tableView.trailingAnchor == self.view.trailingAnchor - 20

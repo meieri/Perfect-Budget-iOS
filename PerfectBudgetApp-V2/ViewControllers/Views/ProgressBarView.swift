@@ -97,16 +97,17 @@ private extension ProgressBarView {
         let renderer = UIGraphicsImageRenderer(size: newSize)
         let baseImg: UIImage = renderer.image { (context) in
             // this is the image border
-            UIColor(displayP3Red: 133/255, green: 187/255, blue: 101/255, alpha: 1).setStroke()
+//            UIColor(displayP3Red: 133/255, green: 187/255, blue: 101/255, alpha: 1).setStroke()
             // I don't actually know what this does
             context.stroke(renderer.format.bounds)
             // The color of the image itself
-            UIColor(displayP3Red: 133/255, green: 187/255, blue: 101/255, alpha: 1).setFill()
+//            UIColor(displayP3Red: 133/255, green: 187/255, blue: 101/255, alpha: 1).setFill()
+            UIColor.black.setFill()
             // fill her up
             context.fill(CGRect(x: 1, y: 1, width: newSize.width, height: newSize.height))
-            UIColor.blue.setStroke()
-            UIColor.blue.setFill()
-            context.cgContext.fillEllipse(in: CGRect(x: 107, y: 7, width: 23, height: 23))
+            // UIColor.white.setStroke()
+            // UIColor.white.setFill()
+            // context.cgContext.fillEllipse(in: CGRect(x: 107, y: 7, width: 23, height: 23))
         }
 
         // guard let moneyOverlay = UIImage(named: "rsz_1.jpg") else { return }

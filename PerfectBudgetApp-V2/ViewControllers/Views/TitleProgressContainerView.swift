@@ -24,6 +24,7 @@ class TitleProgressContainerView: UIView {
 
     override init(frame: CGRect) {
         self.progressBar = ProgressBarView()
+        self.progressBar.showProgress(progress: 0.5)
         // kind of clever, ensures presenter is set before configureView is called
 //        self.progressBar.presenter = self.presenter
         super.init(frame: frame)
