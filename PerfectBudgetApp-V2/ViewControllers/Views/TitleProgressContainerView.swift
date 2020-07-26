@@ -29,6 +29,7 @@ class TitleProgressContainerView: UIView {
 //        self.progressBar.presenter = self.presenter
         super.init(frame: frame)
         configureView()
+        showDayOfWeek(day: "Monday")
     }
 
     required init?(coder aDecoder: NSCoder) {
