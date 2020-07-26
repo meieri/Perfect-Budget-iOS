@@ -11,6 +11,7 @@
 		60FEBE695BB030B31B975D8D /* Pods_PerfectBudgetApp_V2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A011B88251450F8755C8170 /* Pods_PerfectBudgetApp_V2.framework */; };
 		954C6DFB24B8211500E34086 /* TransactionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954C6DFA24B8211500E34086 /* TransactionService.swift */; };
 		954CA0B724CA6B1000F5C63C /* TitleProgressContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954CA0B624CA6B1000F5C63C /* TitleProgressContainerView.swift */; };
+		9584D32C24CE4E050081B5D6 /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9584D32B24CE4E050081B5D6 /* GraphViewController.swift */; };
 		958F84D324C7CB9B00FC515B /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F84D224C7CB9B00FC515B /* Coordinator.swift */; };
 		958F84D524C7CBF000FC515B /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F84D424C7CBF000FC515B /* MainCoordinator.swift */; };
 		958F84D724C7D72100FC515B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F84D624C7D72100FC515B /* DetailViewController.swift */; };
@@ -52,6 +53,7 @@
 		798E24831F5DE3151C6DE805 /* Pods_PerfectBudgetApp_V2_PerfectBudgetApp_V2UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PerfectBudgetApp_V2_PerfectBudgetApp_V2UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		954C6DFA24B8211500E34086 /* TransactionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionService.swift; sourceTree = "<group>"; };
 		954CA0B624CA6B1000F5C63C /* TitleProgressContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleProgressContainerView.swift; sourceTree = "<group>"; };
+		9584D32B24CE4E050081B5D6 /* GraphViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewController.swift; sourceTree = "<group>"; };
 		958F84D224C7CB9B00FC515B /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		958F84D424C7CBF000FC515B /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		958F84D624C7D72100FC515B /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 				95C67BA624CA5DB900BDD740 /* Views */,
 				959B737C24B41184002D478A /* HomeScreenViewController.swift */,
 				958F84D624C7D72100FC515B /* DetailViewController.swift */,
+				9584D32B24CE4E050081B5D6 /* GraphViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -448,6 +451,7 @@
 				959B737924B41184002D478A /* AppDelegate.swift in Sources */,
 				959B737B24B41184002D478A /* SceneDelegate.swift in Sources */,
 				95AFBA0124BBB83A0016255C /* PerfectBudgetDataModel.xcdatamodeld in Sources */,
+				9584D32C24CE4E050081B5D6 /* GraphViewController.swift in Sources */,
 				954CA0B724CA6B1000F5C63C /* TitleProgressContainerView.swift in Sources */,
 				958F84D724C7D72100FC515B /* DetailViewController.swift in Sources */,
 			);

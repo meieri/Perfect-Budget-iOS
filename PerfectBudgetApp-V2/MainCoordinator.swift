@@ -30,4 +30,9 @@ class MainCoordinator: Coordinator {
         view.transaction = transaction
         navigationController?.pushViewController(view, animated: true)
     }
+
+    func viewGraphScreen() {
+        let view = GraphViewController()
+        navigationController?.pushViewController(view, animated: true)
+    }
 }

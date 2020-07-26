@@ -18,6 +18,7 @@ class HomeScreenViewController: UIViewController {
     var transactions: [Transaction] = []
     let addTransactionButton = UIButton(type: .system)
     let editTransactionButton = UIButton(type: .system)
+    let navigateToGraphs = UIButton(type: .system)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +63,10 @@ class HomeScreenViewController: UIViewController {
         tableView.isEditing = true
     }
 
+    @objc func viewGraphScreen(selector: UIButton) {
+        coordinator?.viewGraphScreen()
+    }
+
 }
 
 extension HomeScreenViewController {
@@ -71,6 +76,7 @@ extension HomeScreenViewController {
         self.view.addSubview(titleProgressView)
         self.view.addSubview(addTransactionButton)
         self.view.addSubview(editTransactionButton)
+        self.view.addSubview(navigateToGraphs)
         tableView.register(UITableViewCell.self,
                            forCellReuseIdentifier: "TransactionCell")
         tableView.dataSource = self
@@ -78,26 +84,31 @@ extension HomeScreenViewController {
         tableView.allowsSelection = true
         addTransactionButton.addTarget(self, action: #selector(showInputDialog), for: .touchUpInside)
         editTransactionButton.addTarget(self, action: #selector(editTransaction), for: .touchUpInside)
+        navigateToGraphs.addTarget(self, action: #selector(viewGraphScreen), for: .touchUpInside)
         // Style
         addTransactionButton.backgroundColor = .blue
         addTransactionButton.setTitle("New Transaction", for: .normal)
         self.view.backgroundColor = .white
         tableView.layer.cornerRadius = 0.4
         tableView.backgroundView?.backgroundColor = UIColor.black
-        // probably shouldn't go here but for now
-
         editTransactionButton.backgroundColor = .white
         editTransactionButton.setTitle("Edit Transactions", for: .normal)
+        navigateToGraphs.setTitle("Graph Screen", for: .normal)
         // Layout
-        addTransactionButton.topAnchor == tableView.bottomAnchor + 10
+        addTransactionButton.topAnchor == tableView.bottomAnchor - 10
         addTransactionButton.trailingAnchor == view.trailingAnchor
         addTransactionButton.bottomAnchor == view.bottomAnchor
-        addTransactionButton.widthAnchor == view.widthAnchor / 2
-        
-        editTransactionButton.topAnchor == tableView.bottomAnchor + 10
+        addTransactionButton.widthAnchor == view.widthAnchor / 3
+
+        navigateToGraphs.topAnchor == tableView.bottomAnchor - 10
+        navigateToGraphs.leadingAnchor == editTransactionButton.trailingAnchor
+        navigateToGraphs.bottomAnchor == view.bottomAnchor
+        navigateToGraphs.widthAnchor == view.widthAnchor / 3
+
+        editTransactionButton.topAnchor == tableView.bottomAnchor - 10
         editTransactionButton.leadingAnchor == view.leadingAnchor
         editTransactionButton.bottomAnchor == view.bottomAnchor
-        editTransactionButton.widthAnchor == view.widthAnchor / 2
+        editTransactionButton.widthAnchor == view.widthAnchor / 3
 
         self.titleProgressView.topAnchor == self.view.topAnchor + 50
         self.titleProgressView.leadingAnchor == self.view.leadingAnchor + 10
