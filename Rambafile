@@ -1,0 +1,35 @@
+### Headers settings
+company: 44 Inc.
+
+### Xcode project settings
+project_name: PerfectBudgetApp
+xcodeproj_path: PerfectBudgetApp-V2.xcodeproj
+
+### Code generation settings section
+# The main project target name
+project_target: PerfectBudgetApp-V2
+
+# The file path for new modules
+project_file_path: PerfectBudgetApp-V2/Modules/
+
+# The Xcode group path to new modules
+project_group_path: PerfectBudgetApp-V2/Modules/
+
+### Tests generation settings section
+# The tests target name
+test_target: PerfectBudgetApp-V2Tests
+
+# The file path for new tests
+test_file_path: PerfectBudgetApp-V2Tests/
+
+# The Xcode group path to new tests
+test_group_path: PerfectBudgetApp-V2Tests/
+
+### Dependencies settings section
+podfile_path: Podfile
+
+### Templates
+templates:
+- {name: rviper_controller}
+- {name: mvvm_controller}
+- {name: swifty_viper}
