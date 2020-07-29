@@ -8,7 +8,7 @@
 
 class WeeklyExpenseListInteractor: WeeklyExpenseListInteractorInput {
     weak var output: WeeklyExpenseListInteractorOutput!
-    var service: TransactionService!
+    var service: TransactionServiceProtocol!
 
     func createTransaction(reason: String, amount: Double) {
         let newTransaction = service.createTransaction(reason: reason, amount: amount)

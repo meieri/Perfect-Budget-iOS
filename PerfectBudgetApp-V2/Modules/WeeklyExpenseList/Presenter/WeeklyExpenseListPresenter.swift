@@ -9,11 +9,10 @@
 class WeeklyExpenseListPresenter: WeeklyExpenseListModuleInput, WeeklyExpenseListViewOutput {
     weak var view: WeeklyExpenseListViewInput!
     var interactor: WeeklyExpenseListInteractorInput!
-    var router: WeeklyExpenseListRouterInput!
-    var coordinator: Coordinator?
+    var coordinator: Coordinator!
 
     func viewIsReady() {
-
+        
     }
 
     func createTransaction(reason: String, amount: Double) {
@@ -26,6 +25,10 @@ class WeeklyExpenseListPresenter: WeeklyExpenseListModuleInput, WeeklyExpenseLis
 
     func showGraphScreen() {
         //
+    }
+
+    func transactionTapped(_ tappedTransaction: Transaction) {
+        coordinator.transactionTapped(tappedTransaction)
     }
 
 }

@@ -17,4 +17,5 @@ protocol WeeklyExpenseListViewOutput {
     func createTransaction(reason: String, amount: Double)
     func errorCreatingTransaction()
     func showGraphScreen()
+    func transactionTapped(_ transaction: Transaction)
 }

@@ -23,12 +23,12 @@ class WeeklyExpenseListViewController: UIViewController {
     // MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureView()
         output.viewIsReady()
     }
 
     // MARK: WeeklyExpenseListViewInput
     func setupInitialState() {
-        configureView()
     }
 
     @objc func showInputDialog() {
@@ -151,7 +151,7 @@ extension WeeklyExpenseListViewController  : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let tappedTransaction = transactions[indexPath.row]
 //        coordinator?.transactionTapped(tappedTransaction)
-//        output.transactionTapped(tappedTransaction)
+        output.transactionTapped(tappedTransaction)
     }
 }
 

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0BFF1D42F019455D88FCF2E0 /* Pods_PerfectBudgetApp_V2_PerfectBudgetApp_V2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 798E24831F5DE3151C6DE805 /* Pods_PerfectBudgetApp_V2_PerfectBudgetApp_V2UITests.framework */; };
 		2E7EF610B0A05C52C8EF4E51 /* WeeklyExpenseListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92024438C160C46EB72E4465 /* WeeklyExpenseListViewController.swift */; };
-		2EC2D29A18BE4A72328194A6 /* WeeklyExpenseListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78976428EE5DE631B27EBE26 /* WeeklyExpenseListRouter.swift */; };
 		310537E01F16BACEC6624C83 /* WeeklyExpenseListInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBEF713D83DFAFA33B94FE9 /* WeeklyExpenseListInteractorTests.swift */; };
 		3205B975A6B8EF123435E6E5 /* WeeklyExpenseListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA009B6775D78D04E8FC9F45 /* WeeklyExpenseListInteractor.swift */; };
 		398F332568AA54AF8A28BDCE /* WeeklyExpenseListInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FDA0347C113E56A4854D3B /* WeeklyExpenseListInteractorInput.swift */; };
@@ -32,14 +31,13 @@
 		959B739B24B41186002D478A /* PerfectBudgetApp_V2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959B739A24B41186002D478A /* PerfectBudgetApp_V2UITests.swift */; };
 		95AFBA0124BBB83A0016255C /* PerfectBudgetDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 95AFB9FF24BBB83A0016255C /* PerfectBudgetDataModel.xcdatamodeld */; };
 		95C67BA824CA5DE900BDD740 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C67BA724CA5DE900BDD740 /* ProgressBarView.swift */; };
+		95D738D524D23F3200C385FC /* WeeklyExpenseListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D738D424D23F3200C385FC /* WeeklyExpenseListCoordinator.swift */; };
+		95D738D824D2410000C385FC /* TransactionServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D738D724D2410000C385FC /* TransactionServiceProtocol.swift */; };
 		9CEC429BA39C8CBCAAA4203E /* WeeklyExpenseListRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C829BBC1A739A6AF66CCA938 /* WeeklyExpenseListRouterTests.swift */; };
 		A746D47297462AD8BC01BFA4 /* WeeklyExpenseListConfiguratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD07CE1F6AC77C9E395A05FB /* WeeklyExpenseListConfiguratorTests.swift */; };
-		A8D58AB8A3D0FF73DC17640C /* WeeklyExpenseListConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C19012A4375CF7536303D9 /* WeeklyExpenseListConfigurator.swift */; };
-		ACC6803C64FBA267F3D72933 /* WeeklyExpenseListRouterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44249555898A3BE32ECE099A /* WeeklyExpenseListRouterInput.swift */; };
 		C5AB5415ACB2C3D8FFC634AB /* WeeklyExpenseListInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97515CDEE1F9C2EB9330B4A4 /* WeeklyExpenseListInteractorOutput.swift */; };
 		D74D125B7CE3AA57EEB023DB /* Pods_PerfectBudgetApp_V2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F488068500342C2E4153D26A /* Pods_PerfectBudgetApp_V2Tests.framework */; };
 		DEFA12CFD66CDB8105E1C0AD /* WeeklyExpenseListViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48397FB928AA7748343749B6 /* WeeklyExpenseListViewTests.swift */; };
-		E7BC47AB89AEE944AC71FC78 /* WeeklyExpenseListInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569DA60F74F32B32D3F6507F /* WeeklyExpenseListInitializer.swift */; };
 		ED4005020A5552FA2BC55516 /* WeeklyExpenseListViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CDB516343554D51115E0B3 /* WeeklyExpenseListViewOutput.swift */; };
 		FE7F4BEB13CC53D81E6984BE /* WeeklyExpenseListModuleInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A39AC5210556DCC39E9F8B /* WeeklyExpenseListModuleInput.swift */; };
 /* End PBXBuildFile section */
@@ -67,13 +65,10 @@
 		27E06896943A53AEC96845D9 /* Pods-PerfectBudgetApp-V2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PerfectBudgetApp-V2.debug.xcconfig"; path = "Target Support Files/Pods-PerfectBudgetApp-V2/Pods-PerfectBudgetApp-V2.debug.xcconfig"; sourceTree = "<group>"; };
 		29A39AC5210556DCC39E9F8B /* WeeklyExpenseListModuleInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WeeklyExpenseListModuleInput.swift; sourceTree = "<group>"; };
 		3C0E6ABF3EA87EF83086C33F /* Pods-PerfectBudgetApp-V2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PerfectBudgetApp-V2.release.xcconfig"; path = "Target Support Files/Pods-PerfectBudgetApp-V2/Pods-PerfectBudgetApp-V2.release.xcconfig"; sourceTree = "<group>"; };
-		44249555898A3BE32ECE099A /* WeeklyExpenseListRouterInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WeeklyExpenseListRouterInput.swift; sourceTree = "<group>"; };
 		462AE81460830912886B0200 /* Pods-PerfectBudgetApp-V2-PerfectBudgetApp-V2UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PerfectBudgetApp-V2-PerfectBudgetApp-V2UITests.debug.xcconfig"; path = "Target Support Files/Pods-PerfectBudgetApp-V2-PerfectBudgetApp-V2UITests/Pods-PerfectBudgetApp-V2-PerfectBudgetApp-V2UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		479676C6FF48684F75C5F0EB /* WeeklyExpenseListViewInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WeeklyExpenseListViewInput.swift; sourceTree = "<group>"; };
 		48397FB928AA7748343749B6 /* WeeklyExpenseListViewTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WeeklyExpenseListViewTests.swift; sourceTree = "<group>"; };
-		569DA60F74F32B32D3F6507F /* WeeklyExpenseListInitializer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WeeklyExpenseListInitializer.swift; sourceTree = "<group>"; };
 		6A011B88251450F8755C8170 /* Pods_PerfectBudgetApp_V2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PerfectBudgetApp_V2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		78976428EE5DE631B27EBE26 /* WeeklyExpenseListRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WeeklyExpenseListRouter.swift; sourceTree = "<group>"; };
 		798E24831F5DE3151C6DE805 /* Pods_PerfectBudgetApp_V2_PerfectBudgetApp_V2UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PerfectBudgetApp_V2_PerfectBudgetApp_V2UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		92024438C160C46EB72E4465 /* WeeklyExpenseListViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WeeklyExpenseListViewController.swift; sourceTree = "<group>"; };
 		954C6DFA24B8211500E34086 /* TransactionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionService.swift; sourceTree = "<group>"; };
@@ -97,12 +92,13 @@
 		959B739C24B41186002D478A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		95AFBA0024BBB83A0016255C /* PerfectBudgetDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PerfectBudgetDataModel.xcdatamodel; sourceTree = "<group>"; };
 		95C67BA724CA5DE900BDD740 /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
+		95D738D424D23F3200C385FC /* WeeklyExpenseListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyExpenseListCoordinator.swift; sourceTree = "<group>"; };
+		95D738D724D2410000C385FC /* TransactionServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionServiceProtocol.swift; sourceTree = "<group>"; };
 		97515CDEE1F9C2EB9330B4A4 /* WeeklyExpenseListInteractorOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WeeklyExpenseListInteractorOutput.swift; sourceTree = "<group>"; };
 		A3CDB516343554D51115E0B3 /* WeeklyExpenseListViewOutput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WeeklyExpenseListViewOutput.swift; sourceTree = "<group>"; };
 		A4913921F2B879BA419350E9 /* Pods-PerfectBudgetApp-V2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PerfectBudgetApp-V2Tests.debug.xcconfig"; path = "Target Support Files/Pods-PerfectBudgetApp-V2Tests/Pods-PerfectBudgetApp-V2Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		BABAC462F69675534F2E20ED /* WeeklyExpenseListPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WeeklyExpenseListPresenter.swift; sourceTree = "<group>"; };
 		C22D2F8BEA291BC32432C082 /* Pods-PerfectBudgetApp-V2-PerfectBudgetApp-V2UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PerfectBudgetApp-V2-PerfectBudgetApp-V2UITests.release.xcconfig"; path = "Target Support Files/Pods-PerfectBudgetApp-V2-PerfectBudgetApp-V2UITests/Pods-PerfectBudgetApp-V2-PerfectBudgetApp-V2UITests.release.xcconfig"; sourceTree = "<group>"; };
-		C7C19012A4375CF7536303D9 /* WeeklyExpenseListConfigurator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WeeklyExpenseListConfigurator.swift; sourceTree = "<group>"; };
 		C829BBC1A739A6AF66CCA938 /* WeeklyExpenseListRouterTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WeeklyExpenseListRouterTests.swift; sourceTree = "<group>"; };
 		D3FDA0347C113E56A4854D3B /* WeeklyExpenseListInteractorInput.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WeeklyExpenseListInteractorInput.swift; sourceTree = "<group>"; };
 		DBBEF713D83DFAFA33B94FE9 /* WeeklyExpenseListInteractorTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WeeklyExpenseListInteractorTests.swift; sourceTree = "<group>"; };
@@ -139,22 +135,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		084BF73D4B35348FC4B443E4 /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				44249555898A3BE32ECE099A /* WeeklyExpenseListRouterInput.swift */,
-				78976428EE5DE631B27EBE26 /* WeeklyExpenseListRouter.swift */,
-			);
-			name = Router;
-			path = Router;
-			sourceTree = "<group>";
-		};
 		1A1F652B43866B609ACE736E /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
 				1CDDB5DB19EC26D72D5EB5F6 /* WeeklyExpenseListPresenterTests.swift */,
 			);
-			name = Presenter;
 			path = Presenter;
 			sourceTree = "<group>";
 		};
@@ -165,7 +150,6 @@
 				97515CDEE1F9C2EB9330B4A4 /* WeeklyExpenseListInteractorOutput.swift */,
 				EA009B6775D78D04E8FC9F45 /* WeeklyExpenseListInteractor.swift */,
 			);
-			name = Interactor;
 			path = Interactor;
 			sourceTree = "<group>";
 		};
@@ -174,7 +158,6 @@
 			children = (
 				48397FB928AA7748343749B6 /* WeeklyExpenseListViewTests.swift */,
 			);
-			name = View;
 			path = View;
 			sourceTree = "<group>";
 		};
@@ -187,7 +170,6 @@
 				1A1F652B43866B609ACE736E /* Presenter */,
 				C672C264E46D88396700073C /* Router */,
 			);
-			name = WeeklyExpenseList;
 			path = WeeklyExpenseList;
 			sourceTree = "<group>";
 		};
@@ -196,7 +178,6 @@
 			children = (
 				AAF2816EED45C0662EA7A2E1 /* WeeklyExpenseList */,
 			);
-			name = Modules;
 			path = Modules;
 			sourceTree = "<group>";
 		};
@@ -206,7 +187,6 @@
 				29A39AC5210556DCC39E9F8B /* WeeklyExpenseListModuleInput.swift */,
 				BABAC462F69675534F2E20ED /* WeeklyExpenseListPresenter.swift */,
 			);
-			name = Presenter;
 			path = Presenter;
 			sourceTree = "<group>";
 		};
@@ -230,7 +210,6 @@
 				A3CDB516343554D51115E0B3 /* WeeklyExpenseListViewOutput.swift */,
 				92024438C160C46EB72E4465 /* WeeklyExpenseListViewController.swift */,
 			);
-			name = View;
 			path = View;
 			sourceTree = "<group>";
 		};
@@ -264,7 +243,6 @@
 				959B737A24B41184002D478A /* SceneDelegate.swift */,
 				958F84D224C7CB9B00FC515B /* Coordinator.swift */,
 				958F84D424C7CBF000FC515B /* MainCoordinator.swift */,
-				954C6DFA24B8211500E34086 /* TransactionService.swift */,
 				95AFB9FF24BBB83A0016255C /* PerfectBudgetDataModel.xcdatamodeld */,
 				959B738124B41186002D478A /* Assets.xcassets */,
 				959B738324B41186002D478A /* LaunchScreen.storyboard */,
@@ -313,12 +291,20 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		95D738D624D240A300C385FC /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				954C6DFA24B8211500E34086 /* TransactionService.swift */,
+				95D738D724D2410000C385FC /* TransactionServiceProtocol.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		A19005B00994E93997628AD9 /* Configurator */ = {
 			isa = PBXGroup;
 			children = (
 				FD07CE1F6AC77C9E395A05FB /* WeeklyExpenseListConfiguratorTests.swift */,
 			);
-			name = Configurator;
 			path = Configurator;
 			sourceTree = "<group>";
 		};
@@ -328,10 +314,9 @@
 				83DC03A2F22F3EF674DFCCEB /* View */,
 				58A2D023928862B975D937B8 /* Presenter */,
 				249884B5A65F97E5CF07D915 /* Interactor */,
-				084BF73D4B35348FC4B443E4 /* Router */,
-				F91D01CF3681F0B4632D4D39 /* Configurator */,
+				95D738D624D240A300C385FC /* Service */,
+				F91D01CF3681F0B4632D4D39 /* Coordinator */,
 			);
-			name = WeeklyExpenseList;
 			path = WeeklyExpenseList;
 			sourceTree = "<group>";
 		};
@@ -340,7 +325,6 @@
 			children = (
 				C829BBC1A739A6AF66CCA938 /* WeeklyExpenseListRouterTests.swift */,
 			);
-			name = Router;
 			path = Router;
 			sourceTree = "<group>";
 		};
@@ -349,7 +333,6 @@
 			children = (
 				DBBEF713D83DFAFA33B94FE9 /* WeeklyExpenseListInteractorTests.swift */,
 			);
-			name = Interactor;
 			path = Interactor;
 			sourceTree = "<group>";
 		};
@@ -363,14 +346,12 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		F91D01CF3681F0B4632D4D39 /* Configurator */ = {
+		F91D01CF3681F0B4632D4D39 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
-				C7C19012A4375CF7536303D9 /* WeeklyExpenseListConfigurator.swift */,
-				569DA60F74F32B32D3F6507F /* WeeklyExpenseListInitializer.swift */,
+				95D738D424D23F3200C385FC /* WeeklyExpenseListCoordinator.swift */,
 			);
-			name = Configurator;
-			path = Configurator;
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -620,6 +601,7 @@
 				959B737B24B41184002D478A /* SceneDelegate.swift in Sources */,
 				95AFBA0124BBB83A0016255C /* PerfectBudgetDataModel.xcdatamodeld in Sources */,
 				9584D32C24CE4E050081B5D6 /* GraphViewController.swift in Sources */,
+				95D738D824D2410000C385FC /* TransactionServiceProtocol.swift in Sources */,
 				954CA0B724CA6B1000F5C63C /* TitleProgressContainerView.swift in Sources */,
 				958F84D724C7D72100FC515B /* DetailViewController.swift in Sources */,
 				65E31B70B54175E7B1297673 /* WeeklyExpenseListViewInput.swift in Sources */,
@@ -630,10 +612,7 @@
 				398F332568AA54AF8A28BDCE /* WeeklyExpenseListInteractorInput.swift in Sources */,
 				C5AB5415ACB2C3D8FFC634AB /* WeeklyExpenseListInteractorOutput.swift in Sources */,
 				3205B975A6B8EF123435E6E5 /* WeeklyExpenseListInteractor.swift in Sources */,
-				ACC6803C64FBA267F3D72933 /* WeeklyExpenseListRouterInput.swift in Sources */,
-				2EC2D29A18BE4A72328194A6 /* WeeklyExpenseListRouter.swift in Sources */,
-				A8D58AB8A3D0FF73DC17640C /* WeeklyExpenseListConfigurator.swift in Sources */,
-				E7BC47AB89AEE944AC71FC78 /* WeeklyExpenseListInitializer.swift in Sources */,
+				95D738D524D23F3200C385FC /* WeeklyExpenseListCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
