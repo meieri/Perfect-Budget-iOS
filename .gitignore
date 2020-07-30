@@ -1,7 +1,8 @@
 !*.xcodeproj/project.pbxproj
 !*.xcodeproj/xcshareddata/
 !*.xcodeproj/xcuserdata/
-*.xcuserstate
+PerfectBudgetApp-V2.xcworkspace/xcuserdata/isaakmeier.xcuserdatad/UserInterfaceState.xcuserstate
+.DS_Store
 !default.mode1v3
 !default.mode2v3
 !default.pbxuser
