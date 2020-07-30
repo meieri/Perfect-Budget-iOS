@@ -55,7 +55,7 @@ private extension TitleProgressContainerView {
 
         dayName.adjustsFontForContentSizeCategory = true
         dailySpending.adjustsFontForContentSizeCategory = true
-        dailySpending.text = "Daily Spending"
+        dailySpending.text = "Weekly Spending"
 
         // Layout
         // Center in the middle of the screen

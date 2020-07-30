@@ -2,6 +2,7 @@
 !*.xcodeproj/xcshareddata/
 !*.xcodeproj/xcuserdata/
 PerfectBudgetApp-V2.xcworkspace/xcuserdata/isaakmeier.xcuserdatad/UserInterfaceState.xcuserstate
+PerfectBudgetApp-V2.xcworkspace/xcuserdata/isaakmeier.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist
 .DS_Store
 !default.mode1v3
 !default.mode2v3

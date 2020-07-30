@@ -63,11 +63,23 @@ class WeeklyExpenseViewController: UIViewController {
 
 
     @objc func editTransaction(selector: UIButton) {
-        tableView.isEditing = true
+        if tableView.isEditing {
+            selector.setTitle("Edit", for: .normal)
+            tableView.isEditing = false
+        } else {
+            selector.setTitle("Done", for: .normal)
+            tableView.isEditing = true
+        }
     }
 
     @objc func viewGraphScreen(selector: UIButton) {
         output.showGraphScreen()
+    }
+
+    // refreshes everything that changes
+    func refresh() {
+        self.tableView.reloadData()
+        self.titleProgressView.setSpendingValues(currSpend: currentSpending, maxSpend: 40.0)
     }
 
 }
@@ -85,18 +97,17 @@ extension WeeklyExpenseViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.allowsSelection = true
+        self.tableView.register(SubtitleTableViewCell.self, forCellReuseIdentifier: "TransactionCell")
         addTransactionButton.addTarget(self, action: #selector(showInputDialog), for: .touchUpInside)
         editTransactionButton.addTarget(self, action: #selector(editTransaction), for: .touchUpInside)
         navigateToGraphs.addTarget(self, action: #selector(viewGraphScreen), for: .touchUpInside)
         // Style
-        addTransactionButton.backgroundColor = .blue
-        addTransactionButton.setTitle("New Transaction", for: .normal)
+        addTransactionButton.setTitle("New", for: .normal)
         self.view.backgroundColor = .white
         tableView.layer.cornerRadius = 0.4
-        tableView.backgroundView?.backgroundColor = UIColor.black
         editTransactionButton.backgroundColor = .white
-        editTransactionButton.setTitle("Edit Transactions", for: .normal)
-        navigateToGraphs.setTitle("Graph Screen", for: .normal)
+        editTransactionButton.setTitle("Edit", for: .normal)
+        navigateToGraphs.setTitle("Graphs", for: .normal)
         // Layout
         addTransactionButton.topAnchor == tableView.bottomAnchor - 10
         addTransactionButton.trailingAnchor == view.trailingAnchor
@@ -133,7 +144,7 @@ extension WeeklyExpenseViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionCell", for: indexPath)
         cell.textLabel?.text = transactions[indexPath.row].reason
-        cell.isUserInteractionEnabled = true
+        cell.detailTextLabel?.text = "$\(transactions[indexPath.row].amount)"
         return cell
     }
 
@@ -141,7 +152,7 @@ extension WeeklyExpenseViewController : UITableViewDataSource {
         if editingStyle == .delete {
             output.deleteTransaction(transaction: transactions[indexPath.row])
             self.transactions.remove(at: indexPath.row)
-            tableView.reloadData()
+            refresh()
         }
     }
 
@@ -156,15 +167,25 @@ extension WeeklyExpenseViewController: UITableViewDelegate {
 
 // MARK: WeeklyExpenseViewInput
 extension WeeklyExpenseViewController: WeeklyExpenseViewInput {
-    func addTransaction(_ transaction: Transaction) {
-        self.transactions.append(transaction)
-        self.tableView.reloadData()
-        self.titleProgressView.setSpendingValues(currSpend: currentSpending, maxSpend: 40.0)
-    }
 
     func setupInitialState(using weeklyTransactions: [Transaction]) {
         self.transactions = weeklyTransactions
-        self.tableView.reloadData()
+        refresh()
     }
 
+    func addTransaction(_ transaction: Transaction) {
+        self.transactions.append(transaction)
+        refresh()
+    }
+}
+
+class SubtitleTableViewCell: UITableViewCell {
+
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
