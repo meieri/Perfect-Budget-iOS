@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.windowScene = windowScene
         let navController = UINavigationController()
-        let weeklyExpenseListCoordinator = WeeklyExpenseListCoordinator(navController)
+        let weeklyExpenseListCoordinator = WeeklyExpenseCoordinator(navController)
         window?.rootViewController = navController
         weeklyExpenseListCoordinator.start()
         window?.makeKeyAndVisible()

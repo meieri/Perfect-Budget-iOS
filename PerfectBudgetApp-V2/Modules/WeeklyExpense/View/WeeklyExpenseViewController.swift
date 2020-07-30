@@ -1,5 +1,5 @@
 //
-//  WeeklyExpenseListWeeklyExpenseListViewController.swift
+//  WeeklyExpenseViewController.swift
 //  PerfectBudgetApp
 //
 //  Created by Isaak Meier on 28/07/2020.
@@ -9,7 +9,7 @@
 import UIKit
 import Anchorage
 
-class WeeklyExpenseListViewController: UIViewController {
+class WeeklyExpenseViewController: UIViewController {
 
     var tableView = UITableView()
     var titleProgressView = TitleProgressContainerView()
@@ -18,7 +18,7 @@ class WeeklyExpenseListViewController: UIViewController {
     let editTransactionButton = UIButton(type: .system)
     let navigateToGraphs = UIButton(type: .system)
 
-    var output: WeeklyExpenseListViewOutput!
+    var output: WeeklyExpenseViewOutput!
 
     // MARK: Life cycle
     override func viewDidLoad() {
@@ -27,7 +27,7 @@ class WeeklyExpenseListViewController: UIViewController {
         output.viewIsReady()
     }
 
-    // MARK: WeeklyExpenseListViewInput
+    // MARK: WeeklyExpenseViewInput
     func setupInitialState() {
     }
 
@@ -71,7 +71,7 @@ class WeeklyExpenseListViewController: UIViewController {
 
 }
 
-extension WeeklyExpenseListViewController {
+extension WeeklyExpenseViewController {
     func configureView() {
         // Heirarchy
         self.view.addSubview(tableView)
@@ -124,7 +124,7 @@ extension WeeklyExpenseListViewController {
     }
 }
 
-extension WeeklyExpenseListViewController : UITableViewDataSource {
+extension WeeklyExpenseViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return transactions.count
     }
@@ -147,15 +147,14 @@ extension WeeklyExpenseListViewController : UITableViewDataSource {
 
 }
 
-extension WeeklyExpenseListViewController  : UITableViewDelegate {
+extension WeeklyExpenseViewController  : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let tappedTransaction = transactions[indexPath.row]
-//        coordinator?.transactionTapped(tappedTransaction)
         output.transactionTapped(tappedTransaction)
     }
 }
 
-extension WeeklyExpenseListViewController: WeeklyExpenseListViewInput {
+extension WeeklyExpenseViewController: WeeklyExpenseViewInput {
     func addTransaction(_ transaction: Transaction) {
         self.transactions.append(transaction)
         self.tableView.reloadData()

@@ -1,12 +1,12 @@
 //
-//  WeeklyExpenseListWeeklyExpenseListViewInput.swift
+//  WeeklyExpenseListViewInput.swift
 //  PerfectBudgetApp
 //
 //  Created by Isaak Meier on 28/07/2020.
 //  Copyright © 2020 44 Inc.. All rights reserved.
 //
 
-protocol WeeklyExpenseListViewInput: class {
+protocol WeeklyExpenseViewInput: class {
 
     /**
         @author Isaak Meier

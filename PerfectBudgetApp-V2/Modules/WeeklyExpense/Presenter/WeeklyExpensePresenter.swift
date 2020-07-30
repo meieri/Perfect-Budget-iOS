@@ -1,18 +1,21 @@
 //
-//  WeeklyExpenseListWeeklyExpenseListPresenter.swift
+//  WeeklyExpensePresenter.swift
 //  PerfectBudgetApp
 //
 //  Created by Isaak Meier on 28/07/2020.
 //  Copyright © 2020 44 Inc.. All rights reserved.
 //
 
-class WeeklyExpenseListPresenter: WeeklyExpenseListModuleInput, WeeklyExpenseListViewOutput {
-    weak var view: WeeklyExpenseListViewInput!
-    var interactor: WeeklyExpenseListInteractorInput!
+class WeeklyExpensePresenter {
+    weak var view: WeeklyExpenseViewInput!
+    var interactor: WeeklyExpenseInteractorInput!
     var coordinator: Coordinator!
 
+}
+
+extension WeeklyExpensePresenter: WeeklyExpenseViewOutput {
     func viewIsReady() {
-        
+
     }
 
     func createTransaction(reason: String, amount: Double) {
@@ -33,7 +36,7 @@ class WeeklyExpenseListPresenter: WeeklyExpenseListModuleInput, WeeklyExpenseLis
 
 }
 
-extension WeeklyExpenseListPresenter: WeeklyExpenseListInteractorOutput {
+extension WeeklyExpensePresenter: WeeklyExpenseInteractorOutput {
     func pushNewTransaction(_ transaction: Transaction) {
         view.addTransaction(transaction)
     }
