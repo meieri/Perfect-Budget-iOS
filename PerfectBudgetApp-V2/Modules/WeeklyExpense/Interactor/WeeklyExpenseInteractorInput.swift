@@ -10,4 +10,6 @@ import Foundation
 
 protocol WeeklyExpenseInteractorInput {
     func createTransaction(reason: String, amount: Double)
+    func deleteTransaction(_ transaction: Transaction)
+    func getWeeklyTransactions() -> [Transaction]
 }

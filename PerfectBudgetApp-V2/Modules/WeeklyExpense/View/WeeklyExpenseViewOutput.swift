@@ -18,4 +18,5 @@ protocol WeeklyExpenseViewOutput {
     func errorCreatingTransaction()
     func showGraphScreen()
     func transactionTapped(_ transaction: Transaction)
+    func deleteTransaction(transaction: Transaction)
 }

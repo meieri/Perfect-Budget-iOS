@@ -20,15 +20,21 @@ class WeeklyExpenseViewController: UIViewController {
 
     var output: WeeklyExpenseViewOutput!
 
+    var currentSpending: Double {
+        get {
+            var spending = 0.0
+            for transaction in transactions {
+                spending += transaction.amount
+            }
+            return spending
+        }
+    }
+
     // MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
         output.viewIsReady()
-    }
-
-    // MARK: WeeklyExpenseViewInput
-    func setupInitialState() {
     }
 
     @objc func showInputDialog() {
@@ -41,14 +47,9 @@ class WeeklyExpenseViewController: UIViewController {
                 // called 'nil coalescing'
                 let numAmount = Double(amount) ?? 0.0
                 self?.output.createTransaction(reason: reason, amount: numAmount)
-//                if let newTransaction = self?.service.createTransaction(reason: reason, amount: numAmount) {
-//                }
             } else {
                 self?.output.errorCreatingTransaction()
             }
-            // self.presenter.addExpense(amount: numAmount!, reason: reason!)
-            // self.presenter.setProgress()
-            // self.expenseTable.reloadData()
         }
         alertController.addTextField { (textField) in
             textField.placeholder = "Enter Reason"
@@ -138,8 +139,7 @@ extension WeeklyExpenseViewController : UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-//            service.deleteTransaction(transaction: transactions[indexPath.row])
-//            output.deleteTransaction(transaction: transactions[indexPath.row])
+            output.deleteTransaction(transaction: transactions[indexPath.row])
             self.transactions.remove(at: indexPath.row)
             tableView.reloadData()
         }
@@ -147,17 +147,24 @@ extension WeeklyExpenseViewController : UITableViewDataSource {
 
 }
 
-extension WeeklyExpenseViewController  : UITableViewDelegate {
+extension WeeklyExpenseViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let tappedTransaction = transactions[indexPath.row]
         output.transactionTapped(tappedTransaction)
     }
 }
 
+// MARK: WeeklyExpenseViewInput
 extension WeeklyExpenseViewController: WeeklyExpenseViewInput {
     func addTransaction(_ transaction: Transaction) {
         self.transactions.append(transaction)
         self.tableView.reloadData()
-        self.titleProgressView.showProgress(progress: 0.5)
+        self.titleProgressView.setSpendingValues(currSpend: currentSpending, maxSpend: 40.0)
     }
+
+    func setupInitialState(using weeklyTransactions: [Transaction]) {
+        self.transactions = weeklyTransactions
+        self.tableView.reloadData()
+    }
+
 }

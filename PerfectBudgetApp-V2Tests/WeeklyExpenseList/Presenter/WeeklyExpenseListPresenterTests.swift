@@ -20,18 +20,18 @@ class WeeklyExpenseListPresenterTest: XCTestCase {
         super.tearDown()
     }
 
-    class MockInteractor: WeeklyExpenseListInteractorInput {
-
-    }
-
-    class MockRouter: WeeklyExpenseListRouterInput {
-
-    }
-
-    class MockViewController: WeeklyExpenseListViewInput {
-
-        func setupInitialState() {
-
-        }
-    }
-}
+//    class MockInteractor: WeeklyExpenseListInteractorInput {
+//
+//    }
+//
+//    class MockRouter: WeeklyExpenseListRouterInput {
+//
+//    }
+//
+//    class MockViewController: WeeklyExpenseListViewInput {
+//
+//        func setupInitialState() {
+//
+//        }
+//    }
+//}

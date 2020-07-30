@@ -15,7 +15,8 @@ class WeeklyExpensePresenter {
 
 extension WeeklyExpensePresenter: WeeklyExpenseViewOutput {
     func viewIsReady() {
-
+        let weeklyTransactions = interactor.getWeeklyTransactions()
+        view.setupInitialState(using: weeklyTransactions)
     }
 
     func createTransaction(reason: String, amount: Double) {
@@ -34,6 +35,9 @@ extension WeeklyExpensePresenter: WeeklyExpenseViewOutput {
         coordinator.transactionTapped(tappedTransaction)
     }
 
+    func deleteTransaction(transaction: Transaction) {
+        interactor.deleteTransaction(transaction)
+    }
 }
 
 extension WeeklyExpensePresenter: WeeklyExpenseInteractorOutput {

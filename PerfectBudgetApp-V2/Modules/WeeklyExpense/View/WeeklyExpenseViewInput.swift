@@ -13,6 +13,6 @@ protocol WeeklyExpenseViewInput: class {
         Setup initial state of the view
     */
 
-    func setupInitialState()
+    func setupInitialState(using weeklyTransactions: [Transaction])
     func addTransaction(_ transaction: Transaction)
 }
