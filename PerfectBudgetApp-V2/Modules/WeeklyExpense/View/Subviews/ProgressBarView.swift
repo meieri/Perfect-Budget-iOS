@@ -47,6 +47,7 @@ class ProgressBarView: UIView {
             self.progressBar.setProgress(Float(currSpend/maxSpend), animated: true)
             self.layoutIfNeeded()
         })
+        configureCurrentProgress()
     }
 }
 
@@ -122,7 +123,6 @@ private extension ProgressBarView {
     func configureCurrentProgress() {
 
         DispatchQueue.main.async {
-            self.setSpendingValues(currSpend: 20.0, maxSpend: 40.0)
             self.labelLeadingConstraint?.isActive = false
             var multiplier: Float
             if self.progressBar.progress == 1.0 {

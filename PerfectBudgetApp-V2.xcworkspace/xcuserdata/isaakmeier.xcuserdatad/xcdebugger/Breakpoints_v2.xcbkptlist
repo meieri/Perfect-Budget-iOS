@@ -116,5 +116,85 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A4BF88F2-F20F-4191-A255-A810A9B2640E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PerfectBudgetApp-V2/Modules/WeeklyExpense/View/WeeklyExpenseViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
+            landmarkName = "addTransaction(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "672CC6A3-DEBB-4EF9-89C8-29EA0BA76E26"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PerfectBudgetApp-V2/Modules/WeeklyExpense/View/Subviews/ProgressBarView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "setSpendingValues(currSpend:maxSpend:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "672CC6A3-DEBB-4EF9-89C8-29EA0BA76E26 - 65b1a4c8a0b88b84"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PerfectBudgetApp_V2.ProgressBarView.setSpendingValues(currSpend: Swift.Double, maxSpend: Swift.Double) -&gt; ()"
+                  moduleName = "PerfectBudgetApp-V2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/isaakmeier/Documents/PerfectBudgetApp-V2/PerfectBudgetApp-V2/Modules/WeeklyExpense/View/Subviews/ProgressBarView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "46"
+                  endingLineNumber = "46"
+                  offsetFromSymbolStart = "638">
+               </Location>
+               <Location
+                  uuid = "672CC6A3-DEBB-4EF9-89C8-29EA0BA76E26 - 5b677387cbbc3003"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in PerfectBudgetApp_V2.ProgressBarView.setSpendingValues(currSpend: Swift.Double, maxSpend: Swift.Double) -&gt; ()"
+                  moduleName = "PerfectBudgetApp-V2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/isaakmeier/Documents/PerfectBudgetApp-V2/PerfectBudgetApp-V2/Modules/WeeklyExpense/View/Subviews/ProgressBarView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "48">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F9A21D6F-E22F-4E89-BF5B-41C5A3360FCF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PerfectBudgetApp-V2/Modules/WeeklyExpense/View/Subviews/TitleProgressContainerView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "setSpendingValues(currSpend:maxSpend:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
