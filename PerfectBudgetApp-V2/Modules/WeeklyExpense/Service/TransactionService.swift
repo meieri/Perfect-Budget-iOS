@@ -10,7 +10,7 @@ import CoreData
 import Foundation
 import UIKit
 
-class TransactionService {
+class TransactionService: TransactionServiceProtocol {
     var transactions: [Transaction] = []
     // Access transaction values ex:
     // let transaction = transactions[0]

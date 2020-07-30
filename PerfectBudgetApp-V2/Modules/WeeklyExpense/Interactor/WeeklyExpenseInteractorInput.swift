@@ -1,5 +1,5 @@
 //
-//  WeeklyExpenseListWeeklyExpenseListInteractorInput.swift
+//  WeeklyExpenseInteractorInput.swift
 //  PerfectBudgetApp
 //
 //  Created by Isaak Meier on 28/07/2020.
@@ -8,6 +8,8 @@
 
 import Foundation
 
-protocol WeeklyExpenseListInteractorInput {
+protocol WeeklyExpenseInteractorInput {
     func createTransaction(reason: String, amount: Double)
+    func deleteTransaction(_ transaction: Transaction)
+    func getWeeklyTransactions() -> [Transaction]
 }

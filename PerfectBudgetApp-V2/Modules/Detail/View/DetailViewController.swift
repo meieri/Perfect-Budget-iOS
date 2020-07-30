@@ -11,7 +11,7 @@ import Anchorage
 import Foundation
 
 class DetailViewController: UIViewController {
-    var transaction: Transaction?
+    var transaction: Transaction!
 
     override func viewDidLoad() {
         super.viewDidLoad()

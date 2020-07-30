@@ -1,5 +1,5 @@
 //
-//  WeeklyExpenseListWeeklyExpenseListInteractorOutput.swift
+//  WeeklyExpenseInteractorOutput.swift
 //  PerfectBudgetApp
 //
 //  Created by Isaak Meier on 28/07/2020.
@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol WeeklyExpenseListInteractorOutput: class {
+protocol WeeklyExpenseInteractorOutput: class {
     func pushNewTransaction(_ transaction: Transaction)
 }

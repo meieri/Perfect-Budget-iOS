@@ -12,11 +12,6 @@ import Anchorage
 
 class TitleProgressContainerView: UIView {
 
-//    var presenter: DayViewPresenter! {
-//        didSet {
-//            setPresenters()
-//        }
-//    }
     private let dayName = UILabel()
     private let dailySpending = UILabel()
     private let addCash = UIButton()
@@ -24,9 +19,6 @@ class TitleProgressContainerView: UIView {
 
     override init(frame: CGRect) {
         self.progressBar = ProgressBarView()
-        self.progressBar.showProgress(progress: 0.5)
-        // kind of clever, ensures presenter is set before configureView is called
-//        self.progressBar.presenter = self.presenter
         super.init(frame: frame)
         configureView()
         showDayOfWeek(day: "Monday")
@@ -36,26 +28,16 @@ class TitleProgressContainerView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func showProgress(progress: Float) {
-        progressBar.showProgress(progress: progress)
-    }
-
     func showDayOfWeek(day: String) {
         dayName.text = day
     }
 
-    func showSpendingValues(currSpend: Double, maxSpend: Double) {
-        self.progressBar.showSpendingValues(currSpend: currSpend, maxSpend: maxSpend)
+    func setSpendingValues(currSpend: Double, maxSpend: Double) {
+        self.progressBar.setSpendingValues(currSpend: currSpend, maxSpend: maxSpend)
     }
 }
 
 private extension TitleProgressContainerView {
-
-    func setPresenters() {
-//        self.progressBar.presenter = self.presenter
-        // view configuration that needs the presenter has to happen here, because in configureView() it doesn't exist yet
-//        presenter.setDayOfWeek()
-    }
 
     func configureView() {
 

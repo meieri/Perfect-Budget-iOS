@@ -13,11 +13,7 @@ protocol DayViewPresenter {
 
 }
 
-
-
 class ProgressBarView: UIView {
-
-//    var presenter: DayViewPresenter!
     private var progressBar = UIProgressView()
     private var currSpendLabel = UILabel()
     private var maxSpendLabel = UILabel()
@@ -43,14 +39,15 @@ class ProgressBarView: UIView {
         }
     }
 
-    func showProgress(progress: Float) {
-        self.progressBar.setProgress(progress, animated: true)
-        configureView()
-    }
-
-    func showSpendingValues(currSpend: Double, maxSpend: Double) {
+    func setSpendingValues(currSpend: Double, maxSpend: Double) {
         currSpendLabel.text = "$" + String(currSpend)
         maxSpendLabel.text = "$" + String(maxSpend)
+
+        UIView.animate(withDuration: 0.4, animations: {
+            self.progressBar.setProgress(Float(currSpend/maxSpend), animated: true)
+            self.layoutIfNeeded()
+        })
+        configureCurrentProgress()
     }
 }
 
@@ -126,8 +123,6 @@ private extension ProgressBarView {
     func configureCurrentProgress() {
 
         DispatchQueue.main.async {
-//            self.presenter.setSpendingValues()
-            self.showSpendingValues(currSpend: 20.0, maxSpend: 40.0)
             self.labelLeadingConstraint?.isActive = false
             var multiplier: Float
             if self.progressBar.progress == 1.0 {
@@ -147,11 +142,6 @@ private extension ProgressBarView {
 
             self.labelLeadingConstraint = self.currSpendLabel.trailingAnchor == self.trailingAnchor * multiplier - 5
 
-            UIView.animate(withDuration: 0.4, animations: {
-//                self.presenter.setProgress()
-                self.showProgress(progress: Float(20/40))
-                self.layoutIfNeeded()
-            })
 
         }
     }

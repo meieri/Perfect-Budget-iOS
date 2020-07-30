@@ -1,27 +1,37 @@
 //
-//  MainCoordinator.swift
+//  WeeklyExpenseCoordinator.swift
 //  PerfectBudgetApp-V2
 //
-//  Created by Isaak Meier on 7/21/20.
+//  Created by Isaak Meier on 7/29/20.
 //  Copyright © 2020 Isaak Meier. All rights reserved.
 //
 
 import UIKit
 import Foundation
 
-class MainCoordinator: Coordinator {
+class WeeklyExpenseCoordinator: Coordinator {
     var children = [Coordinator]()
     var navigationController: UINavigationController?
 
-    init(navController: UINavigationController) {
+    init(_ navController: UINavigationController) {
         self.navigationController = navController
     }
 
     func start() {
-        let service = TransactionService()
-        let view = HomeScreenViewController()
-        view.service = service
-        view.coordinator = self
+        let view = WeeklyExpenseViewController()
+
+        let presenter = WeeklyExpensePresenter()
+        presenter.view = view
+        presenter.coordinator = self
+
+        let interactor = WeeklyExpenseInteractor()
+        interactor.output = presenter
+        // this should be a protocol
+        interactor.service = TransactionService()
+
+        presenter.interactor = interactor
+        view.output = presenter
+
         navigationController?.pushViewController(view, animated: false)
     }
 

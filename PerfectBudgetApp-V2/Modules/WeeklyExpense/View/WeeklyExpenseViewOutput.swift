@@ -1,12 +1,12 @@
 //
-//  WeeklyExpenseListWeeklyExpenseListViewOutput.swift
+//  WeeklyExpenseViewOutput.swift
 //  PerfectBudgetApp
 //
 //  Created by Isaak Meier on 28/07/2020.
 //  Copyright © 2020 44 Inc.. All rights reserved.
 //
 
-protocol WeeklyExpenseListViewOutput {
+protocol WeeklyExpenseViewOutput {
 
     /**
         @author Isaak Meier
@@ -17,4 +17,6 @@ protocol WeeklyExpenseListViewOutput {
     func createTransaction(reason: String, amount: Double)
     func errorCreatingTransaction()
     func showGraphScreen()
+    func transactionTapped(_ transaction: Transaction)
+    func deleteTransaction(transaction: Transaction)
 }

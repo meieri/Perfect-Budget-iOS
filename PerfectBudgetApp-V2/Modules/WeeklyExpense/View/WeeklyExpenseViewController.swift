@@ -1,5 +1,5 @@
 //
-//  WeeklyExpenseListWeeklyExpenseListViewController.swift
+//  WeeklyExpenseViewController.swift
 //  PerfectBudgetApp
 //
 //  Created by Isaak Meier on 28/07/2020.
@@ -9,7 +9,7 @@
 import UIKit
 import Anchorage
 
-class WeeklyExpenseListViewController: UIViewController {
+class WeeklyExpenseViewController: UIViewController {
 
     var tableView = UITableView()
     var titleProgressView = TitleProgressContainerView()
@@ -18,17 +18,23 @@ class WeeklyExpenseListViewController: UIViewController {
     let editTransactionButton = UIButton(type: .system)
     let navigateToGraphs = UIButton(type: .system)
 
-    var output: WeeklyExpenseListViewOutput!
+    var output: WeeklyExpenseViewOutput!
+
+    var currentSpending: Double {
+        get {
+            var spending = 0.0
+            for transaction in transactions {
+                spending += transaction.amount
+            }
+            return spending
+        }
+    }
 
     // MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        output.viewIsReady()
-    }
-
-    // MARK: WeeklyExpenseListViewInput
-    func setupInitialState() {
         configureView()
+        output.viewIsReady()
     }
 
     @objc func showInputDialog() {
@@ -41,14 +47,9 @@ class WeeklyExpenseListViewController: UIViewController {
                 // called 'nil coalescing'
                 let numAmount = Double(amount) ?? 0.0
                 self?.output.createTransaction(reason: reason, amount: numAmount)
-//                if let newTransaction = self?.service.createTransaction(reason: reason, amount: numAmount) {
-//                }
             } else {
                 self?.output.errorCreatingTransaction()
             }
-            // self.presenter.addExpense(amount: numAmount!, reason: reason!)
-            // self.presenter.setProgress()
-            // self.expenseTable.reloadData()
         }
         alertController.addTextField { (textField) in
             textField.placeholder = "Enter Reason"
@@ -71,7 +72,7 @@ class WeeklyExpenseListViewController: UIViewController {
 
 }
 
-extension WeeklyExpenseListViewController {
+extension WeeklyExpenseViewController {
     func configureView() {
         // Heirarchy
         self.view.addSubview(tableView)
@@ -124,7 +125,7 @@ extension WeeklyExpenseListViewController {
     }
 }
 
-extension WeeklyExpenseListViewController : UITableViewDataSource {
+extension WeeklyExpenseViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return transactions.count
     }
@@ -138,8 +139,7 @@ extension WeeklyExpenseListViewController : UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-//            service.deleteTransaction(transaction: transactions[indexPath.row])
-//            output.deleteTransaction(transaction: transactions[indexPath.row])
+            output.deleteTransaction(transaction: transactions[indexPath.row])
             self.transactions.remove(at: indexPath.row)
             tableView.reloadData()
         }
@@ -147,18 +147,24 @@ extension WeeklyExpenseListViewController : UITableViewDataSource {
 
 }
 
-extension WeeklyExpenseListViewController  : UITableViewDelegate {
+extension WeeklyExpenseViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let tappedTransaction = transactions[indexPath.row]
-//        coordinator?.transactionTapped(tappedTransaction)
-//        output.transactionTapped(tappedTransaction)
+        output.transactionTapped(tappedTransaction)
     }
 }
 
-extension WeeklyExpenseListViewController: WeeklyExpenseListViewInput {
+// MARK: WeeklyExpenseViewInput
+extension WeeklyExpenseViewController: WeeklyExpenseViewInput {
     func addTransaction(_ transaction: Transaction) {
         self.transactions.append(transaction)
         self.tableView.reloadData()
-        self.titleProgressView.showProgress(progress: 0.5)
+        self.titleProgressView.setSpendingValues(currSpend: currentSpending, maxSpend: 40.0)
     }
+
+    func setupInitialState(using weeklyTransactions: [Transaction]) {
+        self.transactions = weeklyTransactions
+        self.tableView.reloadData()
+    }
+
 }
