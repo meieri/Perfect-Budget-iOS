@@ -87,11 +87,10 @@ class WeeklyExpenseViewController: UIViewController {
 extension WeeklyExpenseViewController {
     func configureView() {
         // Heirarchy
-        self.view.addSubview(tableView)
-        self.view.addSubview(titleProgressView)
-        self.view.addSubview(addTransactionButton)
-        self.view.addSubview(editTransactionButton)
-        self.view.addSubview(navigateToGraphs)
+        let mainStack = UIStackView(arrangedSubviews: [titleProgressView, tableView])
+        let buttonStack = UIStackView(arrangedSubviews: [navigateToGraphs, editTransactionButton, addTransactionButton])
+        self.view.addSubview(mainStack)
+        self.view.addSubview(buttonStack)
         tableView.register(UITableViewCell.self,
                            forCellReuseIdentifier: "TransactionCell")
         tableView.dataSource = self
@@ -102,37 +101,27 @@ extension WeeklyExpenseViewController {
         editTransactionButton.addTarget(self, action: #selector(editTransaction), for: .touchUpInside)
         navigateToGraphs.addTarget(self, action: #selector(viewGraphScreen), for: .touchUpInside)
         // Style
+        mainStack.axis = .vertical
+        mainStack.alignment = .center
+        buttonStack.distribution = .fillEqually
         addTransactionButton.setTitle("New", for: .normal)
         self.view.backgroundColor = .white
-        tableView.layer.cornerRadius = 0.4
+        tableView.backgroundColor = .white
         editTransactionButton.backgroundColor = .white
         editTransactionButton.setTitle("Edit", for: .normal)
         navigateToGraphs.setTitle("Graphs", for: .normal)
         // Layout
-        addTransactionButton.topAnchor == tableView.bottomAnchor - 10
-        addTransactionButton.trailingAnchor == view.trailingAnchor
-        addTransactionButton.bottomAnchor == view.bottomAnchor
-        addTransactionButton.widthAnchor == view.widthAnchor / 3
+        titleProgressView.heightAnchor == 200
+        titleProgressView.widthAnchor == view.safeAreaLayoutGuide.widthAnchor - 40
+        mainStack.topAnchor == view.safeAreaLayoutGuide.topAnchor + 15
+        mainStack.centerAnchors == view.centerAnchors
 
-        navigateToGraphs.topAnchor == tableView.bottomAnchor - 10
-        navigateToGraphs.leadingAnchor == editTransactionButton.trailingAnchor
-        navigateToGraphs.bottomAnchor == view.bottomAnchor
-        navigateToGraphs.widthAnchor == view.widthAnchor / 3
+        buttonStack.topAnchor == mainStack.bottomAnchor
+        buttonStack.bottomAnchor == view.bottomAnchor
+        buttonStack.widthAnchor == (view.safeAreaLayoutGuide.widthAnchor / 4) * 3
+        buttonStack.centerXAnchor == view.safeAreaLayoutGuide.centerXAnchor
 
-        editTransactionButton.topAnchor == tableView.bottomAnchor - 10
-        editTransactionButton.leadingAnchor == view.leadingAnchor
-        editTransactionButton.bottomAnchor == view.bottomAnchor
-        editTransactionButton.widthAnchor == view.widthAnchor / 3
-
-        self.titleProgressView.topAnchor == self.view.topAnchor + 50
-        self.titleProgressView.leadingAnchor == self.view.leadingAnchor + 10
-        self.titleProgressView.trailingAnchor == self.view.trailingAnchor - 10
-        self.titleProgressView.heightAnchor == 200
-
-        tableView.leadingAnchor == self.view.leadingAnchor + 20
-        tableView.trailingAnchor == self.view.trailingAnchor - 20
-        tableView.topAnchor == titleProgressView.bottomAnchor + 40
-        tableView.heightAnchor == view.heightAnchor / 2
+        tableView.widthAnchor == mainStack.widthAnchor / 8 * 7
     }
 }
 
@@ -168,8 +157,9 @@ extension WeeklyExpenseViewController: UITableViewDelegate {
 // MARK: WeeklyExpenseViewInput
 extension WeeklyExpenseViewController: WeeklyExpenseViewInput {
 
-    func setupInitialState(using weeklyTransactions: [Transaction]) {
+    func setupInitialState(using weeklyTransactions: [Transaction], weekTitle: String) {
         self.transactions = weeklyTransactions
+        self.titleProgressView.showDayOfWeek(day: weekTitle)
         refresh()
     }
 

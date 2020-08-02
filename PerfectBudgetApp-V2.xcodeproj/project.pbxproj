@@ -19,6 +19,7 @@
 		954C6DFB24B8211500E34086 /* TransactionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954C6DFA24B8211500E34086 /* TransactionService.swift */; };
 		954CA0B724CA6B1000F5C63C /* TitleProgressContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954CA0B624CA6B1000F5C63C /* TitleProgressContainerView.swift */; };
 		9584D32C24CE4E050081B5D6 /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9584D32B24CE4E050081B5D6 /* GraphViewController.swift */; };
+		958924F624D64E6500E814C8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958924F524D64E6500E814C8 /* Extensions.swift */; };
 		958F84D324C7CB9B00FC515B /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F84D224C7CB9B00FC515B /* Coordinator.swift */; };
 		958F84D724C7D72100FC515B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F84D624C7D72100FC515B /* DetailViewController.swift */; };
 		959B737924B41184002D478A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959B737824B41184002D478A /* AppDelegate.swift */; };
@@ -70,6 +71,7 @@
 		954C6DFA24B8211500E34086 /* TransactionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionService.swift; sourceTree = "<group>"; };
 		954CA0B624CA6B1000F5C63C /* TitleProgressContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleProgressContainerView.swift; sourceTree = "<group>"; };
 		9584D32B24CE4E050081B5D6 /* GraphViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewController.swift; sourceTree = "<group>"; };
+		958924F524D64E6500E814C8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		958F84D224C7CB9B00FC515B /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		958F84D624C7D72100FC515B /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		959B737524B41184002D478A /* PerfectBudgetApp-V2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PerfectBudgetApp-V2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -209,6 +211,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		958924F424D64E4200E814C8 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				958924F524D64E6500E814C8 /* Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		959B736C24B41184002D478A = {
 			isa = PBXGroup;
 			children = (
@@ -239,6 +249,7 @@
 				51792F79DFBE51A182BAB4DD /* Modules */,
 				95AFB9FF24BBB83A0016255C /* PerfectBudgetDataModel.xcdatamodeld */,
 				959B738124B41186002D478A /* Assets.xcassets */,
+				958924F424D64E4200E814C8 /* Extensions */,
 				959B738324B41186002D478A /* LaunchScreen.storyboard */,
 				959B738624B41186002D478A /* Info.plist */,
 			);
@@ -614,6 +625,7 @@
 				959B737B24B41184002D478A /* SceneDelegate.swift in Sources */,
 				95AFBA0124BBB83A0016255C /* PerfectBudgetDataModel.xcdatamodeld in Sources */,
 				9584D32C24CE4E050081B5D6 /* GraphViewController.swift in Sources */,
+				958924F624D64E6500E814C8 /* Extensions.swift in Sources */,
 				95D738D824D2410000C385FC /* TransactionServiceProtocol.swift in Sources */,
 				954CA0B724CA6B1000F5C63C /* TitleProgressContainerView.swift in Sources */,
 				958F84D724C7D72100FC515B /* DetailViewController.swift in Sources */,
@@ -796,6 +808,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L2N25GKBQX;
 				INFOPLIST_FILE = "PerfectBudgetApp-V2/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -814,6 +827,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L2N25GKBQX;
 				INFOPLIST_FILE = "PerfectBudgetApp-V2/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -21,7 +21,6 @@ class TitleProgressContainerView: UIView {
         self.progressBar = ProgressBarView()
         super.init(frame: frame)
         configureView()
-        showDayOfWeek(day: "Monday")
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -49,10 +48,6 @@ private extension TitleProgressContainerView {
 
         // Style
         dayName.textColor = .black
-
-//        dayName.font = UIFontMetrics.default.scaledFont(for: Constants.montBlack!)
-//        dailySpending.font = UIFontMetrics.default.scaledFont(for: Constants.montBold!)
-
         dayName.adjustsFontForContentSizeCategory = true
         dailySpending.adjustsFontForContentSizeCategory = true
         dailySpending.text = "Weekly Spending"

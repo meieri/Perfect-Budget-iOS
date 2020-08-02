@@ -8,6 +8,7 @@
 import Foundation
 
 class WeeklyExpenseInteractor: WeeklyExpenseInteractorInput {
+
     weak var output: WeeklyExpenseInteractorOutput!
     var service: TransactionServiceProtocol!
 
@@ -30,13 +31,13 @@ class WeeklyExpenseInteractor: WeeklyExpenseInteractorInput {
         return allTransactions.filter { calendar.isDate($0.date ?? Date.distantFuture, equalTo: todaysDate, toGranularity: .weekOfYear) }
     }
 
-    func getCurrentWeekString() {
+    func getCurrentWeekString() -> String {
         let calendar = Calendar.current
         let today = calendar.startOfDay(for: Date())
         let dayOfWeek = calendar.component(.weekday, from: today)
         let weekdays = calendar.range(of: .weekday, in: .weekOfYear, for: today)!
         let days = (weekdays.lowerBound ..< weekdays.upperBound)
-        .compactMap { calendar.date(byAdding: .day, value: $0 - dayOfWeek, to: today) }  // use `flatMap` in Xcode versions before 9.3
+        .compactMap { calendar.date(byAdding: .day, value: $0 - dayOfWeek, to: today) }
 
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
@@ -45,11 +46,19 @@ class WeeklyExpenseInteractor: WeeklyExpenseInteractorInput {
 
         var weeklyString = ""
         for (index, day) in days.enumerated() {
-            if index == 0 {
-                weeklyString = ""
+            let currDay = formatter.string(from: day)
+            if index == 0 || index == 6 {
+                if let commaIndex = currDay.index(of: ",") {
+                    let substring = currDay[..<commaIndex]   // ab
+                    let string = String(substring)
+                    if index == 0 {
+                        weeklyString = "\(string) -"
+                    } else {
+                        weeklyString = "\(weeklyString) \(string)"
+                    }
+                }
             }
-            print(formatter.string(from: day))
         }
-
+        return weeklyString
     }
 }
