@@ -17,6 +17,7 @@ class WeeklyExpenseViewController: UIViewController {
     let addTransactionButton = UIButton(type: .system)
     let editTransactionButton = UIButton(type: .system)
     let navigateToGraphs = UIButton(type: .system)
+    let pageIndiciator = UIPageControl()
 
     var output: WeeklyExpenseViewOutput!
 
@@ -91,6 +92,7 @@ extension WeeklyExpenseViewController {
         let buttonStack = UIStackView(arrangedSubviews: [navigateToGraphs, editTransactionButton, addTransactionButton])
         self.view.addSubview(mainStack)
         self.view.addSubview(buttonStack)
+        self.view.addSubview(pageIndiciator)
         tableView.register(UITableViewCell.self,
                            forCellReuseIdentifier: "TransactionCell")
         tableView.dataSource = self
@@ -108,17 +110,24 @@ extension WeeklyExpenseViewController {
         self.view.backgroundColor = .white
         tableView.backgroundColor = .white
         editTransactionButton.backgroundColor = .white
-        editTransactionButton.setTitle("Edit", for: .normal)
+        editTransactionButton.setTitle("", for: .normal)
         navigateToGraphs.setTitle("Graphs", for: .normal)
+        pageIndiciator.numberOfPages = 3
+        pageIndiciator.currentPage = 1
+        pageIndiciator.pageIndicatorTintColor = .lightGray
+        pageIndiciator.currentPageIndicatorTintColor = .gray
         // Layout
         titleProgressView.widthAnchor == view.safeAreaLayoutGuide.widthAnchor - 40
         mainStack.topAnchor == view.safeAreaLayoutGuide.topAnchor + 15
         mainStack.centerAnchors == view.centerAnchors
 
-        buttonStack.topAnchor == mainStack.bottomAnchor
-        buttonStack.bottomAnchor == view.bottomAnchor
+        buttonStack.topAnchor == mainStack.bottomAnchor + 10
         buttonStack.widthAnchor == (view.safeAreaLayoutGuide.widthAnchor / 4) * 3
         buttonStack.centerXAnchor == view.safeAreaLayoutGuide.centerXAnchor
+
+        pageIndiciator.topAnchor == buttonStack.topAnchor
+        pageIndiciator.bottomAnchor == view.safeAreaLayoutGuide.bottomAnchor
+        pageIndiciator.centerXAnchor == view.centerXAnchor
 
         tableView.widthAnchor == mainStack.widthAnchor / 8 * 7
     }
