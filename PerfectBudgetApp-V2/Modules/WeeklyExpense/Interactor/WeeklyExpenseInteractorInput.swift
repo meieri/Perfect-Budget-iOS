@@ -11,6 +11,7 @@ import Foundation
 protocol WeeklyExpenseInteractorInput {
     func createTransaction(reason: String, amount: Double)
     func deleteTransaction(_ transaction: Transaction)
-    func getWeeklyTransactions() -> [Transaction]
-    func getCurrentWeekString() -> String
+    // return based on the week surrounding the given day
+    func getWeekTransactions(for day: Date) -> [Transaction]
+    func getWeekString(for day: Date) -> String
 }

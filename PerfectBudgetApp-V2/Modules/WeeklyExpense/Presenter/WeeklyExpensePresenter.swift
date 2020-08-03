@@ -5,6 +5,7 @@
 //  Created by Isaak Meier on 28/07/2020.
 //  Copyright © 2020 44 Inc.. All rights reserved.
 //
+import Foundation
 
 class WeeklyExpensePresenter {
     weak var view: WeeklyExpenseViewInput!
@@ -15,8 +16,9 @@ class WeeklyExpensePresenter {
 
 extension WeeklyExpensePresenter: WeeklyExpenseViewOutput {
     func viewIsReady() {
-        let weeklyTransactions = interactor.getWeeklyTransactions()
-        let weekTitle = interactor.getCurrentWeekString()
+        // get week string and transactions for today
+        let weeklyTransactions = interactor.getWeekTransactions(for: Date())
+        let weekTitle = interactor.getWeekString(for: Date())
         view.setupInitialState(using: weeklyTransactions, weekTitle: weekTitle)
     }
 

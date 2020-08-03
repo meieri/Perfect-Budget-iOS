@@ -12,13 +12,11 @@ import Anchorage
 
 class TitleProgressContainerView: UIView {
 
-    private let dayName = UILabel()
-    private let dailySpending = UILabel()
-    private let addCash = UIButton()
-    private let progressBar: ProgressBarView
+    private let weekTitle = UILabel()
+    private let weeklySpending = UILabel()
+    private let progressBar = ProgressBarView()
 
     override init(frame: CGRect) {
-        self.progressBar = ProgressBarView()
         super.init(frame: frame)
         configureView()
     }
@@ -27,8 +25,8 @@ class TitleProgressContainerView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func showDayOfWeek(day: String) {
-        dayName.text = day
+    func showWeekTitle(title: String) {
+        weekTitle.text = title
     }
 
     func setSpendingValues(currSpend: Double, maxSpend: Double) {
@@ -38,32 +36,31 @@ class TitleProgressContainerView: UIView {
 
 private extension TitleProgressContainerView {
 
+
     func configureView() {
 
         // View Heirarchy
-        // self.addSubview(addCash)
-        self.addSubview(dayName)
-        self.addSubview(progressBar)
-        self.addSubview(dailySpending)
+        let mainStack = UIStackView(arrangedSubviews: [weekTitle, weeklySpending, progressBar])
+        self.addSubview(mainStack)
 
         // Style
-        dayName.textColor = .black
-        dayName.adjustsFontForContentSizeCategory = true
-        dailySpending.adjustsFontForContentSizeCategory = true
-        dailySpending.text = "Weekly Spending"
+        weekTitle.textColor = .black
+        weekTitle.adjustsFontForContentSizeCategory = true
+        weekTitle.font = UIFont.boldSystemFont(ofSize: 16)
+        weeklySpending.adjustsFontForContentSizeCategory = true
+        weeklySpending.text = "Weekly Spending"
+        weeklySpending.setContentHuggingPriority(UILayoutPriority(751), for: .vertical)
+        mainStack.axis = .vertical
+        mainStack.distribution = .fillProportionally
+        mainStack.alignment = .center
+        mainStack.spacing = 20
 
         // Layout
-        // Center in the middle of the screen
-        dayName.centerXAnchor == self.centerXAnchor
-        progressBar.centerXAnchor == self.centerXAnchor
-        // Move a nice distance from the top
-        dayName.topAnchor == self.topAnchor + 50
-        progressBar.topAnchor == dayName.bottomAnchor + 50
-        progressBar.widthAnchor == self.widthAnchor - 20
-        progressBar.heightAnchor == self.heightAnchor / 6
+        progressBar.widthAnchor == mainStack.widthAnchor / 10 * 9
 
-        dailySpending.leadingAnchor == self.leadingAnchor + 10
-        dailySpending.bottomAnchor == progressBar.topAnchor - 10
-
+        mainStack.topAnchor == self.topAnchor
+        mainStack.leadingAnchor == self.leadingAnchor
+        mainStack.trailingAnchor == self.trailingAnchor
+        self.heightAnchor == mainStack.heightAnchor
     }
 }

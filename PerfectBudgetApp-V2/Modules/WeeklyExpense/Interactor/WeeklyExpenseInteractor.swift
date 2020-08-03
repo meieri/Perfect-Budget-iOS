@@ -21,7 +21,7 @@ class WeeklyExpenseInteractor: WeeklyExpenseInteractorInput {
         service.deleteTransaction(transaction: transaction)
     }
 
-    func getWeeklyTransactions() -> [Transaction] {
+    func getWeekTransactions(for day: Date) -> [Transaction] {
         let allTransactions = service.fetchTransactions()
         let calendar = Calendar.current
         let todaysDate = Date()
@@ -31,9 +31,9 @@ class WeeklyExpenseInteractor: WeeklyExpenseInteractorInput {
         return allTransactions.filter { calendar.isDate($0.date ?? Date.distantFuture, equalTo: todaysDate, toGranularity: .weekOfYear) }
     }
 
-    func getCurrentWeekString() -> String {
+    func getWeekString(for day: Date) -> String {
         let calendar = Calendar.current
-        let today = calendar.startOfDay(for: Date())
+        let today = calendar.startOfDay(for: day)
         let dayOfWeek = calendar.component(.weekday, from: today)
         let weekdays = calendar.range(of: .weekday, in: .weekOfYear, for: today)!
         let days = (weekdays.lowerBound ..< weekdays.upperBound)
@@ -44,21 +44,18 @@ class WeeklyExpenseInteractor: WeeklyExpenseInteractorInput {
         formatter.timeStyle = .none
         formatter.locale = Locale(identifier: "en_US")
 
-        var weeklyString = ""
-        for (index, day) in days.enumerated() {
-            let currDay = formatter.string(from: day)
-            if index == 0 || index == 6 {
-                if let commaIndex = currDay.index(of: ",") {
-                    let substring = currDay[..<commaIndex]   // ab
-                    let string = String(substring)
-                    if index == 0 {
-                        weeklyString = "\(string) -"
-                    } else {
-                        weeklyString = "\(weeklyString) \(string)"
-                    }
-                }
-            }
+        let firstDayOfWeek = formatter.string(from: days[0])
+        let lastDayOfWeek = formatter.string(from: days[days.count - 1])
+        return "\(abbreviateDate(date: firstDayOfWeek)) - \(abbreviateDate(date: lastDayOfWeek))"
+    }
+
+    private func abbreviateDate(date: String) -> String {
+        if let commaIndex = date.index(of: ",") {
+            let substring = date[..<commaIndex]
+            let string = String(substring)
+            return string
+        } else {
+            return ""
         }
-        return weeklyString
     }
 }

@@ -111,7 +111,6 @@ extension WeeklyExpenseViewController {
         editTransactionButton.setTitle("Edit", for: .normal)
         navigateToGraphs.setTitle("Graphs", for: .normal)
         // Layout
-        titleProgressView.heightAnchor == 200
         titleProgressView.widthAnchor == view.safeAreaLayoutGuide.widthAnchor - 40
         mainStack.topAnchor == view.safeAreaLayoutGuide.topAnchor + 15
         mainStack.centerAnchors == view.centerAnchors
@@ -159,7 +158,7 @@ extension WeeklyExpenseViewController: WeeklyExpenseViewInput {
 
     func setupInitialState(using weeklyTransactions: [Transaction], weekTitle: String) {
         self.transactions = weeklyTransactions
-        self.titleProgressView.showDayOfWeek(day: weekTitle)
+        self.titleProgressView.showWeekTitle(title: weekTitle)
         refresh()
     }
 
