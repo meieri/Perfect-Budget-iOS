@@ -29,8 +29,9 @@ class ProgressBarView: UIView {
     }
 
     func setSpendingValues(currSpend: Double, maxSpend: Double) {
-        currSpendLabel.text = "$" + String(currSpend)
-        maxSpendLabel.text = "$" + String(maxSpend)
+        currSpendLabel.text = String(format: "$%.02f", currSpend)
+        maxSpendLabel.text = String(format: "$%.02f", maxSpend)
+
 
         UIView.animate(withDuration: 0.4, animations: {
             self.progressBar.setProgress(Float(currSpend/maxSpend), animated: true)
@@ -105,10 +106,8 @@ private extension ProgressBarView {
         DispatchQueue.main.async {
             var multiplier: Float
             if self.progressBar.progress == 1.0 {
-                self.maxSpendLabel.trailingAnchor == self.trailingAnchor * 0.44 - 5
-                self.currSpendLabel.trailingAnchor == self.trailingAnchor * 0.12 - 5
-                self.maxSpendLabel.text = "Budget Reached!"
-                return
+                multiplier = 0.3
+                self.maxSpendLabel.isHidden = true
             }
             else if self.progressBar.progress == 0.0 {
                 multiplier = 0.12
