@@ -15,11 +15,17 @@ class WeeklyExpensePresenter {
 }
 
 extension WeeklyExpensePresenter: WeeklyExpenseViewOutput {
-    func viewIsReady() {
-        // get week string and transactions for today
-        let weeklyTransactions = interactor.getWeekTransactions(for: Date())
-        let weekTitle = interactor.getWeekString(for: Date())
-        view.setupInitialState(using: weeklyTransactions, weekTitle: weekTitle)
+    func viewIsReady(currentDate: Date?) {
+        if let date = currentDate {
+            let weeklyTransactions = interactor.getWeekTransactions(for: date)
+            let weekTitle = interactor.getWeekString(for: date)
+            view.setupInitialState(using: weeklyTransactions, weekTitle: weekTitle, currentDate: date)
+        } else {
+            let currentDate = Date()
+            let weeklyTransactions = interactor.getWeekTransactions(for: currentDate)
+            let weekTitle = interactor.getWeekString(for: currentDate)
+            view.setupInitialState(using: weeklyTransactions, weekTitle: weekTitle, currentDate: currentDate)
+        }
     }
 
     func createTransaction(reason: String, amount: Double) {
@@ -41,6 +47,25 @@ extension WeeklyExpensePresenter: WeeklyExpenseViewOutput {
     func deleteTransaction(transaction: Transaction) {
         interactor.deleteTransaction(transaction)
     }
+
+    func injectLastWeek(weeklyExpenseVC: WeeklyExpenseViewController,
+                        from date: Date) -> WeeklyExpenseViewController {
+        let lastWeekDate = Calendar.current.date(byAdding: .weekOfYear, value: -1, to: date)!
+        weeklyExpenseVC.currentDate = lastWeekDate
+        weeklyExpenseVC.output = self
+        self.view = weeklyExpenseVC
+        return weeklyExpenseVC
+    }
+
+    func injectNextWeek(weeklyExpenseVC: WeeklyExpenseViewController,
+                        from date: Date) -> WeeklyExpenseViewController {
+        let nextWeekDate = Calendar.current.date(byAdding: .weekOfYear, value: 1, to: date)!
+        weeklyExpenseVC.currentDate = nextWeekDate
+        weeklyExpenseVC.output = self
+        self.view = weeklyExpenseVC
+        return weeklyExpenseVC
+    }
+
 }
 
 extension WeeklyExpensePresenter: WeeklyExpenseInteractorOutput {

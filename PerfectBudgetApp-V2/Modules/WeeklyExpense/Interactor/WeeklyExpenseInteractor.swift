@@ -24,11 +24,10 @@ class WeeklyExpenseInteractor: WeeklyExpenseInteractorInput {
     func getWeekTransactions(for day: Date) -> [Transaction] {
         let allTransactions = service.fetchTransactions()
         let calendar = Calendar.current
-        let todaysDate = Date()
 
         // Filters based on if date is in this week.
         // TODO make date no longer optional
-        return allTransactions.filter { calendar.isDate($0.date ?? Date.distantFuture, equalTo: todaysDate, toGranularity: .weekOfYear) }
+        return allTransactions.filter { calendar.isDate($0.date ?? Date.distantFuture, equalTo: day, toGranularity: .weekOfYear) }
     }
 
     func getWeekString(for day: Date) -> String {

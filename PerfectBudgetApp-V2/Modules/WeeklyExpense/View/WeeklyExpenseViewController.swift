@@ -9,8 +9,9 @@
 import UIKit
 import Anchorage
 
-class WeeklyExpenseViewController: UIViewController {
+class WeeklyExpenseViewController: UIViewController, NSCopying {
 
+    var output: WeeklyExpenseViewOutput!
     var tableView = UITableView()
     var titleProgressView = TitleProgressContainerView()
     var transactions: [Transaction] = []
@@ -18,8 +19,8 @@ class WeeklyExpenseViewController: UIViewController {
     let editTransactionButton = UIButton(type: .system)
     let navigateToGraphs = UIButton(type: .system)
     let pageIndiciator = UIPageControl()
-
-    var output: WeeklyExpenseViewOutput!
+    // needed in order to create last and next week copies. Set by presenter.
+    var currentDate: Date?
 
     var currentSpending: Double {
         get {
@@ -35,7 +36,7 @@ class WeeklyExpenseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
-        output.viewIsReady()
+        output.viewIsReady(currentDate: currentDate)
     }
 
     @objc func showInputDialog() {
@@ -43,7 +44,7 @@ class WeeklyExpenseViewController: UIViewController {
         let confirmAction = UIAlertAction(title: "Enter", style: .default) { [weak self] (_) in
             let reason = alertController.textFields?[0].text
             let amount = alertController.textFields?[1].text
-            // so god damn safe jesus
+            // so crazy safe
             if let amount = amount, let reason = reason {
                 // called 'nil coalescing'
                 let numAmount = Double(amount) ?? 0.0
@@ -81,6 +82,12 @@ class WeeklyExpenseViewController: UIViewController {
     func refresh() {
         self.tableView.reloadData()
         self.titleProgressView.setSpendingValues(currSpend: currentSpending, maxSpend: 40.0)
+    }
+
+    func copy(with zone: NSZone? = nil) -> Any {
+        // shallow copy, data is injected by presenter
+        let copy = WeeklyExpenseViewController()
+        return copy
     }
 
 }
@@ -133,7 +140,7 @@ extension WeeklyExpenseViewController {
     }
 }
 
-extension WeeklyExpenseViewController : UITableViewDataSource {
+extension WeeklyExpenseViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return transactions.count
     }
@@ -152,8 +159,8 @@ extension WeeklyExpenseViewController : UITableViewDataSource {
             refresh()
         }
     }
-
 }
+
 
 extension WeeklyExpenseViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -165,9 +172,10 @@ extension WeeklyExpenseViewController: UITableViewDelegate {
 // MARK: WeeklyExpenseViewInput
 extension WeeklyExpenseViewController: WeeklyExpenseViewInput {
 
-    func setupInitialState(using weeklyTransactions: [Transaction], weekTitle: String) {
+    func setupInitialState(using weeklyTransactions: [Transaction], weekTitle: String, currentDate: Date) {
         self.transactions = weeklyTransactions
         self.titleProgressView.showWeekTitle(title: weekTitle)
+        self.currentDate = currentDate
         refresh()
     }
 
@@ -176,6 +184,7 @@ extension WeeklyExpenseViewController: WeeklyExpenseViewInput {
         refresh()
     }
 }
+
 
 class SubtitleTableViewCell: UITableViewCell {
 

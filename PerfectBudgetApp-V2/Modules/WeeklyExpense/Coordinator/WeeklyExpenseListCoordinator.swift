@@ -18,6 +18,7 @@ class WeeklyExpenseCoordinator: Coordinator {
     }
 
     func start() {
+        let pageView = WeeklyExpensePageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
         let view = WeeklyExpenseViewController()
 
         let presenter = WeeklyExpensePresenter()
@@ -31,8 +32,10 @@ class WeeklyExpenseCoordinator: Coordinator {
 
         presenter.interactor = interactor
         view.output = presenter
+        pageView.output = presenter
+        pageView.currentView = view
 
-        navigationController?.pushViewController(view, animated: false)
+        navigationController?.pushViewController(pageView, animated: false)
     }
 
     func transactionTapped(_ transaction: Transaction) {

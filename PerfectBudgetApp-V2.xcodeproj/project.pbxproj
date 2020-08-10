@@ -18,6 +18,7 @@
 		72BB2B678DA6B1107C4711F9 /* WeeklyExpensePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABAC462F69675534F2E20ED /* WeeklyExpensePresenter.swift */; };
 		954C6DFB24B8211500E34086 /* TransactionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954C6DFA24B8211500E34086 /* TransactionService.swift */; };
 		954CA0B724CA6B1000F5C63C /* TitleProgressContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954CA0B624CA6B1000F5C63C /* TitleProgressContainerView.swift */; };
+		9571948D24DE736100F57A81 /* WeeklyExpensePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9571948C24DE736100F57A81 /* WeeklyExpensePageViewController.swift */; };
 		9584D32C24CE4E050081B5D6 /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9584D32B24CE4E050081B5D6 /* GraphViewController.swift */; };
 		958924F624D64E6500E814C8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958924F524D64E6500E814C8 /* Extensions.swift */; };
 		958F84D324C7CB9B00FC515B /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F84D224C7CB9B00FC515B /* Coordinator.swift */; };
@@ -70,6 +71,7 @@
 		92024438C160C46EB72E4465 /* WeeklyExpenseViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WeeklyExpenseViewController.swift; sourceTree = "<group>"; };
 		954C6DFA24B8211500E34086 /* TransactionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionService.swift; sourceTree = "<group>"; };
 		954CA0B624CA6B1000F5C63C /* TitleProgressContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleProgressContainerView.swift; sourceTree = "<group>"; };
+		9571948C24DE736100F57A81 /* WeeklyExpensePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyExpensePageViewController.swift; sourceTree = "<group>"; };
 		9584D32B24CE4E050081B5D6 /* GraphViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewController.swift; sourceTree = "<group>"; };
 		958924F524D64E6500E814C8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		958F84D224C7CB9B00FC515B /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 				479676C6FF48684F75C5F0EB /* WeeklyExpenseViewInput.swift */,
 				A3CDB516343554D51115E0B3 /* WeeklyExpenseViewOutput.swift */,
 				92024438C160C46EB72E4465 /* WeeklyExpenseViewController.swift */,
+				9571948C24DE736100F57A81 /* WeeklyExpensePageViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -623,6 +626,7 @@
 				958F84D324C7CB9B00FC515B /* Coordinator.swift in Sources */,
 				959B737924B41184002D478A /* AppDelegate.swift in Sources */,
 				959B737B24B41184002D478A /* SceneDelegate.swift in Sources */,
+				9571948D24DE736100F57A81 /* WeeklyExpensePageViewController.swift in Sources */,
 				95AFBA0124BBB83A0016255C /* PerfectBudgetDataModel.xcdatamodeld in Sources */,
 				9584D32C24CE4E050081B5D6 /* GraphViewController.swift in Sources */,
 				958924F624D64E6500E814C8 /* Extensions.swift in Sources */,
