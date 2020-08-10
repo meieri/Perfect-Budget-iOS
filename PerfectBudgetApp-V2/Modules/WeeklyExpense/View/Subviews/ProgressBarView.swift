@@ -105,9 +105,10 @@ private extension ProgressBarView {
         DispatchQueue.main.async {
             var multiplier: Float
             if self.progressBar.progress == 1.0 {
-                multiplier = 0.44
-                self.currSpendLabel.text = "Budget Reached!"
-                self.maxSpendLabel.isHidden = true
+                self.maxSpendLabel.trailingAnchor == self.trailingAnchor * 0.44 - 5
+                self.currSpendLabel.trailingAnchor == self.trailingAnchor * 0.12 - 5
+                self.maxSpendLabel.text = "Budget Reached!"
+                return
             }
             else if self.progressBar.progress == 0.0 {
                 multiplier = 0.12
