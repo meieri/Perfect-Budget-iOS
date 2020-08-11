@@ -1,5 +1,5 @@
 //
-//  WeeklyExpenseListWeeklyExpenseListConfiguratorTests.swift
+//  WeeklyExpenseWeeklyExpenseConfiguratorTests.swift
 //  PerfectBudgetApp
 //
 //  Created by Isaak Meier on 28/07/2020.
@@ -8,7 +8,7 @@
 
 import XCTest
 
-class WeeklyExpenseListModuleConfiguratorTests: XCTestCase {
+class WeeklyExpenseModuleConfiguratorTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
@@ -23,30 +23,30 @@ class WeeklyExpenseListModuleConfiguratorTests: XCTestCase {
     func testConfigureModuleForViewController() {
 
         //given
-        let viewController = WeeklyExpenseListViewControllerMock()
-        let configurator = WeeklyExpenseListModuleConfigurator()
+        let viewController = WeeklyExpenseViewController()
+        let coordinator = WeeklyExpenseCoordinator(UINavigationController())
 
         //when
-        configurator.configureModuleForViewInput(viewInput: viewController)
+        coordinator.start()
 
         //then
-        XCTAssertNotNil(viewController.output, "WeeklyExpenseListViewController is nil after configuration")
-        XCTAssertTrue(viewController.output is WeeklyExpenseListPresenter, "output is not WeeklyExpenseListPresenter")
+        XCTAssertNotNil(viewController.output, "WeeklyExpenseViewController is nil after configuration")
+        XCTAssertTrue(viewController.output is WeeklyExpensePresenter, "output is not WeeklyExpensePresenter")
 
-        let presenter: WeeklyExpenseListPresenter = viewController.output as! WeeklyExpenseListPresenter
-        XCTAssertNotNil(presenter.view, "view in WeeklyExpenseListPresenter is nil after configuration")
-        XCTAssertNotNil(presenter.router, "router in WeeklyExpenseListPresenter is nil after configuration")
-        XCTAssertTrue(presenter.router is WeeklyExpenseListRouter, "router is not WeeklyExpenseListRouter")
+        let presenter: WeeklyExpensePresenter = viewController.output as! WeeklyExpensePresenter
+        XCTAssertNotNil(presenter.view, "view in WeeklyExpensePresenter is nil after configuration")
+        XCTAssertNotNil(presenter.coordinator, "router in WeeklyExpensePresenter is nil after configuration")
+        XCTAssertTrue(presenter.coordinator is WeeklyExpenseCoordinator)
 
-        let interactor: WeeklyExpenseListInteractor = presenter.interactor as! WeeklyExpenseListInteractor
-        XCTAssertNotNil(interactor.output, "output in WeeklyExpenseListInteractor is nil after configuration")
+        let interactor: WeeklyExpenseInteractor = presenter.interactor as! WeeklyExpenseInteractor
+        XCTAssertNotNil(interactor.output, "output in WeeklyExpenseInteractor is nil after configuration")
     }
 
-    class WeeklyExpenseListViewControllerMock: WeeklyExpenseListViewController {
+    class WeeklyExpenseViewControllerMock: WeeklyExpenseViewController {
 
         var setupInitialStateDidCall = false
 
-        override func setupInitialState() {
+        func setupInitialState() {
             setupInitialStateDidCall = true
         }
     }

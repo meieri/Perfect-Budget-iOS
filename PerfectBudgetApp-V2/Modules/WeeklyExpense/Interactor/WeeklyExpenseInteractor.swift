@@ -9,7 +9,7 @@ import Foundation
 
 class WeeklyExpenseInteractor: WeeklyExpenseInteractorInput {
 
-    weak var output: WeeklyExpenseInteractorOutput!
+    var output: WeeklyExpenseInteractorOutput!
     var service: TransactionServiceProtocol!
 
     func createTransaction(reason: String, amount: Double) {
@@ -20,6 +20,7 @@ class WeeklyExpenseInteractor: WeeklyExpenseInteractorInput {
     func deleteTransaction(_ transaction: Transaction) {
         service.deleteTransaction(transaction: transaction)
     }
+
 
     func getWeekTransactions(for day: Date) -> [Transaction] {
         let allTransactions = service.fetchTransactions()
@@ -49,7 +50,7 @@ class WeeklyExpenseInteractor: WeeklyExpenseInteractorInput {
     }
 
     private func abbreviateDate(date: String) -> String {
-        if let commaIndex = date.index(of: ",") {
+        if let commaIndex = date.firstIndex(of: ",") {
             let substring = date[..<commaIndex]
             let string = String(substring)
             return string

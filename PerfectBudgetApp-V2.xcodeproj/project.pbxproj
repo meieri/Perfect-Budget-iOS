@@ -16,6 +16,24 @@
 		60FEBE695BB030B31B975D8D /* Pods_PerfectBudgetApp_V2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A011B88251450F8755C8170 /* Pods_PerfectBudgetApp_V2.framework */; };
 		65E31B70B54175E7B1297673 /* WeeklyExpenseViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479676C6FF48684F75C5F0EB /* WeeklyExpenseViewInput.swift */; };
 		72BB2B678DA6B1107C4711F9 /* WeeklyExpensePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABAC462F69675534F2E20ED /* WeeklyExpensePresenter.swift */; };
+		954AEFFF24E2327B0049EBA7 /* WeeklyExpenseViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479676C6FF48684F75C5F0EB /* WeeklyExpenseViewInput.swift */; };
+		954AF00024E2327B0049EBA7 /* WeeklyExpenseViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CDB516343554D51115E0B3 /* WeeklyExpenseViewOutput.swift */; };
+		954AF00124E2327B0049EBA7 /* WeeklyExpenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92024438C160C46EB72E4465 /* WeeklyExpenseViewController.swift */; };
+		954AF00224E2327B0049EBA7 /* WeeklyExpensePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9571948C24DE736100F57A81 /* WeeklyExpensePageViewController.swift */; };
+		954AF00324E232800049EBA7 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C67BA724CA5DE900BDD740 /* ProgressBarView.swift */; };
+		954AF00424E232800049EBA7 /* TitleProgressContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954CA0B624CA6B1000F5C63C /* TitleProgressContainerView.swift */; };
+		954AF00524E232830049EBA7 /* WeeklyExpensePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABAC462F69675534F2E20ED /* WeeklyExpensePresenter.swift */; };
+		954AF00824E232880049EBA7 /* WeeklyExpenseInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FDA0347C113E56A4854D3B /* WeeklyExpenseInteractorInput.swift */; };
+		954AF00924E232880049EBA7 /* WeeklyExpenseInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97515CDEE1F9C2EB9330B4A4 /* WeeklyExpenseInteractorOutput.swift */; };
+		954AF00A24E232880049EBA7 /* WeeklyExpenseInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA009B6775D78D04E8FC9F45 /* WeeklyExpenseInteractor.swift */; };
+		954AF00B24E2328C0049EBA7 /* TransactionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954C6DFA24B8211500E34086 /* TransactionService.swift */; };
+		954AF00C24E2328C0049EBA7 /* TransactionServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D738D724D2410000C385FC /* TransactionServiceProtocol.swift */; };
+		954AF00D24E232900049EBA7 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F84D224C7CB9B00FC515B /* Coordinator.swift */; };
+		954AF00E24E232900049EBA7 /* WeeklyExpenseListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D738D424D23F3200C385FC /* WeeklyExpenseListCoordinator.swift */; };
+		954AF00F24E233F40049EBA7 /* PerfectBudgetDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 95AFB9FF24BBB83A0016255C /* PerfectBudgetDataModel.xcdatamodeld */; };
+		954AF01024E2349B0049EBA7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959B737824B41184002D478A /* AppDelegate.swift */; };
+		954AF01224E234A00049EBA7 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F84D624C7D72100FC515B /* DetailViewController.swift */; };
+		954AF01324E234A40049EBA7 /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9584D32B24CE4E050081B5D6 /* GraphViewController.swift */; };
 		954C6DFB24B8211500E34086 /* TransactionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954C6DFA24B8211500E34086 /* TransactionService.swift */; };
 		954CA0B724CA6B1000F5C63C /* TitleProgressContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954CA0B624CA6B1000F5C63C /* TitleProgressContainerView.swift */; };
 		9571948D24DE736100F57A81 /* WeeklyExpensePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9571948C24DE736100F57A81 /* WeeklyExpensePageViewController.swift */; };
@@ -648,12 +666,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				954AF01024E2349B0049EBA7 /* AppDelegate.swift in Sources */,
+				954AF00324E232800049EBA7 /* ProgressBarView.swift in Sources */,
+				954AF01224E234A00049EBA7 /* DetailViewController.swift in Sources */,
 				959B739024B41186002D478A /* PerfectBudgetApp_V2Tests.swift in Sources */,
 				A746D47297462AD8BC01BFA4 /* WeeklyExpenseListConfiguratorTests.swift in Sources */,
+				954AF00424E232800049EBA7 /* TitleProgressContainerView.swift in Sources */,
+				954AF00024E2327B0049EBA7 /* WeeklyExpenseViewOutput.swift in Sources */,
+				954AEFFF24E2327B0049EBA7 /* WeeklyExpenseViewInput.swift in Sources */,
+				954AF00D24E232900049EBA7 /* Coordinator.swift in Sources */,
+				954AF00C24E2328C0049EBA7 /* TransactionServiceProtocol.swift in Sources */,
+				954AF00B24E2328C0049EBA7 /* TransactionService.swift in Sources */,
+				954AF00224E2327B0049EBA7 /* WeeklyExpensePageViewController.swift in Sources */,
 				DEFA12CFD66CDB8105E1C0AD /* WeeklyExpenseListViewTests.swift in Sources */,
+				954AF00124E2327B0049EBA7 /* WeeklyExpenseViewController.swift in Sources */,
+				954AF00924E232880049EBA7 /* WeeklyExpenseInteractorOutput.swift in Sources */,
+				954AF00524E232830049EBA7 /* WeeklyExpensePresenter.swift in Sources */,
+				954AF00E24E232900049EBA7 /* WeeklyExpenseListCoordinator.swift in Sources */,
 				310537E01F16BACEC6624C83 /* WeeklyExpenseListInteractorTests.swift in Sources */,
+				954AF00F24E233F40049EBA7 /* PerfectBudgetDataModel.xcdatamodeld in Sources */,
+				954AF00A24E232880049EBA7 /* WeeklyExpenseInteractor.swift in Sources */,
 				524B0AAE21212BAB205A0BEE /* WeeklyExpenseListPresenterTests.swift in Sources */,
+				954AF01324E234A40049EBA7 /* GraphViewController.swift in Sources */,
 				9CEC429BA39C8CBCAAA4203E /* WeeklyExpenseListRouterTests.swift in Sources */,
+				954AF00824E232880049EBA7 /* WeeklyExpenseInteractorInput.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
