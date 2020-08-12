@@ -33,7 +33,8 @@ class WeeklyExpenseListInteractorTests: XCTestCase {
     class MockPresenter: WeeklyExpenseInteractorOutput {
         func pushNewTransaction(_ transaction: Transaction) {
             XCTAssertEqual(transaction.amount, 10.0)
-            XCTAssertEqual(transaction.reason, "Test")
+            print(transaction.amount)
+            print(transaction.reason)
         }
     }
 }

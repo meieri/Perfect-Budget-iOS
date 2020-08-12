@@ -59,3 +59,17 @@ class WeeklyExpenseInteractor: WeeklyExpenseInteractorInput {
         }
     }
 }
+
+
+
+extension Date {
+    var startOfWeek: Date? {
+        let userCalendar = Calendar.current
+        return userCalendar.date(from: userCalendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self))
+    }
+    var endOfWeek: Date? {
+        let userCalendar = Calendar.current
+        let sundayDate = userCalendar.date(from: userCalendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self))!
+        return userCalendar.date(byAdding: .day, value: 6, to: sundayDate)
+    }
+}
