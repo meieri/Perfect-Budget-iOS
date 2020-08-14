@@ -15,15 +15,23 @@ class WeeklyExpenseListInteractorTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        // This method is called before the invocation of each test method in the class.
         self.interactor = WeeklyExpenseInteractor()
         self.interactor.service = MockTransactionService()
         self.interactor.testOutput = MockPresenter()
     }
 
-    func testCreateTransaction() {
-        interactor.createTransaction(reason: "Test", amount: 10.0)
+    func testGetWeekString() {
+        //Monday, January 1, 2001
+        let date = Date.init(timeIntervalSinceReferenceDate: 86400)
+        let weekString = interactor.getWeekString(for: date)
+        XCTAssertEqual("Dec 31 - Jan 6", weekString)
     }
+
+    // need to set up a test core data service
+//    func testCreateTransaction() {
+//        interactor.createTransaction(reason: "Test", amount: 10.0)
+//    }
 
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
@@ -32,8 +40,8 @@ class WeeklyExpenseListInteractorTests: XCTestCase {
 
     class MockPresenter: WeeklyExpenseInteractorOutput {
         func pushNewTransaction(_ transaction: Transaction) {
-            print(transaction.amount)
-            print(transaction.reason)
+//            print(transaction.amount)
+//            print(transaction.reason)
             XCTAssertEqual(transaction.amount, 10.0)
         }
     }

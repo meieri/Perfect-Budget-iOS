@@ -53,23 +53,14 @@ class WeeklyExpenseInteractor: WeeklyExpenseInteractorInput {
 
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "en_US")
+        formatter.dateFormat = "MMM d"
+        print(day.description(with: Locale(identifier: "en_US")))
 
-        let firstDayOfWeek = formatter.string(from: day.startOfWeek!)
-        let lastDayOfWeek = formatter.string(from: day.endOfWeek!)
-        return "\(abbreviateDate(date: firstDayOfWeek)) - \(abbreviateDate(date: lastDayOfWeek))"
-    }
-
-    private func abbreviateDate(date: String) -> String {
-        if let commaIndex = date.firstIndex(of: ",") {
-            let substring = date[..<commaIndex]
-            let string = String(substring)
-            return string
-        } else {
-            return ""
-        }
+        let firstDayOfWeek = formatter.string(from: day.previous(.sunday))
+        let lastDayOfWeek = formatter.string(from: day.next(.saturday))
+        return "\(firstDayOfWeek) - \(lastDayOfWeek)"
     }
 }
-
 
 
 extension Date {
@@ -82,7 +73,9 @@ extension Date {
     // last Sunday
     var startOfWeek: Date? {
         let userCalendar = Calendar.current
-        return userCalendar.date(from: userCalendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self))
+        print(self.description(with: userCalendar.locale))
+        let lastSunday = userCalendar.date(from: userCalendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self))
+        return lastSunday
     }
     // next Saturday
     var endOfWeek: Date? {
