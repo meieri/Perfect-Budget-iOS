@@ -23,13 +23,13 @@ class WeeklyExpenseModuleConfiguratorTests: XCTestCase {
     func testConfigureModuleForViewController() {
 
         //given
-        let viewController = WeeklyExpenseViewController()
         let coordinator = WeeklyExpenseCoordinator(UINavigationController())
 
         //when
         coordinator.start()
 
         //then
+        XCTAssertNotNil(coordinator.view)
         XCTAssertNotNil(viewController.output, "WeeklyExpenseViewController is nil after configuration")
         XCTAssertTrue(viewController.output is WeeklyExpensePresenter, "output is not WeeklyExpensePresenter")
 

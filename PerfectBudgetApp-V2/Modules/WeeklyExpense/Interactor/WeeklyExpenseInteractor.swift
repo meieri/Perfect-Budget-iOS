@@ -9,8 +9,24 @@ import Foundation
 
 class WeeklyExpenseInteractor: WeeklyExpenseInteractorInput {
 
-    var output: WeeklyExpenseInteractorOutput!
+    weak var output: WeeklyExpenseInteractorOutput!
     var service: TransactionServiceProtocol!
+    private var today: Date?
+
+    func getTodaysDate() -> Date {
+        let now = Date()
+        var calender = Calendar.current
+        calender.timeZone = TimeZone.current
+        if let today = self.today {
+            let result = calender.compare(today, to: now, toGranularity: .day)
+            let isSameDay = result == .orderedSame
+            if isSameDay {
+                return today
+            }
+        }
+        self.today = now
+        return now
+    }
 
     func createTransaction(reason: String, amount: Double) {
         let newTransaction = service.createTransaction(reason: reason, amount: amount)
@@ -32,20 +48,12 @@ class WeeklyExpenseInteractor: WeeklyExpenseInteractorInput {
     }
 
     func getWeekString(for day: Date) -> String {
-        let calendar = Calendar.current
-        let today = calendar.startOfDay(for: day)
-        let dayOfWeek = calendar.component(.weekday, from: today)
-        let weekdays = calendar.range(of: .weekday, in: .weekOfYear, for: today)!
-        let days = (weekdays.lowerBound ..< weekdays.upperBound)
-        .compactMap { calendar.date(byAdding: .day, value: $0 - dayOfWeek, to: today) }
 
         let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .none
         formatter.locale = Locale(identifier: "en_US")
 
-        let firstDayOfWeek = formatter.string(from: days[0])
-        let lastDayOfWeek = formatter.string(from: days[days.count - 1])
+        let firstDayOfWeek = formatter.string(from: day.startOfWeek!)
+        let lastDayOfWeek = formatter.string(from: day.endOfWeek!)
         return "\(abbreviateDate(date: firstDayOfWeek)) - \(abbreviateDate(date: lastDayOfWeek))"
     }
 
@@ -63,13 +71,27 @@ class WeeklyExpenseInteractor: WeeklyExpenseInteractorInput {
 
 
 extension Date {
+    // last Saturday
+    var startOfPreviousWeek: Date? {
+        let userCalendar = Calendar.current
+        let sundayDate = userCalendar.date(from: userCalendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self))!
+        return userCalendar.date(byAdding: .day, value: -1, to: sundayDate)
+    }
+    // last Sunday
     var startOfWeek: Date? {
         let userCalendar = Calendar.current
         return userCalendar.date(from: userCalendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self))
     }
+    // next Saturday
     var endOfWeek: Date? {
         let userCalendar = Calendar.current
         let sundayDate = userCalendar.date(from: userCalendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self))!
         return userCalendar.date(byAdding: .day, value: 6, to: sundayDate)
+    }
+    // next Sunday
+    var startOfNextWeek: Date? {
+        let userCalendar = Calendar.current
+        let sundayDate = userCalendar.date(from: userCalendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self))!
+        return userCalendar.date(byAdding: .day, value: 7, to: sundayDate)
     }
 }

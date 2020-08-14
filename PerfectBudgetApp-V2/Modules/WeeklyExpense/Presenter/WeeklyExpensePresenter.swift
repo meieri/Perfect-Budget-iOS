@@ -11,7 +11,6 @@ class WeeklyExpensePresenter {
     weak var view: WeeklyExpenseViewInput!
     var interactor: WeeklyExpenseInteractorInput!
     var coordinator: Coordinator!
-
 }
 
 extension WeeklyExpensePresenter: WeeklyExpenseViewOutput {
@@ -21,7 +20,7 @@ extension WeeklyExpensePresenter: WeeklyExpenseViewOutput {
             let weekTitle = interactor.getWeekString(for: date)
             view.setupInitialState(using: weeklyTransactions, weekTitle: weekTitle, currentDate: date)
         } else {
-            let currentDate = Date()
+            let todaysDate = interactor.getTodaysDate()
             let weeklyTransactions = interactor.getWeekTransactions(for: currentDate)
             let weekTitle = interactor.getWeekString(for: currentDate)
             view.setupInitialState(using: weeklyTransactions, weekTitle: weekTitle, currentDate: currentDate)
@@ -50,8 +49,7 @@ extension WeeklyExpensePresenter: WeeklyExpenseViewOutput {
 
     func injectLastWeek(weeklyExpenseVC: WeeklyExpenseViewController,
                         from date: Date) -> WeeklyExpenseViewController {
-        let lastWeekDate = Calendar.current.date(byAdding: .weekOfYear, value: -1, to: date)!
-        weeklyExpenseVC.currentDate = lastWeekDate
+        weeklyExpenseVC.currentDate = date.startOfPreviousWeek
         weeklyExpenseVC.output = self
         self.view = weeklyExpenseVC
         return weeklyExpenseVC
@@ -59,8 +57,7 @@ extension WeeklyExpensePresenter: WeeklyExpenseViewOutput {
 
     func injectNextWeek(weeklyExpenseVC: WeeklyExpenseViewController,
                         from date: Date) -> WeeklyExpenseViewController {
-        let nextWeekDate = Calendar.current.date(byAdding: .weekOfYear, value: 1, to: date)!
-        weeklyExpenseVC.currentDate = nextWeekDate
+        weeklyExpenseVC.currentDate = date.startOfNextWeek
         weeklyExpenseVC.output = self
         self.view = weeklyExpenseVC
         return weeklyExpenseVC
