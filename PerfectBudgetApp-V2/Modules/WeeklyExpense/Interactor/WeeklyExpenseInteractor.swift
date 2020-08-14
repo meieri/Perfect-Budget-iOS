@@ -10,6 +10,8 @@ import Foundation
 class WeeklyExpenseInteractor: WeeklyExpenseInteractorInput {
 
     weak var output: WeeklyExpenseInteractorOutput!
+    // mock output for testing, strong reference so it is not deallocated
+    var testOutput: WeeklyExpenseInteractorOutput!
     var service: TransactionServiceProtocol!
     private var today: Date?
 

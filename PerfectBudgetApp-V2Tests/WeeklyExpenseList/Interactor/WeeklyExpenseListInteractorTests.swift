@@ -18,7 +18,7 @@ class WeeklyExpenseListInteractorTests: XCTestCase {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         self.interactor = WeeklyExpenseInteractor()
         self.interactor.service = MockTransactionService()
-        self.interactor.output = MockPresenter()
+        self.interactor.testOutput = MockPresenter()
     }
 
     func testCreateTransaction() {
@@ -32,9 +32,9 @@ class WeeklyExpenseListInteractorTests: XCTestCase {
 
     class MockPresenter: WeeklyExpenseInteractorOutput {
         func pushNewTransaction(_ transaction: Transaction) {
-            XCTAssertEqual(transaction.amount, 10.0)
             print(transaction.amount)
             print(transaction.reason)
+            XCTAssertEqual(transaction.amount, 10.0)
         }
     }
 }

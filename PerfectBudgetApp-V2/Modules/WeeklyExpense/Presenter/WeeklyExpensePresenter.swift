@@ -21,9 +21,9 @@ extension WeeklyExpensePresenter: WeeklyExpenseViewOutput {
             view.setupInitialState(using: weeklyTransactions, weekTitle: weekTitle, currentDate: date)
         } else {
             let todaysDate = interactor.getTodaysDate()
-            let weeklyTransactions = interactor.getWeekTransactions(for: currentDate)
-            let weekTitle = interactor.getWeekString(for: currentDate)
-            view.setupInitialState(using: weeklyTransactions, weekTitle: weekTitle, currentDate: currentDate)
+            let weeklyTransactions = interactor.getWeekTransactions(for: todaysDate)
+            let weekTitle = interactor.getWeekString(for: todaysDate)
+            view.setupInitialState(using: weeklyTransactions, weekTitle: weekTitle, currentDate: todaysDate)
         }
     }
 

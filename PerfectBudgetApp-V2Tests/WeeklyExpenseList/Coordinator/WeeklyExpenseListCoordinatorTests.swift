@@ -29,11 +29,12 @@ class WeeklyExpenseModuleConfiguratorTests: XCTestCase {
         coordinator.start()
 
         //then
-        XCTAssertNotNil(coordinator.view)
-        XCTAssertNotNil(viewController.output, "WeeklyExpenseViewController is nil after configuration")
-        XCTAssertTrue(viewController.output is WeeklyExpensePresenter, "output is not WeeklyExpensePresenter")
+        XCTAssertNotNil(coordinator.navigationController)
+        let pageViewController = coordinator.navigationController!.viewControllers.first as! WeeklyExpensePageViewController
+        XCTAssertNotNil(pageViewController.output, "WeeklyExpensePageViewController is nil after configuration")
+        XCTAssertTrue(pageViewController.output is WeeklyExpensePresenter, "output is not WeeklyExpensePresenter")
 
-        let presenter: WeeklyExpensePresenter = viewController.output as! WeeklyExpensePresenter
+        let presenter: WeeklyExpensePresenter = pageViewController.output as! WeeklyExpensePresenter
         XCTAssertNotNil(presenter.view, "view in WeeklyExpensePresenter is nil after configuration")
         XCTAssertNotNil(presenter.coordinator, "router in WeeklyExpensePresenter is nil after configuration")
         XCTAssertTrue(presenter.coordinator is WeeklyExpenseCoordinator)
