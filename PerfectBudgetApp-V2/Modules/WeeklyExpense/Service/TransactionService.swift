@@ -59,7 +59,6 @@ class TransactionService: TransactionServiceProtocol {
     }
 
     func deleteTransaction(transaction: Transaction) {
-        print(transaction)
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let managedContext = appDelegate.persistentContainer.viewContext
         managedContext.delete(transaction)
