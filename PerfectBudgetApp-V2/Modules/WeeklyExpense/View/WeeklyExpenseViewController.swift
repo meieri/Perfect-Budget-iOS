@@ -19,8 +19,6 @@ class WeeklyExpenseViewController: UIViewController, NSCopying {
     let editTransactionButton = UIButton(type: .system)
     let navigateToGraphs = UIButton(type: .system)
 //    let pageIndiciator = UIPageControl()
-    // needed in order to create last and next week copies. Set by presenter.
-    var currentDate: Date?
 
     var currentSpending: Double {
         get {
@@ -36,7 +34,7 @@ class WeeklyExpenseViewController: UIViewController, NSCopying {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
-        output.viewIsReady(currentDate: currentDate)
+        output.viewIsReady()
     }
 
     @objc func showInputDialog() {
@@ -172,10 +170,9 @@ extension WeeklyExpenseViewController: UITableViewDelegate {
 // MARK: WeeklyExpenseViewInput
 extension WeeklyExpenseViewController: WeeklyExpenseViewInput {
 
-    func setupInitialState(using weeklyTransactions: [Transaction], weekTitle: String, currentDate: Date) {
+    func setupInitialState(using weeklyTransactions: [Transaction], weekTitle: String) {
         self.transactions = weeklyTransactions
         self.titleProgressView.showWeekTitle(title: weekTitle)
-        self.currentDate = currentDate
         refresh()
     }
 

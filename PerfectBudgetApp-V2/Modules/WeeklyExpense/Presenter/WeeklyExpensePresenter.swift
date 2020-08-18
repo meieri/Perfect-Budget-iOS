@@ -14,17 +14,11 @@ class WeeklyExpensePresenter {
 }
 
 extension WeeklyExpensePresenter: WeeklyExpenseViewOutput {
-    func viewIsReady(currentDate: Date?) {
-        if let date = currentDate {
-            let weeklyTransactions = interactor.getWeekTransactions(for: date)
-            let weekTitle = interactor.getWeekString(for: date)
-            view.setupInitialState(using: weeklyTransactions, weekTitle: weekTitle, currentDate: date)
-        } else {
-            let todaysDate = interactor.getTodaysDate()
-            let weeklyTransactions = interactor.getWeekTransactions(for: todaysDate)
-            let weekTitle = interactor.getWeekString(for: todaysDate)
-            view.setupInitialState(using: weeklyTransactions, weekTitle: weekTitle, currentDate: todaysDate)
-        }
+    func viewIsReady() {
+        let day = interactor.getCurrentDay()
+        let weeklyTransactions = interactor.getWeekTransactions(for: day)
+        let weekTitle = interactor.getWeekString(for: day)
+        view.setupInitialState(using: weeklyTransactions, weekTitle: weekTitle)
     }
 
     func createTransaction(reason: String, amount: Double) {
@@ -47,20 +41,24 @@ extension WeeklyExpensePresenter: WeeklyExpenseViewOutput {
         interactor.deleteTransaction(transaction)
     }
 
-    func injectLastWeek(weeklyExpenseVC: WeeklyExpenseViewController,
-                        from date: Date) -> WeeklyExpenseViewController {
-        weeklyExpenseVC.currentDate = date.startOfPreviousWeek
-        weeklyExpenseVC.output = self
-        self.view = weeklyExpenseVC
-        return weeklyExpenseVC
+    func getViewControllerBefore() -> WeeklyExpenseViewController? {
+        if interactor.moveCurrentDateBy(week: -1) {
+            let weeklyExpenseVC = WeeklyExpenseViewController()
+            weeklyExpenseVC.output = self
+            self.view = weeklyExpenseVC
+            return weeklyExpenseVC
+        }
+        return nil
     }
 
-    func injectNextWeek(weeklyExpenseVC: WeeklyExpenseViewController,
-                        from date: Date) -> WeeklyExpenseViewController {
-        weeklyExpenseVC.currentDate = date.startOfNextWeek
-        weeklyExpenseVC.output = self
-        self.view = weeklyExpenseVC
-        return weeklyExpenseVC
+    func getViewControllerAfter() -> WeeklyExpenseViewController? {
+        if interactor.moveCurrentDateBy(week: 1) {
+            let weeklyExpenseVC = WeeklyExpenseViewController()
+            weeklyExpenseVC.output = self
+            self.view = weeklyExpenseVC
+            return weeklyExpenseVC
+        }
+        return nil
     }
 
 }

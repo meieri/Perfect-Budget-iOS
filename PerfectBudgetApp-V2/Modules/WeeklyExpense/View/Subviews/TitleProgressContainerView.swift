@@ -57,7 +57,6 @@ private extension TitleProgressContainerView {
 
         // Layout
         progressBar.widthAnchor == mainStack.widthAnchor / 10 * 9
-
         mainStack.topAnchor == self.topAnchor
         mainStack.leadingAnchor == self.leadingAnchor
         mainStack.trailingAnchor == self.trailingAnchor

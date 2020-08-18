@@ -9,10 +9,14 @@
 import XCTest
 
 class WeeklyExpenseListViewTests: XCTestCase {
+    var viewController: WeeklyExpenseViewController!
 
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        self.viewController = WeeklyExpenseViewController()
+        let mockPresenter = MockPresenter()
+//        viewController.output = mockPresenter
     }
 
     override func tearDown() {
@@ -20,4 +24,11 @@ class WeeklyExpenseListViewTests: XCTestCase {
         super.tearDown()
     }
 
+    class MockPresenter: WeeklyExpenseInteractorOutput {
+        func pushNewTransaction(_ transaction: Transaction) {
+            //            print(transaction.amount)
+            //            print(transaction.reason)
+            XCTAssertEqual(transaction.amount, 10.0)
+        }
+    }
 }

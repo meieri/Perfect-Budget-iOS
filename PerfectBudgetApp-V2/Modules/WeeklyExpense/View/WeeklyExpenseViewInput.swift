@@ -14,6 +14,6 @@ protocol WeeklyExpenseViewInput: class {
         Setup initial state of the view
     */
 
-    func setupInitialState(using weeklyTransactions: [Transaction], weekTitle: String, currentDate: Date)
+    func setupInitialState(using weeklyTransactions: [Transaction], weekTitle: String)
     func addTransaction(_ transaction: Transaction)
 }

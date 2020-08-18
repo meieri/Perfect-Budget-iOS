@@ -33,7 +33,7 @@ class WeeklyExpenseCoordinator: Coordinator {
         presenter.interactor = interactor
         view.output = presenter
         pageView.output = presenter
-        pageView.currentView = view
+        pageView.setViewControllers([view], direction: .reverse, animated: false, completion: nil)
 
         navigationController?.pushViewController(pageView, animated: false)
     }

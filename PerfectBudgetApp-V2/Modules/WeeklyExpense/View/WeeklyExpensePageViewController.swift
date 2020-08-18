@@ -11,36 +11,22 @@ import Foundation
 
 class WeeklyExpensePageViewController: UIPageViewController {
     var output: WeeklyExpenseViewOutput!
-    var currentView: WeeklyExpenseViewController!
 
     override func viewDidLoad() {
-        configureView()
-    }
-
-}
-
-extension WeeklyExpensePageViewController {
-    func configureView() {
-        // Heirarchy
+        super.viewDidLoad()
         self.dataSource = self
-        self.setViewControllers([currentView], direction: .forward, animated: true, completion: nil)
     }
+
 }
 
 extension WeeklyExpensePageViewController: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        guard let date = currentView.currentDate else { return nil }
-        let injectedCopy = output.injectLastWeek(weeklyExpenseVC: currentView.copy() as! WeeklyExpenseViewController, from: date)
-        self.currentView = injectedCopy
-        return injectedCopy
+        return output.getViewControllerBefore()
     }
 
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        guard let date = currentView.currentDate else { return nil }
-        let injectedCopy = output.injectNextWeek(weeklyExpenseVC: currentView.copy() as! WeeklyExpenseViewController, from: date)
-        self.currentView = injectedCopy
-        return injectedCopy
+        return output.getViewControllerAfter()
     }
 }
