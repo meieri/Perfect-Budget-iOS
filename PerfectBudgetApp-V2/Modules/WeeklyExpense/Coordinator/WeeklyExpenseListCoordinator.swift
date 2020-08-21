@@ -20,6 +20,7 @@ class WeeklyExpenseCoordinator: Coordinator {
     func start() {
         let pageView = WeeklyExpensePageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
         let view = WeeklyExpenseViewController()
+        pageView.orderedWeeklyViewControllers = [view]
 
         let presenter = WeeklyExpensePresenter()
         presenter.view = view
@@ -33,7 +34,6 @@ class WeeklyExpenseCoordinator: Coordinator {
         presenter.interactor = interactor
         view.output = presenter
         pageView.output = presenter
-        pageView.setViewControllers([view], direction: .reverse, animated: false, completion: nil)
 
         navigationController?.pushViewController(pageView, animated: false)
     }

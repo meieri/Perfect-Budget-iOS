@@ -15,5 +15,5 @@ protocol WeeklyExpenseInteractorInput {
     func getWeekTransactions(for day: Date) -> [Transaction]
     func getWeekString(for day: Date) -> String
     func getCurrentDay() -> Date
-    func moveCurrentDateBy(week: Int) -> Bool
+    func moveCurrentDateBy(week: Int) 
 }

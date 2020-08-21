@@ -41,26 +41,13 @@ extension WeeklyExpensePresenter: WeeklyExpenseViewOutput {
         interactor.deleteTransaction(transaction)
     }
 
-    func getViewControllerBefore() -> WeeklyExpenseViewController? {
-        if interactor.moveCurrentDateBy(week: -1) {
-            let weeklyExpenseVC = WeeklyExpenseViewController()
-            weeklyExpenseVC.output = self
-            self.view = weeklyExpenseVC
-            return weeklyExpenseVC
-        }
-        return nil
+    func getPreviousWeekViewController() -> WeeklyExpenseViewController {
+        interactor.moveCurrentDateBy(week: -1)
+        let weeklyExpenseVC = WeeklyExpenseViewController()
+        weeklyExpenseVC.output = self
+        self.view = weeklyExpenseVC
+        return weeklyExpenseVC
     }
-
-    func getViewControllerAfter() -> WeeklyExpenseViewController? {
-        if interactor.moveCurrentDateBy(week: 1) {
-            let weeklyExpenseVC = WeeklyExpenseViewController()
-            weeklyExpenseVC.output = self
-            self.view = weeklyExpenseVC
-            return weeklyExpenseVC
-        }
-        return nil
-    }
-
 }
 
 extension WeeklyExpensePresenter: WeeklyExpenseInteractorOutput {

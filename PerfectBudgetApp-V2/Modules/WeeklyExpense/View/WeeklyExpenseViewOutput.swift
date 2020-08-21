@@ -20,6 +20,5 @@ protocol WeeklyExpenseViewOutput {
     func showGraphScreen()
     func transactionTapped(_ transaction: Transaction)
     func deleteTransaction(transaction: Transaction)
-    func getViewControllerBefore() -> WeeklyExpenseViewController?
-    func getViewControllerAfter() -> WeeklyExpenseViewController?
+    func getPreviousWeekViewController() -> WeeklyExpenseViewController
 }

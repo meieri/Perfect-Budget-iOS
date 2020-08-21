@@ -19,7 +19,6 @@ class WeeklyExpenseInteractor: WeeklyExpenseInteractorInput {
     }
     // these two will differ often, because the user is changing screens
     private var currentDate: Date?
-    private var presentingViewControllerIndex = 0
 
     func createTransaction(reason: String, amount: Double) {
         let newTransaction = service.createTransaction(reason: reason, amount: amount)
@@ -57,18 +56,14 @@ class WeeklyExpenseInteractor: WeeklyExpenseInteractorInput {
     }
 
     // returns a boolean to describe whether or not the date was actually moved
-    func moveCurrentDateBy(week: Int) -> Bool {
+    func moveCurrentDateBy(week: Int) {
         let currentDay = getCurrentDay()
         let userCalender = Calendar.current
-        self.currentDate = userCalender.date(byAdding: .weekOfMonth, value: presentingViewControllerIndex, to: currentDay)!
+        self.currentDate = userCalender.date(byAdding: .weekOfMonth, value: week, to: currentDay)!
         // do not let the user move into the future
         if self.currentDate == nil || self.currentDate! > today {
             self.currentDate = today
-            return false
         }
-        presentingViewControllerIndex += week
-        print(presentingViewControllerIndex)
-        return true
     }
 }
 
