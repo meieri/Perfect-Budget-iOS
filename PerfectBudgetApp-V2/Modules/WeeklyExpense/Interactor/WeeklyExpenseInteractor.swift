@@ -18,10 +18,12 @@ class WeeklyExpenseInteractor: WeeklyExpenseInteractorInput {
         }
     }
     // these two will differ often, because the user is changing screens
-    private var currentDate: Date?
+    // use getCurrentDate to access
+    private(set) var currentDate: Date?
 
     func createTransaction(reason: String, amount: Double) {
-        let newTransaction = service.createTransaction(reason: reason, amount: amount)
+        let day = getCurrentDay()
+        let newTransaction = service.createTransaction(reason: reason, amount: amount, date: day)
         output.pushNewTransaction(newTransaction)
     }
 
@@ -29,7 +31,8 @@ class WeeklyExpenseInteractor: WeeklyExpenseInteractorInput {
         service.deleteTransaction(transaction: transaction)
     }
 
-    func getWeekTransactions(for day: Date) -> [Transaction] {
+    func getWeekTransactions() -> [Transaction] {
+        let day = getCurrentDay()
         let allTransactions = service.fetchTransactions()
         let calendar = Calendar.current
         // Filters based on if date is in this week.
@@ -37,7 +40,8 @@ class WeeklyExpenseInteractor: WeeklyExpenseInteractorInput {
         return allTransactions.filter { calendar.isDate($0.date ?? Date.distantFuture, equalTo: day, toGranularity: .weekOfYear) }
     }
 
-    func getWeekString(for day: Date) -> String {
+    func getWeekString() -> String {
+        let day = getCurrentDay()
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "en_US")
         formatter.dateFormat = "MMM d"
@@ -51,6 +55,7 @@ class WeeklyExpenseInteractor: WeeklyExpenseInteractorInput {
         if let currentDate = self.currentDate {
             return currentDate
         } else {
+            currentDate = today
             return today
         }
     }

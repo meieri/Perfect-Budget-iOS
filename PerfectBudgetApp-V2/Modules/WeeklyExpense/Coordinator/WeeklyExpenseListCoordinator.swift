@@ -41,6 +41,7 @@ class WeeklyExpenseCoordinator: Coordinator {
     func transactionTapped(_ transaction: Transaction) {
         let view = DetailViewController()
         view.transaction = transaction
+        view.coordinator = self
         navigationController?.pushViewController(view, animated: true)
     }
 

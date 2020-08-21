@@ -15,9 +15,8 @@ class WeeklyExpensePresenter {
 
 extension WeeklyExpensePresenter: WeeklyExpenseViewOutput {
     func viewIsReady() {
-        let day = interactor.getCurrentDay()
-        let weeklyTransactions = interactor.getWeekTransactions(for: day)
-        let weekTitle = interactor.getWeekString(for: day)
+        let weeklyTransactions = interactor.getWeekTransactions()
+        let weekTitle = interactor.getWeekString()
         view.setupInitialState(using: weeklyTransactions, weekTitle: weekTitle)
     }
 

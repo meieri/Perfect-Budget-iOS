@@ -62,16 +62,6 @@ class WeeklyExpenseViewController: UIViewController, NSCopying {
     }
 
 
-    @objc func editTransaction(selector: UIButton) {
-        if tableView.isEditing {
-            selector.setTitle("Edit", for: .normal)
-            tableView.isEditing = false
-        } else {
-            selector.setTitle("Done", for: .normal)
-            tableView.isEditing = true
-        }
-    }
-
     @objc func viewGraphScreen(selector: UIButton) {
         output.showGraphScreen()
     }
@@ -103,9 +93,8 @@ extension WeeklyExpenseViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.allowsSelection = true
-        self.tableView.register(SubtitleTableViewCell.self, forCellReuseIdentifier: "TransactionCell")
+        tableView.register(SubtitleTableViewCell.self, forCellReuseIdentifier: "TransactionCell")
         addTransactionButton.addTarget(self, action: #selector(showInputDialog), for: .touchUpInside)
-        editTransactionButton.addTarget(self, action: #selector(editTransaction), for: .touchUpInside)
         navigateToGraphs.addTarget(self, action: #selector(viewGraphScreen), for: .touchUpInside)
         // Style
         mainStack.axis = .vertical
@@ -114,8 +103,6 @@ extension WeeklyExpenseViewController {
         addTransactionButton.setTitle("New", for: .normal)
         self.view.backgroundColor = .white
         tableView.backgroundColor = .white
-        editTransactionButton.backgroundColor = .white
-        editTransactionButton.setTitle("", for: .normal)
         navigateToGraphs.setTitle("Graphs", for: .normal)
         // pageIndiciator.numberOfPages = 3
         // pageIndiciator.currentPage = 1
@@ -150,19 +137,22 @@ extension WeeklyExpenseViewController: UITableViewDataSource {
         return cell
     }
 
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            output.deleteTransaction(transaction: transactions[indexPath.row])
-            self.transactions.remove(at: indexPath.row)
-            refresh()
-        }
-    }
+    // commented out to disable deletion for now
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//            UITableViewCell.EditingStyle.none
+//            output.deleteTransaction(transaction: transactions[indexPath.row])
+//            self.transactions.remove(at: indexPath.row)
+//            refresh()
+//        }
+//    }
 }
 
 
 extension WeeklyExpenseViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let tappedTransaction = transactions[indexPath.row]
+        tableView.deselectRow(at: indexPath, animated: true)
         output.transactionTapped(tappedTransaction)
     }
 }

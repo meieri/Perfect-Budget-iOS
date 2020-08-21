@@ -39,10 +39,8 @@ class TransactionService: TransactionServiceProtocol {
 
     }
 
-    func createTransaction(reason: String, amount: Double) -> Transaction {
+    func createTransaction(reason: String, amount: Double, date: Date) -> Transaction {
         // save transaction to the database
-        let date = Date()
-
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return Transaction()}
         let managedContext = appDelegate.persistentContainer.viewContext
         let entity = NSEntityDescription.entity(forEntityName: "Transaction", in: managedContext)!

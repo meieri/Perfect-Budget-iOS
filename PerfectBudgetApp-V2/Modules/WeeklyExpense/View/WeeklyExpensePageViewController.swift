@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import Anchorage
 import Foundation
 
 class WeeklyExpensePageViewController: UIPageViewController {
     // view controllers are ordered by increasing week, this week exists at 0
     var orderedWeeklyViewControllers: [UIViewController]!
     var output: WeeklyExpenseViewOutput!
+    var drawerMenuButton = UIButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,10 +22,22 @@ class WeeklyExpensePageViewController: UIPageViewController {
         if let firstViewController = orderedWeeklyViewControllers.first {
             setViewControllers([firstViewController], direction: .reverse, animated: false, completion: nil)
         }
+        configureView()
+    }
+
+    func configureView() {
+        let image = UIImage(named: "hamburger-menu-icon")
+        drawerMenuButton.setImage(image, for: .normal)
+        drawerMenuButton.tintColor = .black
+        drawerMenuButton.accessibilityIdentifier = "Ok"
+        view.addSubview(drawerMenuButton)
+        drawerMenuButton.leadingAnchor == view.safeAreaLayoutGuide.leadingAnchor + 30
+        drawerMenuButton.topAnchor == view.safeAreaLayoutGuide.topAnchor + 20
     }
 
 }
 
+// Adding transactions is currently buggy because of this code. We don't shift the interactor's currentDate property without creating a new viewController. So they get initalized just fine, but the currentDate property becomes inconsistent after that.
 extension WeeklyExpensePageViewController: UIPageViewControllerDataSource {
 
     func pageViewController(_ pageViewController: UIPageViewController,
