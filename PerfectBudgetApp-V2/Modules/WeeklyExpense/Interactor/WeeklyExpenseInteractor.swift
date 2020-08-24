@@ -19,7 +19,12 @@ class WeeklyExpenseInteractor: WeeklyExpenseInteractorInput {
     }
 
     func createTransaction(reason: String, amount: Double, day: Date) {
+<<<<<<< HEAD
         let newTransaction = service.createTransaction(reason: reason, amount: amount, day: day)
+=======
+        let day = day
+        let newTransaction = service.createTransaction(reason: reason, amount: amount)
+>>>>>>> 42e0dcb7537c366d492c1200e7ca0cd0eeed42a7
         output.pushNewTransaction(newTransaction)
     }
 
