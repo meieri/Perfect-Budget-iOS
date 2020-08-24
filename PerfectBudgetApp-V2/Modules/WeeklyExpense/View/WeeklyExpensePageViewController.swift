@@ -14,6 +14,7 @@ class WeeklyExpensePageViewController: UIPageViewController {
     // view controllers are ordered by increasing week, this week exists at 0
     var orderedWeeklyViewControllers: [UIViewController]!
     var output: WeeklyExpenseViewOutput!
+    var drawerMenuButton = UIButton()
     private var currentIndex: Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
