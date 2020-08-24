@@ -27,14 +27,16 @@ class WeeklyExpenseInteractor: WeeklyExpenseInteractorInput {
         service.deleteTransaction(transaction: transaction)
     }
 
-    func getWeekTransactions(for day: Date) -> [Transaction] {
+    func getWeekTransactions() -> [Transaction] {
+        let day = getCurrentDay()
         let allTransactions = service.fetchTransactions()
         let calendar = Calendar.current
         // Filters based on if date is in this week.
         return allTransactions.filter { calendar.isDate($0.date ?? Date.distantFuture, equalTo: day, toGranularity: .weekOfYear) }
     }
 
-    func getWeekString(for day: Date) -> String {
+    func getWeekString() -> String {
+        let day = getCurrentDay()
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "en_US")
         formatter.dateFormat = "MMM d"
