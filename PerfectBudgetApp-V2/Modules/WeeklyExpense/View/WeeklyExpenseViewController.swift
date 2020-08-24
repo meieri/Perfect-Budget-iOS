@@ -34,7 +34,7 @@ class WeeklyExpenseViewController: UIViewController, NSCopying {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
-        output.viewIsReady()
+        output.viewIsReady(tag: self.view.tag)
     }
 
     @objc func showInputDialog() {

@@ -14,7 +14,7 @@ protocol WeeklyExpenseViewOutput {
         @author Isaak Meier
         Notify presenter that view is ready
     */
-    func viewIsReady()
+    func viewIsReady(tag: Int)
     func createTransaction(reason: String, amount: Double)
     func errorCreatingTransaction()
     func showGraphScreen()

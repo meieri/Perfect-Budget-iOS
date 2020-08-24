@@ -35,6 +35,7 @@ class WeeklyExpenseCoordinator: Coordinator {
         presenter.interactor = interactor
         view.output = presenter
         pageView.output = presenter
+        view.view.tag = 0
 
         navigationController?.pushViewController(pageView, animated: false)
     }

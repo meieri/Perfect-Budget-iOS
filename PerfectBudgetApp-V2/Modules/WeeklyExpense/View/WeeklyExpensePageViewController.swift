@@ -15,13 +15,11 @@ class WeeklyExpensePageViewController: UIPageViewController {
     var orderedWeeklyViewControllers: [UIViewController]!
     var output: WeeklyExpenseViewOutput!
     var drawerMenuButton = UIButton()
-    private var currentIndex: Int = 0
-//        self.viewControllers!.first!.view.tag
-//    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.dataSource = self
-//        self.delegate = self
+        self.delegate = self
         if let firstViewController = orderedWeeklyViewControllers.first {
             setViewControllers([firstViewController], direction: .reverse, animated: false, completion: nil)
         }
@@ -49,7 +47,6 @@ extension WeeklyExpensePageViewController: UIPageViewControllerDataSource {
             return nil
         }
         let previousIndex = viewControllerIndex + 1
-        currentIndex = previousIndex
         // if there is not a view controller here, we need to create it
         let isIndexValid = orderedWeeklyViewControllers.indices.contains(previousIndex)
         if isIndexValid {
@@ -71,27 +68,27 @@ extension WeeklyExpensePageViewController: UIPageViewControllerDataSource {
             // we are at the current week, and cannot move into the future
             return nil
         }
-        currentIndex = nextIndex
         return orderedWeeklyViewControllers[nextIndex]
     }
 }
 //
-//extension WeeklyExpensePageViewController: UIPageViewControllerDelegate {
-//    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-//        if completed {
-//            output.pageViewTransitionCompleted()
-//        }
-//    }
-//}
+extension WeeklyExpensePageViewController: UIPageViewControllerDelegate {
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        if completed {
+            output.pageViewTransitionCompleted()
+        }
+    }
+}
 
 extension WeeklyExpensePageViewController: WeeklyExpensePageViewInput {
     func getCurrentIndex() -> Int {
-        return currentIndex
+        return viewControllers?.first?.view.tag ?? 0
     }
 
     /// TODO make totally safe
     func getCurrentViewController() -> WeeklyExpenseViewController {
-        return orderedWeeklyViewControllers[currentIndex] as! WeeklyExpenseViewController
+        let index = getCurrentIndex()
+        return orderedWeeklyViewControllers[index] as! WeeklyExpenseViewController
     }
 
 }
