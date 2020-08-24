@@ -57,9 +57,10 @@ extension WeeklyExpensePresenter: WeeklyExpenseViewOutput {
         interactor.deleteTransaction(transaction)
     }
 
-    func getPreviousWeekViewController() -> WeeklyExpenseViewController {
+    func getPreviousWeekViewController(index: Int) -> WeeklyExpenseViewController {
         let weeklyExpenseVC = WeeklyExpenseViewController()
         weeklyExpenseVC.output = self
+        weeklyExpenseVC.view.tag = index
         self.view = weeklyExpenseVC
         return weeklyExpenseVC
     }
@@ -68,6 +69,9 @@ extension WeeklyExpensePresenter: WeeklyExpenseViewOutput {
 
 extension WeeklyExpensePresenter: WeeklyExpenseInteractorOutput {
     func pushNewTransaction(_ transaction: Transaction) {
+        let day = getDisplayDate()
+        let weekTitle = interactor.getWeekString(for: day)
+        print(weekTitle)
         view.addTransaction(transaction)
     }
 }
