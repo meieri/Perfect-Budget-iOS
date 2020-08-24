@@ -10,7 +10,7 @@ import Foundation
 
 protocol TransactionServiceProtocol: AnyObject {
     // CRUD Operations
-    func createTransaction(reason: String, amount: Double) -> Transaction
+    func createTransaction(reason: String, amount: Double, day: Date) -> Transaction
     func fetchTransactions() -> [Transaction]
     func updateTransaction(transaction: Transaction)
     func deleteTransaction(transaction: Transaction)

@@ -21,4 +21,5 @@ protocol WeeklyExpenseViewOutput {
     func transactionTapped(_ transaction: Transaction)
     func deleteTransaction(transaction: Transaction)
     func getPreviousWeekViewController() -> WeeklyExpenseViewController
+    func pageViewTransitionCompleted()
 }

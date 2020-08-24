@@ -9,20 +9,36 @@ import Foundation
 
 class WeeklyExpensePresenter {
     weak var view: WeeklyExpenseViewInput!
+    weak var pageView: WeeklyExpensePageViewInput!
     var interactor: WeeklyExpenseInteractorInput!
     var coordinator: Coordinator!
+
+    /// Checks the pageView for its current index, and gets a date moved that number weeks away backwards from today's date.
+    private func getDisplayDate() -> Date {
+        var weeksAway = pageView.getCurrentIndex()
+        weeksAway.negate()
+        let day = interactor.getCurrentDateMovedBy(week: weeksAway)
+        return day
+    }
 }
 
 extension WeeklyExpensePresenter: WeeklyExpenseViewOutput {
+    func pageViewTransitionCompleted() {
+        let view = pageView.getCurrentViewController()
+        view.output = self
+        self.view = view
+    }
+
     func viewIsReady() {
-        let day = interactor.getCurrentDay()
+        let day = getDisplayDate()
         let weeklyTransactions = interactor.getWeekTransactions(for: day)
         let weekTitle = interactor.getWeekString(for: day)
         view.setupInitialState(using: weeklyTransactions, weekTitle: weekTitle)
     }
 
     func createTransaction(reason: String, amount: Double) {
-        interactor.createTransaction(reason: reason, amount: amount)
+        let day = getDisplayDate()
+        interactor.createTransaction(reason: reason, amount: amount, day: day)
     }
 
     func errorCreatingTransaction() {
@@ -42,12 +58,12 @@ extension WeeklyExpensePresenter: WeeklyExpenseViewOutput {
     }
 
     func getPreviousWeekViewController() -> WeeklyExpenseViewController {
-        interactor.moveCurrentDateBy(week: -1)
         let weeklyExpenseVC = WeeklyExpenseViewController()
         weeklyExpenseVC.output = self
         self.view = weeklyExpenseVC
         return weeklyExpenseVC
     }
+
 }
 
 extension WeeklyExpensePresenter: WeeklyExpenseInteractorOutput {
