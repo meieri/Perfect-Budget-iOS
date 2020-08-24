@@ -17,10 +17,9 @@ class WeeklyExpenseInteractor: WeeklyExpenseInteractorInput {
             Date()
         }
     }
-    // these two will differ often, because the user is changing screens
-    private var currentDate: Date?
 
-    func createTransaction(reason: String, amount: Double) {
+    func createTransaction(reason: String, amount: Double, day: Date) {
+        let day = day
         let newTransaction = service.createTransaction(reason: reason, amount: amount)
         output.pushNewTransaction(newTransaction)
     }
@@ -46,23 +45,17 @@ class WeeklyExpenseInteractor: WeeklyExpenseInteractorInput {
         return "\(firstDayOfWeek) - \(lastDayOfWeek)"
     }
 
-    func getCurrentDay() -> Date {
-        // if the current date is nil, it hasn't been set and we haven't changed days
-        if let currentDate = self.currentDate {
-            return currentDate
-        } else {
-            return today
-        }
-    }
-
     // returns a boolean to describe whether or not the date was actually moved
-    func moveCurrentDateBy(week: Int) {
-        let currentDay = getCurrentDay()
+    func getCurrentDateMovedBy(week: Int) -> Date {
+        let currentDay = self.today
         let userCalender = Calendar.current
-        self.currentDate = userCalender.date(byAdding: .weekOfMonth, value: week, to: currentDay)!
+        let movedDate = userCalender.date(byAdding: .weekOfMonth, value: week, to: currentDay)
         // do not let the user move into the future
-        if self.currentDate == nil || self.currentDate! > today {
-            self.currentDate = today
+        if movedDate == nil || movedDate! > today {
+            return currentDay
+        } else {
+            // force unwrap is ok because above checks if nil
+            return movedDate!
         }
     }
 }
