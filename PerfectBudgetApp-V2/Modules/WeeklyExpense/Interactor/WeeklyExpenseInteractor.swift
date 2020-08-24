@@ -17,13 +17,9 @@ class WeeklyExpenseInteractor: WeeklyExpenseInteractorInput {
             Date()
         }
     }
-    // these two will differ often, because the user is changing screens
-    // use getCurrentDate to access
-    private(set) var currentDate: Date?
 
-    func createTransaction(reason: String, amount: Double) {
-        let day = getCurrentDay()
-        let newTransaction = service.createTransaction(reason: reason, amount: amount, date: day)
+    func createTransaction(reason: String, amount: Double, day: Date) {
+        let newTransaction = service.createTransaction(reason: reason, amount: amount, day: day)
         output.pushNewTransaction(newTransaction)
     }
 
@@ -36,7 +32,6 @@ class WeeklyExpenseInteractor: WeeklyExpenseInteractorInput {
         let allTransactions = service.fetchTransactions()
         let calendar = Calendar.current
         // Filters based on if date is in this week.
-        // TODO make date no longer optional
         return allTransactions.filter { calendar.isDate($0.date ?? Date.distantFuture, equalTo: day, toGranularity: .weekOfYear) }
     }
 
@@ -50,24 +45,17 @@ class WeeklyExpenseInteractor: WeeklyExpenseInteractorInput {
         return "\(firstDayOfWeek) - \(lastDayOfWeek)"
     }
 
-    func getCurrentDay() -> Date {
-        // if the current date is nil, it hasn't been set and we haven't changed days
-        if let currentDate = self.currentDate {
-            return currentDate
-        } else {
-            currentDate = today
-            return today
-        }
-    }
-
     // returns a boolean to describe whether or not the date was actually moved
-    func moveCurrentDateBy(week: Int) {
-        let currentDay = getCurrentDay()
+    func getCurrentDateMovedBy(week: Int) -> Date {
+        let currentDay = self.today
         let userCalender = Calendar.current
-        self.currentDate = userCalender.date(byAdding: .weekOfMonth, value: week, to: currentDay)!
+        let movedDate = userCalender.date(byAdding: .weekOfMonth, value: week, to: currentDay)
         // do not let the user move into the future
-        if self.currentDate == nil || self.currentDate! > today {
-            self.currentDate = today
+        if movedDate == nil || movedDate! > today {
+            return currentDay
+        } else {
+            // force unwrap is ok because above checks if nil
+            return movedDate!
         }
     }
 }

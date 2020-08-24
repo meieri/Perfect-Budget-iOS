@@ -39,6 +39,7 @@
 		9571948D24DE736100F57A81 /* WeeklyExpensePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9571948C24DE736100F57A81 /* WeeklyExpensePageViewController.swift */; };
 		9584D32C24CE4E050081B5D6 /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9584D32B24CE4E050081B5D6 /* GraphViewController.swift */; };
 		958924F624D64E6500E814C8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958924F524D64E6500E814C8 /* Extensions.swift */; };
+		958C20B824F30E43005C3BEA /* WeeklyExpensePageViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C20B724F30E43005C3BEA /* WeeklyExpensePageViewInput.swift */; };
 		958F84D324C7CB9B00FC515B /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F84D224C7CB9B00FC515B /* Coordinator.swift */; };
 		958F84D724C7D72100FC515B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F84D624C7D72100FC515B /* DetailViewController.swift */; };
 		959B737924B41184002D478A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959B737824B41184002D478A /* AppDelegate.swift */; };
@@ -92,6 +93,7 @@
 		9571948C24DE736100F57A81 /* WeeklyExpensePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyExpensePageViewController.swift; sourceTree = "<group>"; };
 		9584D32B24CE4E050081B5D6 /* GraphViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewController.swift; sourceTree = "<group>"; };
 		958924F524D64E6500E814C8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		958C20B724F30E43005C3BEA /* WeeklyExpensePageViewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyExpensePageViewInput.swift; sourceTree = "<group>"; };
 		958F84D224C7CB9B00FC515B /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		958F84D624C7D72100FC515B /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		959B737524B41184002D478A /* PerfectBudgetApp-V2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PerfectBudgetApp-V2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -228,6 +230,7 @@
 				A3CDB516343554D51115E0B3 /* WeeklyExpenseViewOutput.swift */,
 				92024438C160C46EB72E4465 /* WeeklyExpenseViewController.swift */,
 				9571948C24DE736100F57A81 /* WeeklyExpensePageViewController.swift */,
+				958C20B724F30E43005C3BEA /* WeeklyExpensePageViewInput.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -639,6 +642,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				958C20B824F30E43005C3BEA /* WeeklyExpensePageViewInput.swift in Sources */,
 				95C67BA824CA5DE900BDD740 /* ProgressBarView.swift in Sources */,
 				954C6DFB24B8211500E34086 /* TransactionService.swift in Sources */,
 				958F84D324C7CB9B00FC515B /* Coordinator.swift in Sources */,

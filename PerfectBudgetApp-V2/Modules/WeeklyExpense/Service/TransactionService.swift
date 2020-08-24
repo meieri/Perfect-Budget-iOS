@@ -39,14 +39,14 @@ class TransactionService: TransactionServiceProtocol {
 
     }
 
-    func createTransaction(reason: String, amount: Double, date: Date) -> Transaction {
+    func createTransaction(reason: String, amount: Double, day: Date) -> Transaction {
         // save transaction to the database
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return Transaction()}
         let managedContext = appDelegate.persistentContainer.viewContext
         let entity = NSEntityDescription.entity(forEntityName: "Transaction", in: managedContext)!
         let transactionManagedObject = NSManagedObject(entity: entity, insertInto: managedContext)
         transactionManagedObject.setValue(amount, forKey: "amount")
-        transactionManagedObject.setValue(date, forKey: "date")
+        transactionManagedObject.setValue(day, forKey: "date")
         transactionManagedObject.setValue(reason, forKey: "reason")
         do {
             try managedContext.save()

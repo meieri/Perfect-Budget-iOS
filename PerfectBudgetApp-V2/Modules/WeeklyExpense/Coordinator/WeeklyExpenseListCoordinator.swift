@@ -24,6 +24,7 @@ class WeeklyExpenseCoordinator: Coordinator {
 
         let presenter = WeeklyExpensePresenter()
         presenter.view = view
+        presenter.pageView = pageView
         presenter.coordinator = self
 
         let interactor = WeeklyExpenseInteractor()
