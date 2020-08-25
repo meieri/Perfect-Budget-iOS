@@ -9,7 +9,7 @@
 import UIKit
 import Anchorage
 
-class WeeklyExpenseViewController: UIViewController, NSCopying {
+class WeeklyExpenseViewController: UIViewController {
 
     var output: WeeklyExpenseViewOutput!
     var tableView = UITableView()
@@ -34,7 +34,7 @@ class WeeklyExpenseViewController: UIViewController, NSCopying {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
-        output.viewIsReady(tag: self.view.tag)
+        output.viewIsReady()
     }
 
     @objc func showInputDialog() {
@@ -70,12 +70,6 @@ class WeeklyExpenseViewController: UIViewController, NSCopying {
     func refresh() {
         self.tableView.reloadData()
         self.titleProgressView.setSpendingValues(currSpend: currentSpending, maxSpend: 40.0)
-    }
-
-    func copy(with zone: NSZone? = nil) -> Any {
-        // shallow copy, data is injected by presenter
-        let copy = WeeklyExpenseViewController()
-        return copy
     }
 
 }
