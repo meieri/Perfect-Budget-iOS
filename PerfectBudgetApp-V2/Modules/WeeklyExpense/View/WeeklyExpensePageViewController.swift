@@ -46,6 +46,7 @@ extension WeeklyExpensePageViewController: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerBefore viewController: UIViewController) -> UIViewController? {
         // get the view controller index
+        print(orderedWeeklyViewControllers.count)
         guard let viewControllerIndex = orderedWeeklyViewControllers.firstIndex(of: viewController) else {
             return nil
         }
@@ -64,6 +65,7 @@ extension WeeklyExpensePageViewController: UIPageViewControllerDataSource {
 
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        print(orderedWeeklyViewControllers.count)
         guard let viewControllerIndex = orderedWeeklyViewControllers.firstIndex(of: viewController) else {
             return nil
         }
@@ -86,9 +88,7 @@ extension WeeklyExpensePageViewController: UIPageViewControllerDelegate {
 
 extension WeeklyExpensePageViewController: WeeklyExpensePageViewInput {
     func setViewControllers(_ views: [WeeklyExpenseViewController]) {
-        print(orderedWeeklyViewControllers.count)
-//        orderedWeeklyViewControllers.append(contentsOf: views)
-        print(orderedWeeklyViewControllers.count)
+        orderedWeeklyViewControllers.append(contentsOf: views)
     }
 
     func getCurrentIndex() -> Int {
