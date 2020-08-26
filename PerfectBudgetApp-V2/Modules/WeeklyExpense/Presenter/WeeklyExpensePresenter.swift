@@ -22,6 +22,18 @@ class WeeklyExpensePresenter {
         let day = interactor.getCurrentDateMovedBy(week: weeksAway)
         return day
     }
+
+    func generateViewControllers() {
+        var views: [WeeklyExpenseViewController] = []
+        for index in 1...5 {
+            self.currentViewIndex = index
+            let vc = WeeklyExpenseViewController()
+            vc.output = self
+            vc.view.tag = index
+            views.append(vc)
+        }
+        pageView.setViewControllers(views)
+    }
 }
 
 extension WeeklyExpensePresenter: WeeklyExpenseViewOutput {
@@ -29,6 +41,7 @@ extension WeeklyExpensePresenter: WeeklyExpenseViewOutput {
         let view = pageView.getCurrentViewController()
         view.output = self
         self.view = view
+        currentViewIndex = view.view.tag
         print(view.view.tag)
     }
 
@@ -37,6 +50,7 @@ extension WeeklyExpensePresenter: WeeklyExpenseViewOutput {
         let day = getDisplayDate(index: index)
         let weeklyTransactions = interactor.getWeekTransactions(for: day)
         let weekTitle = interactor.getWeekString(for: day)
+        print("\(index): \(weekTitle)")
         view.setupInitialState(using: weeklyTransactions, weekTitle: weekTitle)
     }
 

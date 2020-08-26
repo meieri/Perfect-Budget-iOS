@@ -11,4 +11,5 @@ import Foundation
 protocol WeeklyExpensePageViewInput: class {
     func getCurrentIndex() -> Int
     func getCurrentViewController() -> WeeklyExpenseViewController
+    func setViewControllers(_ views: [WeeklyExpenseViewController])
 }

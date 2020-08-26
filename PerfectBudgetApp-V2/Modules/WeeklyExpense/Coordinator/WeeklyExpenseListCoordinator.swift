@@ -38,6 +38,7 @@ class WeeklyExpenseCoordinator: Coordinator {
         view.view.tag = 0
 
         navigationController?.pushViewController(pageView, animated: false)
+        presenter.generateViewControllers()
     }
 
     func transactionTapped(_ transaction: Transaction) {
