@@ -130,17 +130,17 @@ extension WeeklyExpenseViewController: UITableViewDataSource {
         cell.detailTextLabel?.text = "$\(transactions[indexPath.row].amount)"
         return cell
     }
-
-    // commented out to disable deletion for now
-//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//            UITableViewCell.EditingStyle.none
-//            output.deleteTransaction(transaction: transactions[indexPath.row])
-//            self.transactions.remove(at: indexPath.row)
-//            refresh()
-//        }
-//    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            UITableViewCell.EditingStyle.none
+            output.deleteTransaction(transaction: transactions[indexPath.row])
+            self.transactions.remove(at: indexPath.row)
+            refresh()
+        }
+    }
 }
+
 
 
 extension WeeklyExpenseViewController: UITableViewDelegate {
