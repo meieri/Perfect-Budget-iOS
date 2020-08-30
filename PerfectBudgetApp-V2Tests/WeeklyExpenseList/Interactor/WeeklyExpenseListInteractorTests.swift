@@ -18,7 +18,7 @@ class WeeklyExpenseListInteractorTests: XCTestCase {
         // This method is called before the invocation of each test method in the class.
         self.interactor = WeeklyExpenseInteractor()
         self.interactor.service = MockTransactionService()
-//        self.interactor.testOutput = MockPresenter()
+        self.interactor.testOutput = MockPresenter()
     }
 
     func testGetWeekString() {
@@ -29,13 +29,10 @@ class WeeklyExpenseListInteractorTests: XCTestCase {
     }
 
     // need to set up a test core data service
-//    func testCreateTransaction() {
-//        interactor.createTransaction(reason: "Test", amount: 10.0)
-//    }
     func testGetWeekMovedByIndex() {
-//        let date = Date.init(timeIntervalSinceReferenceDate: 86400)
-        let movedByOneWeek = interactor.getCurrentDateMovedBy(week: -1)
-        XCTAssertEqual(movedByOneWeek, Date())
+        let date = Date()
+        let movedByOneWeek = interactor.getCurrentDateMovedBy(week: 0)
+        XCTAssertEqual(movedByOneWeek.description(Locale(identifier: "en-US")))
     }
 
     override func tearDown() {

@@ -43,7 +43,6 @@ class WeeklyExpenseInteractor: WeeklyExpenseInteractorInput {
         return "\(firstDayOfWeek) - \(lastDayOfWeek)"
     }
 
-    // returns a boolean to describe whether or not the date was actually moved
     func getCurrentDateMovedBy(week: Int) -> Date {
         let currentDay = self.today
         let userCalender = Calendar.current

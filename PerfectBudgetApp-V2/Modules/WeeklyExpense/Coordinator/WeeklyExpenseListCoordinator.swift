@@ -12,6 +12,7 @@ import Foundation
 class WeeklyExpenseCoordinator: Coordinator {
     var children = [Coordinator]()
     var navigationController: UINavigationController?
+    private var service: TransactionService!
 
     init(_ navController: UINavigationController) {
         self.navigationController = navController
@@ -29,8 +30,9 @@ class WeeklyExpenseCoordinator: Coordinator {
 
         let interactor = WeeklyExpenseInteractor()
         interactor.output = presenter
-        // this should be a protocol
-        interactor.service = TransactionService()
+        let service = TransactionService()
+        interactor.service = service
+        self.service = service
 
         presenter.interactor = interactor
         view.output = presenter
@@ -38,12 +40,14 @@ class WeeklyExpenseCoordinator: Coordinator {
         view.view.tag = 0
 
         navigationController?.pushViewController(pageView, animated: false)
+        presenter.generateViewControllers()
     }
 
     func transactionTapped(_ transaction: Transaction) {
         let view = DetailViewController()
         view.transaction = transaction
         view.coordinator = self
+        view.service = self.service
         navigationController?.pushViewController(view, animated: true)
     }
 
