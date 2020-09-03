@@ -44,6 +44,7 @@ class WeeklyExpenseCoordinator: Coordinator {
 
         navigationController?.pushViewController(pageView, animated: false)
         presenter.generateViewControllers()
+        configureView()
     }
 
     func transactionTapped(_ transaction: Transaction) {
@@ -60,16 +61,16 @@ class WeeklyExpenseCoordinator: Coordinator {
     }
 
     @objc func exitMenu() {
-        guard let view = navigationController?.visibleViewController?.view else { return }
+        guard let view = navigationController?.view else { return }
         guard let overlay = self.overlay else { return }
         guard let menu = self.menu else { return }
         view.sendSubviewToBack(overlay)
         view.sendSubviewToBack(menu)
     }
 
-    func showMenu() {
+    @objc func showMenu() {
         let overlay = UIControl()
-        guard let view = navigationController?.visibleViewController?.view else { return }
+        guard let view = navigationController?.view else { return }
         overlay.backgroundColor = .gray
         overlay.alpha = 0.5
         overlay.addTarget(self, action: #selector(exitMenu), for: .touchUpInside)
@@ -89,6 +90,19 @@ class WeeklyExpenseCoordinator: Coordinator {
         self.menu = menu
         self.overlay = overlay
     }
+
+    func configureView() {
+        let drawerMenuButton = UIButton()
+        let image = UIImage(named: "hamburger-menu-icon-1")
+        guard let view = navigationController?.view else { return }
+        drawerMenuButton.setImage(image, for: .normal)
+        drawerMenuButton.addTarget(self, action: #selector(showMenu), for: .touchUpInside)
+        drawerMenuButton.accessibilityIdentifier = "Ok"
+        view.addSubview(drawerMenuButton)
+        drawerMenuButton.leadingAnchor == view.safeAreaLayoutGuide.leadingAnchor + 30
+        drawerMenuButton.topAnchor == view.safeAreaLayoutGuide.topAnchor + 20
+        view.bringSubviewToFront(drawerMenuButton)
+    }
 }
 
 class MenuView: UIView {
@@ -104,7 +118,7 @@ class MenuView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        let animator = UIViewPropertyAnimator()
+//        let animator = UIViewPropertyAnimator()
         menuItems.append("Weekly View")
         menuItems.append("Monthly View")
         menuItems.append("Fresh Graphs")
@@ -146,10 +160,13 @@ extension MenuView: UITableViewDelegate {
         switch title {
         case "Weekly View":
             coordinator.start()
+            coordinator.exitMenu()
         case "Monthly View":
             print("Month")
+            coordinator.exitMenu()
         case "Fresh Graphs":
             coordinator.viewGraphScreen()
+            coordinator.exitMenu()
         default:
             print("Nothin but net")
         }

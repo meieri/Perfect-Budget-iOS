@@ -133,7 +133,6 @@ extension WeeklyExpenseViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            UITableViewCell.EditingStyle.none
             output.deleteTransaction(transaction: transactions[indexPath.row])
             self.transactions.remove(at: indexPath.row)
             refresh()

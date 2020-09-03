@@ -14,8 +14,7 @@ class WeeklyExpensePageViewController: UIPageViewController {
     // view controllers are ordered by increasing week, this week exists at 0
     var orderedWeeklyViewControllers: [UIViewController]!
     var output: WeeklyExpenseViewOutput!
-    var drawerMenuButton = UIButton()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.dataSource = self
@@ -23,22 +22,10 @@ class WeeklyExpensePageViewController: UIPageViewController {
         if let firstViewController = orderedWeeklyViewControllers.first {
             setViewControllers([firstViewController], direction: .reverse, animated: false, completion: nil)
         }
-        configureView()
     }
 
     @objc func menuTapped() {
         output.menuTapped()
-    }
-
-    func configureView() {
-        let image = UIImage(named: "hamburger-menu-icon-1")
-        drawerMenuButton.setImage(image, for: .normal)
-        drawerMenuButton.addTarget(self, action: #selector(menuTapped), for: .touchUpInside)
-        drawerMenuButton.accessibilityIdentifier = "Ok"
-        view.addSubview(drawerMenuButton)
-        drawerMenuButton.leadingAnchor == view.safeAreaLayoutGuide.leadingAnchor + 30
-        drawerMenuButton.topAnchor == view.safeAreaLayoutGuide.topAnchor + 20
-        view.bringSubviewToFront(drawerMenuButton)
     }
 
 }
