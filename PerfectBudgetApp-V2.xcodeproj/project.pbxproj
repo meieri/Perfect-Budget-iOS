@@ -49,6 +49,7 @@
 		959B739024B41186002D478A /* PerfectBudgetApp_V2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959B738F24B41186002D478A /* PerfectBudgetApp_V2Tests.swift */; };
 		959B739B24B41186002D478A /* PerfectBudgetApp_V2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959B739A24B41186002D478A /* PerfectBudgetApp_V2UITests.swift */; };
 		95AFBA0124BBB83A0016255C /* PerfectBudgetDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 95AFB9FF24BBB83A0016255C /* PerfectBudgetDataModel.xcdatamodeld */; };
+		95B47D2125019EDA00F6E0EB /* WeeklyExpensePageViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C20B724F30E43005C3BEA /* WeeklyExpensePageViewInput.swift */; };
 		95B84FF024E3574A00A3BE19 /* WeeklyExpenseListServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B84FEF24E3574A00A3BE19 /* WeeklyExpenseListServiceTests.swift */; };
 		95C67BA824CA5DE900BDD740 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C67BA724CA5DE900BDD740 /* ProgressBarView.swift */; };
 		95D738D524D23F3200C385FC /* WeeklyExpenseListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D738D424D23F3200C385FC /* WeeklyExpenseListCoordinator.swift */; };
@@ -676,6 +677,7 @@
 				959B739024B41186002D478A /* PerfectBudgetApp_V2Tests.swift in Sources */,
 				A746D47297462AD8BC01BFA4 /* WeeklyExpenseListCoordinatorTests.swift in Sources */,
 				954AF00424E232800049EBA7 /* TitleProgressContainerView.swift in Sources */,
+				95B47D2125019EDA00F6E0EB /* WeeklyExpensePageViewInput.swift in Sources */,
 				954AF00024E2327B0049EBA7 /* WeeklyExpenseViewOutput.swift in Sources */,
 				954AEFFF24E2327B0049EBA7 /* WeeklyExpenseViewInput.swift in Sources */,
 				954AF00D24E232900049EBA7 /* Coordinator.swift in Sources */,

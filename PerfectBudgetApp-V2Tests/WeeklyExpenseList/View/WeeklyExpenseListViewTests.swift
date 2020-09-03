@@ -25,14 +25,28 @@ class WeeklyExpenseListViewTests: XCTestCase {
     }
 
     class MockPresenter: WeeklyExpenseViewOutput {
-        func viewIsReady()
-        func createTransaction(reason: String, amount: Double)
-        func errorCreatingTransaction()
-        func showGraphScreen()
-        func transactionTapped(_ transaction: Transaction)
-        func deleteTransaction(transaction: Transaction)
-        func getPreviousWeekViewController(index: Int) -> WeeklyExpenseViewController
-        func pageViewTransitionCompleted()
+        func viewIsReady() {
+
+        }
+        func createTransaction(reason: String, amount: Double) {
+
+        }
+        func errorCreatingTransaction() {
+        }
+        func showGraphScreen(){
+        }
+        func transactionTapped(_ transaction: Transaction) {
+
+        }
+        func deleteTransaction(transaction: Transaction) {
+
+        }
+        func getPreviousWeekViewController(index: Int) -> WeeklyExpenseViewController {
+            return WeeklyExpenseViewController()
+        }
+        func pageViewTransitionCompleted() {
+
+        }
         func pushNewTransaction(_ transaction: Transaction) {
             //            print(transaction.amount)
             //            print(transaction.reason)

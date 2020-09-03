@@ -21,7 +21,6 @@ class WeeklyExpensePageViewController: UIPageViewController {
         self.dataSource = self
         self.delegate = self
         if let firstViewController = orderedWeeklyViewControllers.first {
-            print(firstViewController.view.tag)
             setViewControllers([firstViewController], direction: .reverse, animated: false, completion: nil)
         }
         configureView()

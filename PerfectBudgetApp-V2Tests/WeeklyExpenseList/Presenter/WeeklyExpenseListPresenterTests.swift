@@ -9,30 +9,76 @@
 import XCTest
 
 class WeeklyExpenseListPresenterTest: XCTestCase {
-    var presenter: WeeklyExpenseListPresenter!
+    var presenter: WeeklyExpensePresenter!
 
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-        self.presenter = WeeklyExpenseListPresenter()
+        //
+        self.presenter = WeeklyExpensePresenter()
         presenter.interactor = MockInteractor()
         presenter.coordinator = MockCoordinator()
     }
 
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        //
         super.tearDown()
     }
 
-    class MockInteractor: WeeklyExpenseListInteractorInput {
+    class MockInteractor: WeeklyExpenseInteractorInput {
+        func createTransaction(reason: String, amount: Double, day: Date) {
+        }
+
+        func deleteTransaction(_ transaction: Transaction) {
+            //
+        }
+
+        func getWeekTransactions(for day: Date) -> [Transaction] {
+            //
+            return [Transaction]()
+        }
+
+        func getWeekString(for day: Date) -> String {
+            //
+            return ""
+        }
+
+        func getCurrentDateMovedBy(week: Int) -> Date {
+            //
+            return Date()
+        }
+
 
     }
 
-    class MockCoordinator: WeeklyExpenseListRouterInput {
+    class MockCoordinator: Coordinator {
+        var children = [Coordinator]()
+
+        var navigationController: UINavigationController?
+
+        func start() {
+            //
+        }
+
+        func transactionTapped(_ transaction: Transaction) {
+            //
+        }
+
+        func viewGraphScreen() {
+            //
+        }
+
 
     }
 
-    class MockViewController: WeeklyExpenseListViewInput {
+    class MockViewController: WeeklyExpenseViewInput {
+        func setupInitialState(using weeklyTransactions: [Transaction], weekTitle: String) {
+            //
+        }
+
+        func addTransaction(_ transaction: Transaction) {
+            //
+        }
+
 
         func setupInitialState() {
 

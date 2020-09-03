@@ -25,14 +25,16 @@ class WeeklyExpenseListInteractorTests: XCTestCase {
         //Monday, January 1, 2001
         let date = Date.init(timeIntervalSinceReferenceDate: 86400)
         let weekString = interactor.getWeekString(for: date)
-        XCTAssertEqual("Dec 31 - Jan 6", weekString)
+        XCTAssertEqual("Dec 31 – Jan 6", weekString)
     }
 
     // need to set up a test core data service
     func testGetWeekMovedByIndex() {
         let date = Date()
         let movedByOneWeek = interactor.getCurrentDateMovedBy(week: 0)
-        XCTAssertEqual(movedByOneWeek.description(Locale(identifier: "en-US")))
+        let thisWeekDescription = movedByOneWeek.description(with: Locale(identifier: "en-US"))
+        let todayDescription = date.description(with: Locale(identifier: "en-US"))
+        XCTAssertEqual(thisWeekDescription, todayDescription)
     }
 
     override func tearDown() {
@@ -41,11 +43,10 @@ class WeeklyExpenseListInteractorTests: XCTestCase {
     }
 }
 
-//    class MockPresenter: WeeklyExpenseInteractorOutput {
-//        func pushNewTransaction(_ transaction: Transaction) {
-//            print(transaction.amount)
-//            print(transaction.reason)
-//            XCTAssertEqual(transaction.amount, 10.0)
-//        }
-//    }
-//}
+class MockPresenter: WeeklyExpenseInteractorOutput {
+    func pushNewTransaction(_ transaction: Transaction) {
+        print(transaction.amount)
+        print(transaction.reason)
+        XCTAssertEqual(transaction.amount, 10.0)
+    }
+}
