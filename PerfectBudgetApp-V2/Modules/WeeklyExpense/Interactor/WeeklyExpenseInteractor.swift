@@ -40,7 +40,7 @@ class WeeklyExpenseInteractor: WeeklyExpenseInteractorInput {
         formatter.dateFormat = "MMM d"
         let firstDayOfWeek = formatter.string(from: day.lastSunday!)
         let lastDayOfWeek = formatter.string(from: day.nextSaturday!)
-        return "\(firstDayOfWeek) - \(lastDayOfWeek)"
+        return "\(firstDayOfWeek) – \(lastDayOfWeek)"
     }
 
     func getCurrentDateMovedBy(week: Int) -> Date {

@@ -16,7 +16,7 @@ class WeeklyExpenseListViewTests: XCTestCase {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         self.viewController = WeeklyExpenseViewController()
         let mockPresenter = MockPresenter()
-//        viewController.output = mockPresenter
+        viewController.output = mockPresenter
     }
 
     override func tearDown() {
@@ -24,7 +24,15 @@ class WeeklyExpenseListViewTests: XCTestCase {
         super.tearDown()
     }
 
-    class MockPresenter: WeeklyExpenseInteractorOutput {
+    class MockPresenter: WeeklyExpenseViewOutput {
+        func viewIsReady()
+        func createTransaction(reason: String, amount: Double)
+        func errorCreatingTransaction()
+        func showGraphScreen()
+        func transactionTapped(_ transaction: Transaction)
+        func deleteTransaction(transaction: Transaction)
+        func getPreviousWeekViewController(index: Int) -> WeeklyExpenseViewController
+        func pageViewTransitionCompleted()
         func pushNewTransaction(_ transaction: Transaction) {
             //            print(transaction.amount)
             //            print(transaction.reason)
