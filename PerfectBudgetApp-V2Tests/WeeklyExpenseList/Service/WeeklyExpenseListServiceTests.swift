@@ -10,13 +10,13 @@ import CoreData
 import Foundation
 
 class MockTransactionService: TransactionServiceProtocol {
-
     let managedContext = NSPersistentContainer(name: "Test Container").viewContext
 
-    func createTransaction(reason: String, amount: Double) -> Transaction {
+    func createTransaction(reason: String, amount: Double, day: Date) -> Transaction {
         let transaction = Transaction()
         transaction.amount = amount
         transaction.reason = reason
+        transaction.date = day
         return transaction
     }
 
