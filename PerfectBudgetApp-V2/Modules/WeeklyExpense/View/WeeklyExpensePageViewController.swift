@@ -26,10 +26,14 @@ class WeeklyExpensePageViewController: UIPageViewController {
         configureView()
     }
 
+    @objc func menuTapped() {
+        output.menuTapped()
+    }
+
     func configureView() {
-        let image = UIImage(named: "hamburger-menu-icon")
+        let image = UIImage(named: "hamburger-menu-icon-1")
         drawerMenuButton.setImage(image, for: .normal)
-        drawerMenuButton.tintColor = .black
+        drawerMenuButton.addTarget(self, action: #selector(menuTapped), for: .touchUpInside)
         drawerMenuButton.accessibilityIdentifier = "Ok"
         view.addSubview(drawerMenuButton)
         drawerMenuButton.leadingAnchor == view.safeAreaLayoutGuide.leadingAnchor + 30

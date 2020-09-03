@@ -85,6 +85,10 @@ extension WeeklyExpensePresenter: WeeklyExpenseViewOutput {
         return weeklyExpenseVC
     }
 
+    func menuTapped() {
+        coordinator.showMenu()
+    }
+
 }
 
 extension WeeklyExpensePresenter: WeeklyExpenseInteractorOutput {

@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import Anchorage
 import Foundation
 
 class WeeklyExpenseCoordinator: Coordinator {
     var children = [Coordinator]()
     var navigationController: UINavigationController?
     private var service: TransactionService!
+    private var overlay: UIView?
+    private var menu: MenuView?
 
     init(_ navController: UINavigationController) {
         self.navigationController = navController
@@ -55,4 +58,101 @@ class WeeklyExpenseCoordinator: Coordinator {
         let view = GraphViewController()
         navigationController?.pushViewController(view, animated: true)
     }
+
+    @objc func exitMenu() {
+        guard let view = navigationController?.visibleViewController?.view else { return }
+        guard let overlay = self.overlay else { return }
+        guard let menu = self.menu else { return }
+        view.sendSubviewToBack(overlay)
+        view.sendSubviewToBack(menu)
+    }
+
+    func showMenu() {
+        let overlay = UIControl()
+        guard let view = navigationController?.visibleViewController?.view else { return }
+        overlay.backgroundColor = .gray
+        overlay.alpha = 0.5
+        overlay.addTarget(self, action: #selector(exitMenu), for: .touchUpInside)
+        view.addSubview(overlay)
+        overlay.topAnchor == view.topAnchor
+        overlay.bottomAnchor == view.bottomAnchor
+        overlay.leadingAnchor == view.leadingAnchor
+        overlay.trailingAnchor == view.trailingAnchor
+        view.bringSubviewToFront(overlay)
+        let menu = MenuView()
+        menu.coordinator = self
+        view.addSubview(menu)
+        menu.topAnchor == view.topAnchor
+        menu.bottomAnchor == view.bottomAnchor
+        menu.leadingAnchor == view.leadingAnchor
+        view.bringSubviewToFront(menu)
+        self.menu = menu
+        self.overlay = overlay
+    }
+}
+
+class MenuView: UIView {
+    private var menuItems = [String]()
+    var coordinator: WeeklyExpenseCoordinator!
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        self.widthAnchor == 4 * UIScreen.main.bounds.size.width / 3
+        self.heightAnchor == UIScreen.main.bounds.size.height
+        self.backgroundColor = .white
+    }
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        let animator = UIViewPropertyAnimator()
+        menuItems.append("Weekly View")
+        menuItems.append("Monthly View")
+        menuItems.append("Fresh Graphs")
+        self.widthAnchor == (UIScreen.main.bounds.size.width / 4) * 3
+        self.heightAnchor == UIScreen.main.bounds.size.height
+        self.backgroundColor = .white
+        let table = UITableView()
+        table.dataSource = self
+        table.delegate = self
+        self.addSubview(table)
+        table.widthAnchor == self.widthAnchor
+        table.topAnchor == self.safeAreaLayoutGuide.topAnchor
+        table.heightAnchor == self.safeAreaLayoutGuide.heightAnchor
+        table.centerXAnchor == self.centerXAnchor
+    }
+
+
+}
+
+extension MenuView: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // count for number of array items
+        self.menuItems.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .value1, reuseIdentifier: "Menu Item")
+        cell.textLabel?.text = menuItems[indexPath.row]
+        cell.detailTextLabel?.text = "Go to this"
+        return cell
+    }
+
+
+}
+
+extension MenuView: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let title = menuItems[indexPath.row]
+        switch title {
+        case "Weekly View":
+            coordinator.start()
+        case "Monthly View":
+            print("Month")
+        case "Fresh Graphs":
+            coordinator.viewGraphScreen()
+        default:
+            print("Nothin but net")
+        }
+    }
+
 }

@@ -13,10 +13,13 @@ class WeeklyExpenseListPresenterTest: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        //
         self.presenter = WeeklyExpensePresenter()
         presenter.interactor = MockInteractor()
         presenter.coordinator = MockCoordinator()
+    }
+
+    func testGetWeekString() {
+        let weekString = presenter.
     }
 
     override func tearDown() {
@@ -38,8 +41,7 @@ class WeeklyExpenseListPresenterTest: XCTestCase {
         }
 
         func getWeekString(for day: Date) -> String {
-            //
-            return ""
+            return "Aug 30 – Sep 5"
         }
 
         func getCurrentDateMovedBy(week: Int) -> Date {
