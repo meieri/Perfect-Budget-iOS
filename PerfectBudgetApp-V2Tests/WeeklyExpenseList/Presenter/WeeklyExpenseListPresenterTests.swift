@@ -19,7 +19,6 @@ class WeeklyExpenseListPresenterTest: XCTestCase {
     }
 
     func testGetWeekString() {
-        let weekString = presenter.
     }
 
     override func tearDown() {
@@ -41,7 +40,7 @@ class WeeklyExpenseListPresenterTest: XCTestCase {
         }
 
         func getWeekString(for day: Date) -> String {
-            return "Aug 30 – Sep 5"
+            return "Aug 30 - Sep 5"
         }
 
         func getCurrentDateMovedBy(week: Int) -> Date {
@@ -53,6 +52,10 @@ class WeeklyExpenseListPresenterTest: XCTestCase {
     }
 
     class MockCoordinator: Coordinator {
+        func showMenu() {
+            //
+        }
+
         var children = [Coordinator]()
 
         var navigationController: UINavigationController?
