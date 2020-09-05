@@ -96,7 +96,8 @@ extension WeeklyExpensePresenter: WeeklyExpenseInteractorOutput {
         let index = pageView.getCurrentIndex()
         let day = getDisplayDate(index: index)
         let weekTitle = interactor.getWeekString(for: day)
-        print(weekTitle)
+        let view = pageView.getCurrentViewController()
+        self.view = view
         view.addTransaction(transaction)
     }
 }

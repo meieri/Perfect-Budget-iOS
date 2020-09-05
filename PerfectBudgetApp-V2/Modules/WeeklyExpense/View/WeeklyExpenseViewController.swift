@@ -15,7 +15,7 @@ class WeeklyExpenseViewController: UIViewController {
     var tableView = UITableView()
     var titleProgressView = TitleProgressContainerView()
     var transactions: [Transaction] = []
-    let addTransactionButton = UIButton(type: .system)
+    let addTransactionButton = UIButton(type: .roundedRect)
     let editTransactionButton = UIButton(type: .system)
     let navigateToGraphs = UIButton(type: .system)
 //    let pageIndiciator = UIPageControl()
@@ -78,9 +78,11 @@ extension WeeklyExpenseViewController {
     func configureView() {
         // Heirarchy
         let mainStack = UIStackView(arrangedSubviews: [titleProgressView, tableView])
-        let buttonStack = UIStackView(arrangedSubviews: [navigateToGraphs, editTransactionButton, addTransactionButton])
+//        let buttonStack = UIStackView(arrangedSubviews: [navigateToGraphs, editTransactionButton, addTransactionButton])
+
         self.view.addSubview(mainStack)
-        self.view.addSubview(buttonStack)
+        self.view.addSubview(addTransactionButton)
+//        self.view.addSubview(buttonStack)
         // self.view.addSubview(pageIndiciator)
         tableView.register(UITableViewCell.self,
                            forCellReuseIdentifier: "TransactionCell")
@@ -93,8 +95,12 @@ extension WeeklyExpenseViewController {
         // Style
         mainStack.axis = .vertical
         mainStack.alignment = .center
-        buttonStack.distribution = .fillEqually
-        addTransactionButton.setTitle("New", for: .normal)
+//        buttonStack.distribution = .fillEqually
+        let attrString = NSAttributedString(string: "New Expense", attributes: [ .font: UIFont.systemFont(ofSize: 16, weight: .bold), .foregroundColor: UIColor.white ]
+        )
+        addTransactionButton.setAttributedTitle(attrString, for: .normal)
+        addTransactionButton.backgroundColor = .black
+        addTransactionButton.layer.cornerRadius = 16.0
         self.view.backgroundColor = .white
         tableView.backgroundColor = .white
         navigateToGraphs.setTitle("Graphs", for: .normal)
@@ -106,14 +112,10 @@ extension WeeklyExpenseViewController {
         titleProgressView.widthAnchor == view.safeAreaLayoutGuide.widthAnchor - 40
         mainStack.topAnchor == view.safeAreaLayoutGuide.topAnchor + 15
         mainStack.centerAnchors == view.centerAnchors
-
-        buttonStack.topAnchor == mainStack.bottomAnchor + 10
-        buttonStack.widthAnchor == (view.safeAreaLayoutGuide.widthAnchor / 4) * 3
-        buttonStack.centerXAnchor == view.safeAreaLayoutGuide.centerXAnchor
-
-        // pageIndiciator.topAnchor == buttonStack.topAnchor
-        // pageIndiciator.bottomAnchor == view.safeAreaLayoutGuide.bottomAnchor
-        // pageIndiciator.centerXAnchor == view.centerXAnchor
+        addTransactionButton.leadingAnchor == view.safeAreaLayoutGuide.leadingAnchor + 20
+//        addTransactionButton.topAnchor == tableView.bottomAnchor + 10
+        addTransactionButton.trailingAnchor == view.safeAreaLayoutGuide.trailingAnchor - 20
+        addTransactionButton.bottomAnchor == view.safeAreaLayoutGuide.bottomAnchor - 20
 
         tableView.widthAnchor == mainStack.widthAnchor / 8 * 7
     }

@@ -26,9 +26,9 @@ class WeeklyExpenseListViewTests: XCTestCase {
 
     class MockPresenter: WeeklyExpenseViewOutput {
         func menuTapped() {
-            <#code#>
+            //
         }
-        
+
         func viewIsReady() {
 
         }
