@@ -14,8 +14,9 @@ class WeeklyExpenseCoordinator: Coordinator {
     var children = [Coordinator]()
     var navigationController: UINavigationController?
     private var service: TransactionService!
-    private var overlay: UIView?
+    private var overlay: UIControl?
     private var menu: MenuView?
+    private var menuButton: UIButton?
 
     init(_ navController: UINavigationController) {
         self.navigationController = navController
@@ -61,40 +62,44 @@ class WeeklyExpenseCoordinator: Coordinator {
     }
 
     @objc func exitMenu() {
-        guard let view = navigationController?.view else { return }
         guard let overlay = self.overlay else { return }
         guard let menu = self.menu else { return }
-        view.sendSubviewToBack(overlay)
-        view.sendSubviewToBack(menu)
+        guard let menuButton = self.menuButton else { return }
+        overlay.isHidden = true
+        menu.isHidden = true
+        menuButton.isHidden = false
     }
 
     @objc func showMenu() {
-        let overlay = UIControl()
+        guard let overlay = self.overlay else { return }
+        guard let menu = self.menu else { return }
+        guard let menuButton = self.menuButton else { return }
+        overlay.isHidden = false
+        menu.isHidden = false
+        menuButton.isHidden = true
+    }
+
+    func configureView() {
         guard let view = navigationController?.view else { return }
+        self.overlay = UIControl()
+        self.menu = MenuView()
+        guard let overlay = self.overlay else { return }
+        guard let menu = self.menu else { return }
+        view.addSubview(overlay)
+        view.addSubview(menu)
         overlay.backgroundColor = .gray
         overlay.alpha = 0.5
-        overlay.addTarget(self, action: #selector(exitMenu), for: .touchUpInside)
-        view.addSubview(overlay)
+        overlay.addTarget(self, action: #selector(exitMenu), for: UIControl.Event.touchUpInside)
         overlay.topAnchor == view.topAnchor
         overlay.bottomAnchor == view.bottomAnchor
         overlay.leadingAnchor == view.leadingAnchor
         overlay.trailingAnchor == view.trailingAnchor
-        view.bringSubviewToFront(overlay)
-        let menu = MenuView()
         menu.coordinator = self
-        view.addSubview(menu)
         menu.topAnchor == view.topAnchor
         menu.bottomAnchor == view.bottomAnchor
         menu.leadingAnchor == view.leadingAnchor
-        view.bringSubviewToFront(menu)
-        self.menu = menu
-        self.overlay = overlay
-    }
-
-    func configureView() {
         let drawerMenuButton = UIButton()
         let image = UIImage(named: "hamburger-menu-icon-1")
-        guard let view = navigationController?.view else { return }
         drawerMenuButton.setImage(image, for: .normal)
         drawerMenuButton.addTarget(self, action: #selector(showMenu), for: .touchUpInside)
         drawerMenuButton.accessibilityIdentifier = "Ok"
@@ -102,6 +107,8 @@ class WeeklyExpenseCoordinator: Coordinator {
         drawerMenuButton.leadingAnchor == view.safeAreaLayoutGuide.leadingAnchor + 30
         drawerMenuButton.topAnchor == view.safeAreaLayoutGuide.topAnchor + 20
         view.bringSubviewToFront(drawerMenuButton)
+        self.menuButton = drawerMenuButton
+        exitMenu()
     }
 }
 

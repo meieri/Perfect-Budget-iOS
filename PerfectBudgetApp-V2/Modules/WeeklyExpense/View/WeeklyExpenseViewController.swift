@@ -112,10 +112,13 @@ extension WeeklyExpenseViewController {
         titleProgressView.widthAnchor == view.safeAreaLayoutGuide.widthAnchor - 40
         mainStack.topAnchor == view.safeAreaLayoutGuide.topAnchor + 15
         mainStack.centerAnchors == view.centerAnchors
-        addTransactionButton.leadingAnchor == view.safeAreaLayoutGuide.leadingAnchor + 20
+        addTransactionButton.topAnchor == mainStack.bottomAnchor
+        addTransactionButton.leadingAnchor == view.safeAreaLayoutGuide.leadingAnchor + 25
 //        addTransactionButton.topAnchor == tableView.bottomAnchor + 10
-        addTransactionButton.trailingAnchor == view.safeAreaLayoutGuide.trailingAnchor - 20
+        addTransactionButton.trailingAnchor == view.safeAreaLayoutGuide.trailingAnchor - 25
         addTransactionButton.bottomAnchor == view.safeAreaLayoutGuide.bottomAnchor - 20
+
+        addTransactionButton.heightAnchor == 40
 
         tableView.widthAnchor == mainStack.widthAnchor / 8 * 7
     }
@@ -171,7 +174,7 @@ extension WeeklyExpenseViewController: WeeklyExpenseViewInput {
 class SubtitleTableViewCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
+        super.init(style: .value1, reuseIdentifier: reuseIdentifier)
     }
 
     required init?(coder aDecoder: NSCoder) {
