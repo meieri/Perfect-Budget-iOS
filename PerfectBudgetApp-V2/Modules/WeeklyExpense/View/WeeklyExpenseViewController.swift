@@ -39,7 +39,7 @@ class WeeklyExpenseViewController: UIViewController {
 
     @objc func showInputDialog() {
         let alertController = UIAlertController(title: "Enter details of transaction?", message: "Enter your reason and amount", preferredStyle: .alert)
-        let confirmAction = UIAlertAction(title: "Enter", style: .default) { [weak self] (_) in
+        let confirmAction = UIAlertAction(title: "Add", style: .default) { [weak self] (_) in
             let reason = alertController.textFields?[0].text
             let amount = alertController.textFields?[1].text
             // so crazy safe
@@ -57,7 +57,9 @@ class WeeklyExpenseViewController: UIViewController {
         alertController.addTextField { (textField) in
             textField.placeholder = "Enter Amount"
         }
+        let denyAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in return }
         alertController.addAction(confirmAction)
+        alertController.addAction(denyAction)
         self.present(alertController, animated: true, completion: nil)
     }
 
@@ -78,12 +80,8 @@ extension WeeklyExpenseViewController {
     func configureView() {
         // Heirarchy
         let mainStack = UIStackView(arrangedSubviews: [titleProgressView, tableView])
-//        let buttonStack = UIStackView(arrangedSubviews: [navigateToGraphs, editTransactionButton, addTransactionButton])
-
         self.view.addSubview(mainStack)
         self.view.addSubview(addTransactionButton)
-//        self.view.addSubview(buttonStack)
-        // self.view.addSubview(pageIndiciator)
         tableView.register(UITableViewCell.self,
                            forCellReuseIdentifier: "TransactionCell")
         tableView.dataSource = self
@@ -95,26 +93,24 @@ extension WeeklyExpenseViewController {
         // Style
         mainStack.axis = .vertical
         mainStack.alignment = .center
-//        buttonStack.distribution = .fillEqually
-        let attrString = NSAttributedString(string: "New Expense", attributes: [ .font: UIFont.systemFont(ofSize: 16, weight: .bold), .foregroundColor: UIColor.white ]
+        mainStack.spacing = 20
+        let attrString = NSAttributedString(string: "New Expense", attributes: [
+            .font: UIFont.systemFont(ofSize: 16, weight: .bold),
+            .foregroundColor: UIColor.white
+            ]
         )
         addTransactionButton.setAttributedTitle(attrString, for: .normal)
         addTransactionButton.backgroundColor = .black
-        addTransactionButton.layer.cornerRadius = 16.0
+        addTransactionButton.layer.cornerRadius = 8.0
         self.view.backgroundColor = .white
         tableView.backgroundColor = .white
         navigateToGraphs.setTitle("Graphs", for: .normal)
-        // pageIndiciator.numberOfPages = 3
-        // pageIndiciator.currentPage = 1
-        // pageIndiciator.pageIndicatorTintColor = .lightGray
-        // pageIndiciator.currentPageIndicatorTintColor = .gray
         // Layout
         titleProgressView.widthAnchor == view.safeAreaLayoutGuide.widthAnchor - 40
         mainStack.topAnchor == view.safeAreaLayoutGuide.topAnchor + 15
         mainStack.centerAnchors == view.centerAnchors
         addTransactionButton.topAnchor == mainStack.bottomAnchor
         addTransactionButton.leadingAnchor == view.safeAreaLayoutGuide.leadingAnchor + 25
-//        addTransactionButton.topAnchor == tableView.bottomAnchor + 10
         addTransactionButton.trailingAnchor == view.safeAreaLayoutGuide.trailingAnchor - 25
         addTransactionButton.bottomAnchor == view.safeAreaLayoutGuide.bottomAnchor - 20
 
@@ -132,7 +128,10 @@ extension WeeklyExpenseViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionCell", for: indexPath)
         cell.textLabel?.text = transactions[indexPath.row].reason
-        cell.detailTextLabel?.text = "$\(transactions[indexPath.row].amount)"
+        let amount = Self.getAmountString(amount: transactions[indexPath.row].amount)
+        cell.detailTextLabel?.text = "\(amount)"
+        cell.detailTextLabel?.textColor = .darkGray
+        cell.accessoryType = .disclosureIndicator
         return cell
     }
     
@@ -141,6 +140,19 @@ extension WeeklyExpenseViewController: UITableViewDataSource {
             output.deleteTransaction(transaction: transactions[indexPath.row])
             self.transactions.remove(at: indexPath.row)
             refresh()
+        }
+    }
+
+    static func getAmountString(amount: Double) -> String {
+        let currencyFormatter = NumberFormatter()
+        currencyFormatter.usesGroupingSeparator = true
+        currencyFormatter.numberStyle = .currency
+        currencyFormatter.locale = Locale.current
+
+        if let priceString = currencyFormatter.string(from: NSNumber(value: amount)) {
+            return priceString
+        } else {
+            return ""
         }
     }
 }

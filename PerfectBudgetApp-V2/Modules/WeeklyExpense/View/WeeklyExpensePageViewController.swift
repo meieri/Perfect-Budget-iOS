@@ -45,9 +45,6 @@ extension WeeklyExpensePageViewController: UIPageViewControllerDataSource {
         if isIndexValid {
             return orderedWeeklyViewControllers[previousIndex]
         } else {
-//            let vc = output.getPreviousWeekViewController(index: previousIndex)
-//            orderedWeeklyViewControllers.append(vc)
-//            return orderedWeeklyViewControllers[previousIndex]
             return nil
         }
     }
@@ -65,7 +62,7 @@ extension WeeklyExpensePageViewController: UIPageViewControllerDataSource {
         return orderedWeeklyViewControllers[nextIndex]
     }
 }
-//
+
 extension WeeklyExpensePageViewController: UIPageViewControllerDelegate {
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         if completed {
@@ -84,7 +81,6 @@ extension WeeklyExpensePageViewController: WeeklyExpensePageViewInput {
         return viewControllers?.first?.view.tag ?? 0
     }
 
-    /// TODO make totally safe
     func getCurrentViewController() -> WeeklyExpenseViewController {
         let index = getCurrentIndex()
         return orderedWeeklyViewControllers[index] as! WeeklyExpenseViewController

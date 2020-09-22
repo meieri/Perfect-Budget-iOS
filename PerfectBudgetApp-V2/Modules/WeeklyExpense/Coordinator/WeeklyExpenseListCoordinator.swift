@@ -53,6 +53,7 @@ class WeeklyExpenseCoordinator: Coordinator {
         view.transaction = transaction
         view.coordinator = self
         view.service = self.service
+        menuButton?.isHidden = true
         navigationController?.pushViewController(view, animated: true)
     }
 
@@ -61,12 +62,24 @@ class WeeklyExpenseCoordinator: Coordinator {
         navigationController?.pushViewController(view, animated: true)
     }
 
+    func viewSettings() {
+        let view = SettingsViewController()
+        navigationController?.pushViewController(view, animated: true)
+    }
+
+    func goHome() {
+        navigationController?.popToRootViewController(animated: true)
+        showMenu()
+    }
+
     @objc func exitMenu() {
         guard let overlay = self.overlay else { return }
         guard let menu = self.menu else { return }
         guard let menuButton = self.menuButton else { return }
-        overlay.isHidden = true
-        menu.isHidden = true
+        UIView.animate(withDuration: 0.4, animations: {
+            overlay.isHidden = true
+            menu.isHidden = true
+        })
         menuButton.isHidden = false
     }
 
@@ -74,9 +87,11 @@ class WeeklyExpenseCoordinator: Coordinator {
         guard let overlay = self.overlay else { return }
         guard let menu = self.menu else { return }
         guard let menuButton = self.menuButton else { return }
-        overlay.isHidden = false
-        menu.isHidden = false
-        menuButton.isHidden = true
+        UIView.animate(withDuration: 0.4, animations: {
+            overlay.isHidden = false
+            menu.isHidden = false
+            menuButton.isHidden = true
+        })
     }
 
     func configureView() {
@@ -129,12 +144,12 @@ class MenuView: UIView {
         menuItems.append("Weekly View")
         menuItems.append("Monthly View")
         menuItems.append("Fresh Graphs")
-        self.widthAnchor == (UIScreen.main.bounds.size.width / 4) * 3
-        self.heightAnchor == UIScreen.main.bounds.size.height
-        self.backgroundColor = .white
         let table = UITableView()
         table.dataSource = self
         table.delegate = self
+        self.widthAnchor == (UIScreen.main.bounds.size.width / 4) * 3
+        self.heightAnchor == UIScreen.main.bounds.size.height
+        self.backgroundColor = .white
         self.addSubview(table)
         table.widthAnchor == self.widthAnchor
         table.topAnchor == self.safeAreaLayoutGuide.topAnchor
@@ -166,14 +181,15 @@ extension MenuView: UITableViewDelegate {
         let title = menuItems[indexPath.row]
         switch title {
         case "Weekly View":
-            coordinator.start()
+            // TODO change this
+            coordinator.goHome()
             coordinator.exitMenu()
         case "Monthly View":
             print("Month")
-            coordinator.exitMenu()
+//            coordinator.exitMenu()
         case "Fresh Graphs":
             coordinator.viewGraphScreen()
-            coordinator.exitMenu()
+//            coordinator.exitMenu()
         default:
             print("Nothin but net")
         }
