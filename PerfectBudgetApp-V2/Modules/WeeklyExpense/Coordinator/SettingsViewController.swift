@@ -19,10 +19,12 @@ class SettingsViewController: UIViewController {
 
 extension SettingsViewController {
     func configureView() {
+        self.view.backgroundColor = .white
         let title = UILabel()
         title.text = "Settings"
-        title.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        title.font = UIFont.systemFont(ofSize: 28, weight: .bold)
         self.view.addSubview(title)
         title.topAnchor == self.view.topAnchor + 30
+        title.centerXAnchor == self.view.centerXAnchor
     }
 }

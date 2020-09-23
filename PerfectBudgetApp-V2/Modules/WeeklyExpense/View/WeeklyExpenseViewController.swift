@@ -30,11 +30,27 @@ class WeeklyExpenseViewController: UIViewController {
         }
     }
 
+    override var navigationItem: UINavigationItem {
+        get {
+            let navigationItem = UINavigationItem()
+            let image = UIImage(named: "hamburger-menu-icon-1")
+            navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(showMenu))
+//            navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, landscapeImagePhone: image, style: .plain, target: self, action: #selector(showMenu))
+            return navigationItem
+        }
+    }
+
     // MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
         output.viewIsReady()
+    }
+
+    func 
+
+    @objc func showMenu() {
+//        output.showMenu()
     }
 
     @objc func showInputDialog() {
@@ -117,6 +133,7 @@ extension WeeklyExpenseViewController {
         addTransactionButton.heightAnchor == 40
 
         tableView.widthAnchor == mainStack.widthAnchor / 8 * 7
+
     }
 }
 

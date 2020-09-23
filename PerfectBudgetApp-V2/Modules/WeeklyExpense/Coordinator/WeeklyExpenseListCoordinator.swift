@@ -53,17 +53,20 @@ class WeeklyExpenseCoordinator: Coordinator {
         view.transaction = transaction
         view.coordinator = self
         view.service = self.service
-        menuButton?.isHidden = true
         navigationController?.pushViewController(view, animated: true)
     }
 
     func viewGraphScreen() {
+        exitMenu()
         let view = GraphViewController()
         navigationController?.pushViewController(view, animated: true)
     }
 
     func viewSettings() {
+        exitMenu()
         let view = SettingsViewController()
+        guard let menuButton = self.menuButton else { return }
+        view.view.addSubview(menuButton)
         navigationController?.pushViewController(view, animated: true)
     }
 
@@ -75,31 +78,29 @@ class WeeklyExpenseCoordinator: Coordinator {
     @objc func exitMenu() {
         guard let overlay = self.overlay else { return }
         guard let menu = self.menu else { return }
-        guard let menuButton = self.menuButton else { return }
-        UIView.animate(withDuration: 0.4, animations: {
-            overlay.isHidden = true
-            menu.isHidden = true
-        })
-        menuButton.isHidden = false
+        overlay.fadeOut()
+        menu.fadeOut()
     }
 
     @objc func showMenu() {
         guard let overlay = self.overlay else { return }
         guard let menu = self.menu else { return }
-        guard let menuButton = self.menuButton else { return }
-        UIView.animate(withDuration: 0.4, animations: {
-            overlay.isHidden = false
-            menu.isHidden = false
-            menuButton.isHidden = true
-        })
+        overlay.fadeIn()
+        menu.fadeIn()
     }
 
     func configureView() {
-        guard let view = navigationController?.view else { return }
+        guard let view = navigationController?.visibleViewController?.view else { return }
         self.overlay = UIControl()
         self.menu = MenuView()
         guard let overlay = self.overlay else { return }
         guard let menu = self.menu else { return }
+        let drawerMenuButton = UIButton()
+        let image = UIImage(named: "hamburger-menu-icon-1")
+        drawerMenuButton.setImage(image, for: .normal)
+        drawerMenuButton.addTarget(self, action: #selector(showMenu), for: .touchUpInside)
+        drawerMenuButton.accessibilityIdentifier = "Ok"
+        view.addSubview(drawerMenuButton)
         view.addSubview(overlay)
         view.addSubview(menu)
         overlay.backgroundColor = .gray
@@ -113,15 +114,8 @@ class WeeklyExpenseCoordinator: Coordinator {
         menu.topAnchor == view.topAnchor
         menu.bottomAnchor == view.bottomAnchor
         menu.leadingAnchor == view.leadingAnchor
-        let drawerMenuButton = UIButton()
-        let image = UIImage(named: "hamburger-menu-icon-1")
-        drawerMenuButton.setImage(image, for: .normal)
-        drawerMenuButton.addTarget(self, action: #selector(showMenu), for: .touchUpInside)
-        drawerMenuButton.accessibilityIdentifier = "Ok"
-        view.addSubview(drawerMenuButton)
         drawerMenuButton.leadingAnchor == view.safeAreaLayoutGuide.leadingAnchor + 30
         drawerMenuButton.topAnchor == view.safeAreaLayoutGuide.topAnchor + 20
-        view.bringSubviewToFront(drawerMenuButton)
         self.menuButton = drawerMenuButton
         exitMenu()
     }
@@ -132,29 +126,27 @@ class MenuView: UIView {
     var coordinator: WeeklyExpenseCoordinator!
 
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        self.widthAnchor == 4 * UIScreen.main.bounds.size.width / 3
-        self.heightAnchor == UIScreen.main.bounds.size.height
-        self.backgroundColor = .white
+        fatalError("This has not been implementend")
     }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-//        let animator = UIViewPropertyAnimator()
+        // create menu items
         menuItems.append("Weekly View")
         menuItems.append("Monthly View")
         menuItems.append("Fresh Graphs")
+        menuItems.append("User Settings")
         let table = UITableView()
         table.dataSource = self
         table.delegate = self
         self.widthAnchor == (UIScreen.main.bounds.size.width / 4) * 3
-        self.heightAnchor == UIScreen.main.bounds.size.height
         self.backgroundColor = .white
         self.addSubview(table)
         table.widthAnchor == self.widthAnchor
         table.topAnchor == self.safeAreaLayoutGuide.topAnchor
         table.heightAnchor == self.safeAreaLayoutGuide.heightAnchor
         table.centerXAnchor == self.centerXAnchor
+        table.allowsSelection = true
     }
 
 
@@ -170,6 +162,8 @@ extension MenuView: UITableViewDataSource {
         let cell = UITableViewCell(style: .value1, reuseIdentifier: "Menu Item")
         cell.textLabel?.text = menuItems[indexPath.row]
         cell.detailTextLabel?.text = "Go to this"
+        cell.selectionStyle = .gray
+        cell.userInteractionEnabledWhileDragging = true
         return cell
     }
 
@@ -178,21 +172,51 @@ extension MenuView: UITableViewDataSource {
 
 extension MenuView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("here")
         let title = menuItems[indexPath.row]
         switch title {
         case "Weekly View":
-            // TODO change this
             coordinator.goHome()
             coordinator.exitMenu()
+            return
         case "Monthly View":
-            print("Month")
-//            coordinator.exitMenu()
+            coordinator.exitMenu()
+            return
         case "Fresh Graphs":
             coordinator.viewGraphScreen()
-//            coordinator.exitMenu()
+            return
+        case "User Settings":
+            coordinator.viewSettings()
+            return
         default:
             print("Nothin but net")
+            return
         }
+    }
+
+}
+
+extension UIView {
+
+    func fadeIn(_ duration: TimeInterval? = 0.2, onCompletion: (() -> Void)? = nil) {
+        self.alpha = 0
+        self.isHidden = false
+        UIView.animate(withDuration: duration!,
+                       animations: { self.alpha = 1 },
+                       completion: { (value: Bool) in
+                          if let complete = onCompletion { complete() }
+                       }
+        )
+    }
+
+    func fadeOut(_ duration: TimeInterval? = 0.2, onCompletion: (() -> Void)? = nil) {
+        UIView.animate(withDuration: duration!,
+                       animations: { self.alpha = 0 },
+                       completion: { (value: Bool) in
+                           self.isHidden = true
+                           if let complete = onCompletion { complete() }
+                       }
+        )
     }
 
 }

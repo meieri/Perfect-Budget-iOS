@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.windowScene = windowScene
         let navController = UINavigationController()
-        navController.setNavigationBarHidden(true, animated: false)
+        navController.setNavigationBarHidden(false, animated: false)
         let weeklyExpenseListCoordinator = WeeklyExpenseCoordinator(navController)
         window?.rootViewController = navController
         weeklyExpenseListCoordinator.start()
