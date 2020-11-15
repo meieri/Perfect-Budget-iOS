@@ -47,8 +47,6 @@ class WeeklyExpenseViewController: UIViewController {
         output.viewIsReady()
     }
 
-    func 
-
     @objc func showMenu() {
 //        output.showMenu()
     }
