@@ -60,19 +60,19 @@ class WeeklyExpenseCoordinator: Coordinator {
         exitMenu()
         let view = GraphViewController()
         navigationController?.pushViewController(view, animated: true)
+        configureView()
     }
 
     func viewSettings() {
         exitMenu()
         let view = SettingsViewController()
-        guard let menuButton = self.menuButton else { return }
-        view.view.addSubview(menuButton)
         navigationController?.pushViewController(view, animated: true)
+        configureView()
     }
 
     func goHome() {
         navigationController?.popToRootViewController(animated: true)
-        showMenu()
+        configureView()
     }
 
     @objc func exitMenu() {
@@ -172,18 +172,17 @@ extension MenuView: UITableViewDataSource {
 
 extension MenuView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("here")
         let title = menuItems[indexPath.row]
         switch title {
         case "Weekly View":
-            coordinator.goHome()
             coordinator.exitMenu()
+            coordinator.goHome()
             return
         case "Monthly View":
             coordinator.exitMenu()
             return
         case "Fresh Graphs":
-            coordinator.viewGraphScreen()
+            coordinator.exitMenu()
             return
         case "User Settings":
             coordinator.viewSettings()

@@ -18,7 +18,6 @@ class WeeklyExpenseViewController: UIViewController {
     let addTransactionButton = UIButton(type: .roundedRect)
     let editTransactionButton = UIButton(type: .system)
     let navigateToGraphs = UIButton(type: .system)
-//    let pageIndiciator = UIPageControl()
 
     var currentSpending: Double {
         get {
@@ -33,7 +32,6 @@ class WeeklyExpenseViewController: UIViewController {
     override var navigationItem: UINavigationItem {
         get {
             let navigationItem = UINavigationItem()
-            let image = UIImage(named: "hamburger-menu-icon-1")
             navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(showMenu))
 //            navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, landscapeImagePhone: image, style: .plain, target: self, action: #selector(showMenu))
             return navigationItem

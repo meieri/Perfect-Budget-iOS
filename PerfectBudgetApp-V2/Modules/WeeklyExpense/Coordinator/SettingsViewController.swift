@@ -24,7 +24,7 @@ extension SettingsViewController {
         title.text = "Settings"
         title.font = UIFont.systemFont(ofSize: 28, weight: .bold)
         self.view.addSubview(title)
-        title.topAnchor == self.view.topAnchor + 30
+        title.topAnchor == self.view.topAnchor + 50
         title.centerXAnchor == self.view.centerXAnchor
     }
 }
