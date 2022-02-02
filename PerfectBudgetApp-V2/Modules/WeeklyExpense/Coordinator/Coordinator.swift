@@ -15,6 +15,5 @@ protocol Coordinator {
 
     func start()
     func transactionTapped(_ transaction: Transaction)
-    func viewGraphScreen()
     func showSettingsScreen()
 }

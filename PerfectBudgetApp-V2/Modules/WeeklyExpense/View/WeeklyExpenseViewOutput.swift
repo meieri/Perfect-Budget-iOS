@@ -17,10 +17,9 @@ protocol WeeklyExpenseViewOutput {
     func viewIsReady()
     func createTransaction(reason: String, amount: Double)
     func errorCreatingTransaction()
-    func showGraphScreen()
     func transactionTapped(_ transaction: Transaction)
     func deleteTransaction(transaction: Transaction)
     func getPreviousWeekViewController(index: Int) -> WeeklyExpenseViewController
     func pageViewTransitionCompleted()
-    func menuTapped()
+    func showSettings()
 }

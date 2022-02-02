@@ -24,9 +24,6 @@ class WeeklyExpensePageViewController: UIPageViewController {
         }
     }
 
-    @objc func menuTapped() {
-        output.menuTapped()
-    }
 
 }
 

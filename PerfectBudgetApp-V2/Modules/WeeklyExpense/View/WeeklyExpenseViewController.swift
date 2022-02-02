@@ -17,7 +17,7 @@ class WeeklyExpenseViewController: UIViewController {
     var transactions: [Transaction] = []
     let addTransactionButton = UIButton(type: .roundedRect)
     let editTransactionButton = UIButton(type: .system)
-    let navigateToGraphs = UIButton(type: .system)
+    let settingsButton = UIButton()
 
     var currentSpending: Double {
         get {
@@ -26,15 +26,6 @@ class WeeklyExpenseViewController: UIViewController {
                 spending += transaction.amount
             }
             return spending
-        }
-    }
-
-    override var navigationItem: UINavigationItem {
-        get {
-            let navigationItem = UINavigationItem()
-            navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(showMenu))
-//            navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, landscapeImagePhone: image, style: .plain, target: self, action: #selector(showMenu))
-            return navigationItem
         }
     }
 
@@ -49,8 +40,9 @@ class WeeklyExpenseViewController: UIViewController {
         super.viewWillAppear(animated)
         refresh()
     }
-    @objc func showMenu() {
-//        output.showMenu()
+
+    @objc func settingsButtonTapped() {
+        output.showSettings()
     }
 
     @objc func showInputDialog() {
@@ -79,11 +71,6 @@ class WeeklyExpenseViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
 
-
-    @objc func viewGraphScreen(selector: UIButton) {
-        output.showGraphScreen()
-    }
-
     // refreshes everything that changes
     func refresh() {
         self.tableView.reloadData()
@@ -98,6 +85,7 @@ extension WeeklyExpenseViewController {
         let mainStack = UIStackView(arrangedSubviews: [titleProgressView, tableView])
         self.view.addSubview(mainStack)
         self.view.addSubview(addTransactionButton)
+        self.view.addSubview(settingsButton)
         tableView.register(UITableViewCell.self,
                            forCellReuseIdentifier: "TransactionCell")
         tableView.dataSource = self
@@ -105,7 +93,7 @@ extension WeeklyExpenseViewController {
         tableView.allowsSelection = true
         tableView.register(SubtitleTableViewCell.self, forCellReuseIdentifier: "TransactionCell")
         addTransactionButton.addTarget(self, action: #selector(showInputDialog), for: .touchUpInside)
-        navigateToGraphs.addTarget(self, action: #selector(viewGraphScreen), for: .touchUpInside)
+        settingsButton.addTarget(self, action: #selector(settingsButtonTapped), for: .touchUpInside)
         // Style
         mainStack.axis = .vertical
         mainStack.alignment = .center
@@ -120,7 +108,8 @@ extension WeeklyExpenseViewController {
         addTransactionButton.layer.cornerRadius = 8.0
         self.view.backgroundColor = .white
         tableView.backgroundColor = .white
-        navigateToGraphs.setTitle("Graphs", for: .normal)
+        let settingsButtonImage = UIImage(named: "hamburger-menu-icon-1")
+        settingsButton.setImage(settingsButtonImage, for: .normal)
         // Layout
         titleProgressView.widthAnchor == view.safeAreaLayoutGuide.widthAnchor - 40
         mainStack.topAnchor == view.safeAreaLayoutGuide.topAnchor + 15
@@ -129,11 +118,10 @@ extension WeeklyExpenseViewController {
         addTransactionButton.leadingAnchor == view.safeAreaLayoutGuide.leadingAnchor + 25
         addTransactionButton.trailingAnchor == view.safeAreaLayoutGuide.trailingAnchor - 25
         addTransactionButton.bottomAnchor == view.safeAreaLayoutGuide.bottomAnchor - 20
-
         addTransactionButton.heightAnchor == 40
-
         tableView.widthAnchor == mainStack.widthAnchor / 8 * 7
-
+        settingsButton.leadingAnchor == self.view.safeAreaLayoutGuide.leadingAnchor + 10
+        settingsButton.topAnchor == self.view.safeAreaLayoutGuide.topAnchor + 10
     }
 }
 

@@ -63,14 +63,10 @@ extension WeeklyExpensePresenter: WeeklyExpenseViewOutput {
         // TODO show errors
     }
 
-    func showGraphScreen() {
-        coordinator.viewGraphScreen()
-    }
-
     func transactionTapped(_ tappedTransaction: Transaction) {
         coordinator.transactionTapped(tappedTransaction)
     }
-
+    
     func deleteTransaction(transaction: Transaction) {
         interactor.deleteTransaction(transaction)
     }
@@ -85,8 +81,8 @@ extension WeeklyExpensePresenter: WeeklyExpenseViewOutput {
         return weeklyExpenseVC
     }
 
-    func menuTapped() {
-        coordinator.showMenu()
+    func showSettings() {
+        coordinator.showSettingsScreen()
     }
 
 }
