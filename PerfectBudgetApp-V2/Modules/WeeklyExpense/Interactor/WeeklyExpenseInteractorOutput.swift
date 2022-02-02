@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol WeeklyExpenseInteractorOutput: class {
+protocol WeeklyExpenseInteractorOutput: AnyObject {
     func pushNewTransaction(_ transaction: Transaction)
 }

@@ -44,7 +44,11 @@ class WeeklyExpenseViewController: UIViewController {
         configureView()
         output.viewIsReady()
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        refresh()
+    }
     @objc func showMenu() {
 //        output.showMenu()
     }
@@ -83,7 +87,7 @@ class WeeklyExpenseViewController: UIViewController {
     // refreshes everything that changes
     func refresh() {
         self.tableView.reloadData()
-        self.titleProgressView.setSpendingValues(currSpend: currentSpending, maxSpend: 40.0)
+        self.titleProgressView.setSpendingValues(currSpend: currentSpending)
     }
 
 }

@@ -28,7 +28,8 @@ class ProgressBarView: UIView {
         configureTrack()
     }
 
-    func setSpendingValues(currSpend: Double, maxSpend: Double) {
+    func setSpendingValues(currSpend: Double) {
+        let maxSpend: Double = 300.0
         currSpendLabel.text = String(format: "$%.02f", currSpend)
         maxSpendLabel.text = String(format: "$%.02f", maxSpend)
 

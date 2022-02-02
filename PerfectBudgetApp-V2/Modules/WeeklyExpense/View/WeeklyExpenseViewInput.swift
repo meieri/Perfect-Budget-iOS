@@ -7,7 +7,7 @@
 //
 import Foundation
 
-protocol WeeklyExpenseViewInput: class {
+protocol WeeklyExpenseViewInput: AnyObject {
 
     /**
         @author Isaak Meier

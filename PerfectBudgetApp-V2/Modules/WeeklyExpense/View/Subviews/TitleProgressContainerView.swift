@@ -29,8 +29,8 @@ class TitleProgressContainerView: UIView {
         weekTitle.text = title
     }
 
-    func setSpendingValues(currSpend: Double, maxSpend: Double) {
-        self.progressBar.setSpendingValues(currSpend: currSpend, maxSpend: maxSpend)
+    func setSpendingValues(currSpend: Double) {
+        self.progressBar.setSpendingValues(currSpend: currSpend)
     }
 }
 

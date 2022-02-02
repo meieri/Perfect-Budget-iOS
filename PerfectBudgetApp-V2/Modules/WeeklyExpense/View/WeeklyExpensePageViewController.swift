@@ -74,7 +74,7 @@ extension WeeklyExpensePageViewController: UIPageViewControllerDelegate {
 extension WeeklyExpensePageViewController: WeeklyExpensePageViewInput {
     func setViewControllers(_ views: [WeeklyExpenseViewController]) {
         orderedWeeklyViewControllers.append(contentsOf: views)
-        setViewControllers([orderedWeeklyViewControllers[4]], direction: .reverse, animated: false, completion: nil)
+        self.setViewControllers([orderedWeeklyViewControllers[4]], direction: .reverse, animated: false, completion: nil)
     }
 
     func getCurrentIndex() -> Int {

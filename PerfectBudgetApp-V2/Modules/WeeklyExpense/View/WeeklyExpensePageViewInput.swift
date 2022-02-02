@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol WeeklyExpensePageViewInput: class {
+protocol WeeklyExpensePageViewInput: AnyObject {
     func getCurrentIndex() -> Int
     func getCurrentViewController() -> WeeklyExpenseViewController
     func setViewControllers(_ views: [WeeklyExpenseViewController])

@@ -66,6 +66,7 @@ class WeeklyExpenseCoordinator: Coordinator {
     func viewSettings() {
         exitMenu()
         let view = SettingsViewController()
+        view.isModalInPresentation = true
         navigationController?.pushViewController(view, animated: true)
         configureView()
     }
