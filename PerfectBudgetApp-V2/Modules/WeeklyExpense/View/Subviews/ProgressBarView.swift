@@ -56,8 +56,6 @@ private extension ProgressBarView {
         progressBar.clipsToBounds = true
         progressBar.heightAnchor == 40
         configureTrack()
-
-
         currSpendLabel.adjustsFontForContentSizeCategory = true
         maxSpendLabel.adjustsFontForContentSizeCategory = true
 
@@ -91,11 +89,11 @@ private extension ProgressBarView {
         DispatchQueue.main.async {
             var multiplier: Float
             if self.progressBar.progress == 1.0 {
-                multiplier = 0.3
+                multiplier = 0.20
                 self.maxSpendLabel.isHidden = true
             }
-            else if self.progressBar.progress == 0.0 {
-                multiplier = 0.12
+            else if self.progressBar.progress < 0.2 {
+                multiplier = 0.20
                 self.maxSpendLabel.isHidden = false
             }
             else if self.progressBar.progress > 0.8 {
@@ -106,7 +104,8 @@ private extension ProgressBarView {
                 multiplier = self.progressBar.progress
                 self.maxSpendLabel.isHidden = false
             }
-            self.currSpendLabel.trailingAnchor == self.trailingAnchor * multiplier - 15
+            print(multiplier)
+            self.currSpendLabel.trailingAnchor == (self.trailingAnchor * multiplier) - 15
         }
     }
 }
