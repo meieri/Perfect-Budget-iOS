@@ -120,7 +120,7 @@ extension WeeklyExpenseViewController {
         addTransactionButton.trailingAnchor == view.safeAreaLayoutGuide.trailingAnchor - 25
         addTransactionButton.heightAnchor == 40
         tableView.widthAnchor == mainStack.widthAnchor / 8 * 7
-        settingsButton.leadingAnchor == self.view.safeAreaLayoutGuide.leadingAnchor + 20
+        settingsButton.leadingAnchor == self.view.safeAreaLayoutGuide.leadingAnchor + 25
         settingsButton.topAnchor == self.view.safeAreaLayoutGuide.topAnchor + 10
     }
 }
