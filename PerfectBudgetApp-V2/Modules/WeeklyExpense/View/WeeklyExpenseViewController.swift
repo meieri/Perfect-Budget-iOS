@@ -73,6 +73,7 @@ class WeeklyExpenseViewController: UIViewController {
 
     // refreshes everything that changes
     func refresh() {
+        transactions.removeAll { $0.amount == 0.0 && $0.reason == nil} // purgeEmptyTransactions
         self.tableView.reloadData()
         self.titleProgressView.setSpendingValues(currSpend: currentSpending)
     }
@@ -114,13 +115,12 @@ extension WeeklyExpenseViewController {
         titleProgressView.widthAnchor == view.safeAreaLayoutGuide.widthAnchor - 40
         mainStack.topAnchor == view.safeAreaLayoutGuide.topAnchor + 15
         mainStack.centerAnchors == view.centerAnchors
-        addTransactionButton.topAnchor == mainStack.bottomAnchor
+        addTransactionButton.topAnchor == mainStack.bottomAnchor - 20
         addTransactionButton.leadingAnchor == view.safeAreaLayoutGuide.leadingAnchor + 25
         addTransactionButton.trailingAnchor == view.safeAreaLayoutGuide.trailingAnchor - 25
-        addTransactionButton.bottomAnchor == view.safeAreaLayoutGuide.bottomAnchor - 20
         addTransactionButton.heightAnchor == 40
         tableView.widthAnchor == mainStack.widthAnchor / 8 * 7
-        settingsButton.leadingAnchor == self.view.safeAreaLayoutGuide.leadingAnchor + 10
+        settingsButton.leadingAnchor == self.view.safeAreaLayoutGuide.leadingAnchor + 20
         settingsButton.topAnchor == self.view.safeAreaLayoutGuide.topAnchor + 10
     }
 }
@@ -133,7 +133,7 @@ extension WeeklyExpenseViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionCell", for: indexPath)
         cell.textLabel?.text = transactions[indexPath.row].reason
-        let amount = Self.getAmountString(amount: transactions[indexPath.row].amount)
+        let amount = WeeklyExpenseViewController.getAmountString(amount: transactions[indexPath.row].amount)
         cell.detailTextLabel?.text = "\(amount)"
         cell.detailTextLabel?.textColor = .darkGray
         cell.accessoryType = .disclosureIndicator
@@ -183,6 +183,10 @@ extension WeeklyExpenseViewController: WeeklyExpenseViewInput {
 
     func addTransaction(_ transaction: Transaction) {
         self.transactions.append(transaction)
+        refresh()
+    }
+
+    func requestRefresh() {
         refresh()
     }
 }

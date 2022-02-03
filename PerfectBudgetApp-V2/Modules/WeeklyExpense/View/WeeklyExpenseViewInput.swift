@@ -16,4 +16,5 @@ protocol WeeklyExpenseViewInput: AnyObject {
 
     func setupInitialState(using weeklyTransactions: [Transaction], weekTitle: String)
     func addTransaction(_ transaction: Transaction)
+    func requestRefresh()
 }

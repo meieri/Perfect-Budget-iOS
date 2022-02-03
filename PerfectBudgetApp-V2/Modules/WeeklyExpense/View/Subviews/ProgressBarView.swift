@@ -29,7 +29,8 @@ class ProgressBarView: UIView {
     }
 
     func setSpendingValues(currSpend: Double) {
-        let maxSpend: Double = 300.0
+        var maxSpend = UserDefaults.standard.double(forKey: "maxSpendingPerWeek")
+        if (maxSpend == 0) { maxSpend = 300.0 }
         currSpendLabel.text = String(format: "$%.02f", currSpend)
         maxSpendLabel.text = String(format: "$%.02f", maxSpend)
 
@@ -95,12 +96,15 @@ private extension ProgressBarView {
             }
             else if self.progressBar.progress == 0.0 {
                 multiplier = 0.12
+                self.maxSpendLabel.isHidden = false
             }
             else if self.progressBar.progress > 0.8 {
                 multiplier = 0.85
+                self.maxSpendLabel.isHidden = false
             }
             else {
                 multiplier = self.progressBar.progress
+                self.maxSpendLabel.isHidden = false
             }
             self.currSpendLabel.trailingAnchor == self.trailingAnchor * multiplier - 15
         }

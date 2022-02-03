@@ -16,7 +16,6 @@ class WeeklyExpensePresenter {
 
     /// Checks the pageView for its current index, and gets a date moved that number weeks away backwards from today's date.
     private func getDisplayDate(index: Int) -> Date {
-//        var weeksAway = pageView.getCurrentIndex()
         var weeksAway = index
         weeksAway.negate()
         let day = interactor.getCurrentDateMovedBy(week: weeksAway)
@@ -34,6 +33,11 @@ class WeeklyExpensePresenter {
             views.append(vc)
         }
         pageView.setViewControllers(views)
+    }
+
+    func requestViewRefresh() {
+        pageViewTransitionCompleted()
+        view.requestRefresh()
     }
 }
 

@@ -17,7 +17,7 @@ class DetailViewController: UIViewController {
     var service: TransactionServiceProtocol!
     private var reason: String!
     private var backButton = UIButton(type: .close)
-    private var deleteButton = UIButton(type: .roundedRect)
+    private var deleteButton = UIButton(type: .custom)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +47,9 @@ extension DetailViewController {
         // Style
         view.backgroundColor = .white
         reasonLabel.text = self.reason
-        deleteButton.backgroundColor = .red
+        deleteButton.setTitle("Delete", for: .normal)
+        deleteButton.backgroundColor = .systemRed
+        deleteButton.layer.cornerRadius = 6.0
         backButton.addTarget(self, action: #selector(returnHome), for: .touchUpInside)
         deleteButton.addTarget(self, action: #selector(deleteTransaction), for: .touchUpInside)
 
@@ -59,8 +61,8 @@ extension DetailViewController {
         backButton.leadingAnchor == self.view.safeAreaLayoutGuide.leadingAnchor + 20
 
         deleteButton.topAnchor == reasonLabel.bottomAnchor + 20
-        deleteButton.widthAnchor == reasonLabel.widthAnchor * 2
-        deleteButton.heightAnchor == reasonLabel.widthAnchor
+        deleteButton.widthAnchor == 100
+        deleteButton.heightAnchor == 50
         deleteButton.centerXAnchor == reasonLabel.centerXAnchor
     }
 }

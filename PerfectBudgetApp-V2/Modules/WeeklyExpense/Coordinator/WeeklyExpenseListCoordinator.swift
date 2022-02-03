@@ -15,8 +15,7 @@ class WeeklyExpenseCoordinator: Coordinator {
     var children = [Coordinator]()
     var navigationController: UINavigationController?
     private var service: TransactionService!
-    private var overlay: UIControl?
-    private var settingsButton: UIButton?
+    private var presenter: WeeklyExpensePresenter!
 
     init(_ navController: UINavigationController) {
         self.navigationController = navController
@@ -31,6 +30,7 @@ class WeeklyExpenseCoordinator: Coordinator {
         presenter.view = view
         presenter.pageView = pageView
         presenter.coordinator = self
+        self.presenter = presenter
 
         let interactor = WeeklyExpenseInteractor()
         interactor.output = presenter
@@ -44,7 +44,6 @@ class WeeklyExpenseCoordinator: Coordinator {
         pageView.output = presenter
         view.view.tag = 0
 
-        configureSettingsButton()
         navigationController?.pushViewController(pageView, animated: false)
         presenter.generateViewControllers()
     }
@@ -59,15 +58,18 @@ class WeeklyExpenseCoordinator: Coordinator {
 
     @objc func showSettingsScreen() {
         let view = SettingsViewController()
-        view.isModalInPresentation = true
-        navigationController?.pushViewController(view, animated: true)
+        view.modalPresentationStyle = UIModalPresentationStyle.pageSheet
+        view.coordinator = self
+        navigationController?.present(view, animated: true, completion: nil)
     }
 
     func goHome() {
         navigationController?.popToRootViewController(animated: true)
     }
 
-    func configureSettingsButton() {
+    func requestRefresh() {
+        self.presenter.requestViewRefresh()
     }
+
 }
 
